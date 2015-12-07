@@ -1,17 +1,20 @@
-<template name="pageTwo">
+<template name="dynamicShow">
 
-    {{> pageHeading title='Page two' }}
+    <!-- Page heading -->
+    {{> pageHeading title='动态事件'}}
 
-    <div class="wrapper wrapper-content animated fadeInRight">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="text-center m-t-lg">
-                    <h1>
-                        Simple example of second view
-                    </h1>
-                    <small>Writen in pageTwo.html file.</small>
-                </div>
-            </div>
+    <body>
+    {{> map}}
+    </body>
+
+</template>
+
+<template name="map">
+    <div id="container">
+        <h1 class="title">世界地图</h1>
+        <div id="map" class="map"></div>
+        <div class="notice">
+            注意事项
         </div>
     </div>
 </template>

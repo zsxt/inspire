@@ -27,6 +27,17 @@
                         IN+
                     </div>
                 </li>
+
+                <li class="{{isActiveRoute regex='staticShow'}}">
+                    <a href="{{pathFor route='staticShow'}}"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">统计分析</span> </a>
+                </li>
+                <li class="{{isActiveRoute regex='dynamicShow'}}">
+                    <a href="{{pathFor route='dynamicShow'}}"><i class="fa fa-globe"></i> <span class="nav-label">动态事件</span> </a>
+                </li>
+                <li class="{{isActiveRoute regex='topologyShow'}}">
+                    <a href="{{pathFor route='topologyShow'}}"><i class="fa fa-dashboard"></i> <span class="nav-label">拓扑展示</span> </a>
+                </li>
+
                 <li class="{{isActiveRoute regex='dashboard1|dashboard2|dashboard3|dashboard4l'}}">
                     <a href="#"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level {{isActiveRoute regex='dashboard1|dashboard2|dashboard3|dashboard4l' className='in'}}">
