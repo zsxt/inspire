@@ -39,14 +39,15 @@
                 <li class="{{isActiveRoute regex='layouts'}}">
                     <a href="{{pathFor route='layouts'}}"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span> <span class="label label-primary pull-right">NEW</span></a>
                 </li>
-                <li class="{{isActiveRoute regex='graphFlot|graphMorris|graphRickshaw|graphChartJs|graphPeity|graphSparkline'}}">
+                <li class="{{isActiveRoute regex='graphFlot|graphMorris|graphRickshaw|graphChartJs|graphPeity|graphSparkline|graphLeaflet'}}">
                     <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Graphs</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level {{isActiveRoute regex='graphFlot|graphMorris|graphRickshaw|graphChartJs|graphPeity|graphSparkline' className='in'}}">
+                    <ul class="nav nav-second-level {{isActiveRoute regex='graphFlot|graphMorris|graphRickshaw|graphChartJs|graphPeity|graphSparkline|graphLeaflet' className='in'}}">
                         <li class="{{isActiveRoute regex='graphFlot'}}"><a href="{{pathFor route='graphFlot'}}">Flot Charts</a></li>
                         <li class="{{isActiveRoute regex='graphRickshaw'}}"><a href="{{pathFor route='graphRickshaw'}}">Rickshaw Charts</a></li>
                         <li class="{{isActiveRoute regex='graphChartJs'}}"><a href="{{pathFor route='graphChartJs'}}">Chart.js</a></li>
                         <li class="{{isActiveRoute regex='graphPeity'}}"><a href="{{pathFor route='graphPeity'}}">Peity Charts</a></li>
                         <li class="{{isActiveRoute regex='graphSparkline'}}"><a href="{{pathFor route='graphSparkline'}}">Sparkline Charts</a></li>
+                        <li class="{{isActiveRoute regex='graphLeaflet'}}"><a href="{{pathFor route='graphLeaflet'}}">Leaflet.js</a></li>
                     </ul>
                 </li>
                 <li class="{{isActiveRoute regex='mailbox|emailView|emailCompose|emailTemplates'}}">
