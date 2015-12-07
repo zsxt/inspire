@@ -1,0 +1,11 @@
+*~
+.meteor/local
+.meteor/meteorite
+.meteor/.id
+.DS_Store
+
+.idea
+
+#packages/npm-container/*
+lib/*.js.cached
+lib/*.js.map
