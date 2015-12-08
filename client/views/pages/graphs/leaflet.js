@@ -6,7 +6,7 @@ Template.graphLeaflet.rendered = function(){
         doubleClickZoom: false
     }).setView([39.9388838, 116.3974589], 11);
 
-    L.tileLayer.provider('Thunderforest.Outdoors').addTo(map);
+    L.tileLayer.provider('OpenStreetMap.HOT').addTo(map);
 
     L.marker([39.9388838, 116.3974589]).addTo(map)
         .bindPopup('中国 北京市 西城区 长安街')

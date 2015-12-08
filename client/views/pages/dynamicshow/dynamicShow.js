@@ -2,7 +2,7 @@ Template.dynamicShow.rendered = function(){
 
     L.Icon.Default.imagePath = 'packages/bevanhunt_leaflet/images';
 
-    var map = L.map('map', {
+    var map = L.map('dmap', {
         doubleClickZoom: false
     }).setView([39.9388838, 116.3974589], 10);
 

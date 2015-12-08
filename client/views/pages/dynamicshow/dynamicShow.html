@@ -4,16 +4,16 @@
     {{> pageHeading title='动态事件'}}
 
     <body>
-    {{> map}}
+    {{> dynamicMap}}
     </body>
 
 </template>
 
-<template name="map">
+<template name="dynamicMap">
     <div id="container">
-        <h1 class="title">世界地图</h1>
-        <div id="map" class="map"></div>
-        <div class="notice">
+        <h1 class="leaflet-title">世界地图</h1>
+        <div id="dmap" class="leaflet-map"></div>
+        <div class="leaflet-notice">
             注意事项
         </div>
     </div>

@@ -35,7 +35,7 @@
   height: 20px;
   padding: 0;
   line-height: 20px;
-  font-size: 12px;
+  .fm(@font-size-s);
   color: white;
   font-family: Trebuchet, Arial, sans-serif;
   font-weight: bold;
@@ -230,7 +230,7 @@
 }
 
 .fc-header-title h2 {
-  font-size: 16px;
+  .fm(@font-size-xl);
   font-weight: 600;
   color: inherit;
 }
@@ -318,7 +318,7 @@
   margin-top: 10px;
   margin-bottom: 5px;
   padding: 10px 20px;
-  font-size: 11px;
+  .fm(@font-size-xs);
   line-height: 16px;
 }
 
@@ -394,7 +394,7 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
 .list-group-item-text {
   margin: 0 0 10px;
   color: inherit;
-  font-size: 12px;
+  .fm(@font-size-s);
   line-height: inherit;
 }
 
@@ -487,6 +487,9 @@ a.list-group-item.active, a.list-group-item.active:hover, a.list-group-item.acti
 .flot-chart-content {
   width: 100%;
   height: 100%;
+}
+.flot-tick-label {
+  color: white;
 }
 
 .flot-chart-pie-content {
@@ -588,7 +591,7 @@ table.dataTable thead .sorting:after {
   padding: 6px 0;
   border-radius: 15px;
   text-align: center;
-  font-size: 12px;
+  .fm(@font-size-s);
   line-height: 1.428571429;
 }
 
@@ -597,7 +600,7 @@ table.dataTable thead .sorting:after {
   height: 50px;
   padding: 10px 16px;
   border-radius: 25px;
-  font-size: 18px;
+  .fm(@font-size-xxl);
   line-height: 1.33;
 }
 
@@ -606,7 +609,7 @@ table.dataTable thead .sorting:after {
   height: 70px;
   padding: 10px 16px;
   border-radius: 35px;
-  font-size: 24px;
+  .fm(@font-size-24);
   line-height: 1.33;
 }
 
@@ -624,12 +627,12 @@ table.dataTable thead .sorting:after {
 /* ANIMATION */
 
 .css-animation-box h1 {
-  font-size: 44px;
+  .fm(@font-size-44);
 }
 
 .animation-efect-links a {
   padding: 4px 6px;
-  font-size: 12px;
+  .fm(@font-size-s);
 }
 
 #animation_box {
@@ -654,17 +657,17 @@ table.dataTable thead .sorting:after {
   left: 50%;
   margin-left: -100px;
   width: 200px;
-  font-size: 10px;
+  .fm(@font-size-xxs);
 }
 
 .animation-text-box h2 {
-  font-size: 54px;
+  .fm(@font-size-54);
   font-weight: 600;
   margin-bottom: 5px;
 }
 
 .animation-text-box p {
-  font-size: 12px;
+  .fm(@font-size-s);
   text-transform: uppercase;
 }
 
@@ -707,7 +710,7 @@ table.dataTable thead .sorting:after {
 }
 
 .widget.style1 h2 {
-  font-size: 30px;
+  .fm(@font-size-30);
 }
 
 .widget h2, .widget h3 {
@@ -719,6 +722,19 @@ table.dataTable thead .sorting:after {
   padding: 20px;
   border: 1px solid @border-color;
   background: #ffffff;
+}
+
+.widget-text-box-fix{
+  padding: 20px;
+  border-top: 1px solid @border-color;
+  background: #ffffff;
+  height: 140px;
+  -webkit-border-bottom-left-radius: @btn-border-radius;
+  -moz-border-bottom-left-radius: @btn-border-radius;
+  border-bottom-left-radius: @btn-border-radius;
+  -webkit-border-bottom-right-radius: @btn-border-radius;
+  -moz-border-bottom-right-radius: @btn-border-radius;
+  border-bottom-right-radius: @btn-border-radius;
 }
 
 .widget-head-color-box {
@@ -744,11 +760,11 @@ table.dataTable thead .sorting:after {
   list-style: none outside none;
   margin: 0;
   padding: 0;
-  font-size: 14px;
+  .fm(@font-size);
 }
 
 .todo-list.small-list {
-  font-size: 12px;
+  .fm(@font-size-s);
 }
 
 .todo-list .checkbox {
@@ -767,7 +783,7 @@ table.dataTable thead .sorting:after {
 
 .todo-list.small-list .btn-xs, .todo-list.small-list .btn-group-xs > .btn {
   border-radius: 5px;
-  font-size: 10px;
+  .fm(@font-size-xxs);
   line-height: 1.5;
   padding: 1px 2px 1px 5px;
 }
@@ -785,17 +801,17 @@ table.dataTable thead .sorting:after {
 .todo-list .handle {
   cursor: move;
   display: inline-block;
-  font-size: 16px;
+  .fm(@font-size-xl);
   margin: 0 5px;
 }
 
 .todo-list > li .label {
-  font-size: 9px;
+  .fm(@font-size-xxxs);
   margin-left: 10px;
 }
 
 .check-link {
-  font-size: 16px;
+  .fm(@font-size-xl);
 }
 
 .todo-completed {
@@ -803,7 +819,7 @@ table.dataTable thead .sorting:after {
 }
 
 .geo-statistic h1 {
-  font-size: 36px;
+  .fm(@font-size-36);
   margin-bottom: 0;
 }
 
@@ -841,8 +857,10 @@ table.dataTable thead .sorting:after {
   padding: 6px 12px;
   transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
   width: 100%;
-  font-size:14px
+  //.fm(@font-size);
+  font-family: @font-family-serif;
 }
+
 
 .form-control:focus, .single-line:focus {
   border-color: @navy !important;
@@ -877,7 +895,7 @@ table.dataTable thead .sorting:after {
   border: 1px solid #E5E6E7;
   border-radius: 1px;
   color: inherit;
-  font-size: 14px;
+  .fm(@font-size);
   font-weight: 400;
   line-height: 1;
   padding: 6px 12px;
@@ -937,7 +955,7 @@ table.dataTable thead .sorting:after {
 }
 .onoffswitch-inner:before, .onoffswitch-inner:after {
   display: block; float: left; width: 50%; height: 16px; padding: 0; line-height: 16px;
-  font-size: 10px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+  .fm(@font-size-xxs); color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
 }
 .onoffswitch-inner:before {
@@ -1012,7 +1030,7 @@ table.dataTable thead .sorting:after {
   background-color: inherit;
 }
 .ui-search-toolbar input[type="text"]{
-  font-size: 12px;
+  .fm(@font-size-s);
   height: 15px;
   border: 1px solid #CCCCCC;
   border-radius: 0px;
@@ -1060,6 +1078,7 @@ table.dataTable thead .sorting:after {
 .ui-jqgrid .ui-pg-selbox {
   display: block;
   font-size: 1em;
+  .fm(1em);
   height: 25px;
   line-height: 18px;
   margin: 0;
@@ -1092,7 +1111,7 @@ table.dataTable thead .sorting:after {
   font-weight: bold;
   display: none;
   border-width: 2px !important;
-  font-size:11px;
+  .fm(@font-size-xs);
 }
 .ui-jqgrid .form-control {
   height: 10px;
@@ -1160,7 +1179,7 @@ table.dataTable thead .sorting:after {
   margin: 0;
   padding: 0;
   list-style: none;
-  font-size: 13px;
+  .fm(@font-size-m);
   line-height: 20px;
 }
 
@@ -1188,7 +1207,7 @@ table.dataTable thead .sorting:after {
   margin: 0;
   padding: 0;
   min-height: 20px;
-  font-size: 13px;
+  .fm(@font-size-m);
   line-height: 20px;
 }
 
@@ -1230,7 +1249,7 @@ table.dataTable thead .sorting:after {
   overflow: hidden;
   border: 0;
   background: transparent;
-  font-size: 12px;
+  .fm(@font-size-s);
   line-height: 1;
   text-align: center;
   font-weight: bold;
@@ -1324,6 +1343,7 @@ table.dataTable thead .sorting:after {
 #nestable2-output {
   width: 100%;
   font-size: 0.75em;
+  .fm(0.75em);
   line-height: 1.333333em;
   font-family: open sans, lucida grande, lucida sans unicode, helvetica, arial, sans-serif;
   padding: 5px;
@@ -1349,7 +1369,7 @@ table.dataTable thead .sorting:after {
 
 #nestable-output,
 #nestable2-output {
-  font-size: 12px;
+  .fm(@font-size-s);
   padding: 25px;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -1432,7 +1452,7 @@ label.error {
 #toast-container > .toast:before {
   position: fixed;
   font-family: FontAwesome;
-  font-size: 24px;
+  .fm(@font-size-24);
   line-height: 24px;
   float: left;
   color: #FFF;
@@ -1558,7 +1578,7 @@ label.error {
 
 .author-info {
   color: #676a6c;
-  font-size: 11px;
+  .fm(@font-size-xs);
   margin-top: 5px;
   text-align: center;
 }
@@ -1595,7 +1615,7 @@ label.error {
 }
 
 .mid-icon {
-  font-size: 66px;
+  .fm(@font-size-66);
 }
 
 .forum-item {
@@ -1605,7 +1625,7 @@ label.error {
 }
 
 .views-number {
-  font-size: 24px;
+  .fm(@font-size-24);
   line-height: 18px;
   font-weight: 400;
 }
@@ -1645,7 +1665,7 @@ label.error {
 a.forum-item-title {
   color: inherit;
   display: block;
-  font-size: 18px;
+  .fm(@font-size-xxl);
   font-weight: 600;
 }
 
@@ -1654,8 +1674,7 @@ a.forum-item-title:hover {
 }
 
 .forum-icon .fa {
-
-  font-size: 30px;
+  .fm(@font-size-30);
   margin-top: 8px;
   color: #9b9b9b;
 }
@@ -1796,7 +1815,7 @@ a.forum-item-title:hover {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  font-size: 16px;
+  .fm(@font-size-xl);
   border: 3px solid #f1f1f1;
   text-align: center;
 }
@@ -1819,7 +1838,7 @@ a.forum-item-title:hover {
     margin-left: -25px;
     -webkit-transform: translateZ(0);
     -webkit-backface-visibility: hidden;
-    font-size: 19px;
+    .fm(@font-size-xxxl);
   }
   .center-orientation .vertical-timeline-icon i {
     margin-left: -12px;
@@ -1877,10 +1896,10 @@ a.forum-item-title:hover {
 }
 @media only screen and (min-width: 768px) {
   .vertical-timeline-content h2 {
-    font-size: 18px;
+    .fm(@font-size-xxl);
   }
   .vertical-timeline-content p {
-    font-size: 13px;
+    .fm(@font-size-m);
   }
 
 }
@@ -1905,7 +1924,7 @@ a.forum-item-title:hover {
     width: 100%;
     left: 122%;
     top: 2px;
-    font-size: 14px;
+    .fm(@font-size);
   }
   .center-orientation .vertical-timeline-block:nth-child(even) .vertical-timeline-content {
     float: right;
