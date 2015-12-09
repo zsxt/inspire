@@ -63,13 +63,11 @@
                     <div class="ibox-title">
                         <h5>世界地图</h5>
                         <div class="ibox-tools">
-                            <span class="label label-warning-light">10 Messages</span>
+                            <span class="label label-warning-light">OpenStreetMap</span>
                         </div>
                     </div>
                     <div class="ibox-content">
-                        <div>
-                            {{> dynamicMap}}
-                        </div>
+                        <div id="dmap" class="leaflet-map"></div>
                     </div>
                 </div>
             </div>
@@ -205,14 +203,4 @@
         </span>
         <span class="label label-{{labelClass}}">{{number}}</span> {{content}}
     </li>
-</template>
-
-
-<template name="dynamicMap">
-    <div id="container">
-        <div id="dmap" class="leaflet-map"></div>
-        <div class="leaflet-notice">
-            注意事项
-        </div>
-    </div>
 </template>
