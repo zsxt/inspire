@@ -54,6 +54,12 @@
                     </ul>
                 </li>
                 -->
+
+                {{#if isAdmin}}
+                    <li class="special_link">
+                        <a href="{{pathFor route='register'}}"><i class="fa fa-database"></i> <span class="nav-label">注册用户</span></a>
+                    </li>
+                {{/if}}
             </ul>
 
         </div>

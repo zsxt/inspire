@@ -35,6 +35,10 @@ Template.navigation.helpers({
 
     userAvatar: function() {
         return Meteor.user().profile.avatar;
+    },
+
+    isAdmin: function() {
+        return Meteor.user().roles[0] == 'admin'
     }
 
 });
