@@ -13,3 +13,28 @@ Template.navigation.events({
     }
 
 });
+
+Template.navigation.helpers({
+
+    userName: function() {
+        return Meteor.user().profile.name;
+    },
+
+    userRole: function() {
+        var roles =  Meteor.user().roles;
+        if(roles[0] == 'admin'){
+            return '系统管理员'
+        }
+        else if(roles[0] == 'analyst'){
+            return '数据分析师'
+        }
+        else{
+            return '一般用户'
+        }
+    },
+
+    userAvatar: function() {
+        return Meteor.user().profile.avatar;
+    }
+
+});
