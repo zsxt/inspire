@@ -1,4 +1,4 @@
-<template name="loginTwo">
+<template name="login">
     <div class="loginColumns animated fadeInDown">
         <div class="row">
 
@@ -24,14 +24,15 @@
             </div>
             <div class="col-md-6">
                 <div class="ibox-content">
-                    <form class="m-t" role="form" action="{{pathFor route='dashboard1'}}">
+                    <form class="m-t" role="form" id="signIn">
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Username" required="">
+                            <input name="username" type="text" class="form-control" placeholder="Username" required="">
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Password" required="">
+                            <input name="password" type="password" class="form-control" placeholder="Password" required="">
                         </div>
-                        <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
+                        <div class="" id="logintip"> </div>
+                        <button type="submit" class="btn btn-primary block full-width m-b">登陆</button>
 
                         <a href="#">
                             <small>Forgot password?</small>
