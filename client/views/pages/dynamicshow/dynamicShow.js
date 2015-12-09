@@ -170,7 +170,7 @@ Template.dynamicShow.rendered = function(){
 
     var map = L.map('dmap', {
         doubleClickZoom: false
-    }).setView([39.9388838, 116.3974589], 10);
+    }).setView([39.9388838, 116.3974589], 2);
 
     L.tileLayer.provider('OpenStreetMap.HOT').addTo(map);
 
