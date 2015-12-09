@@ -39,7 +39,7 @@ Template.topNavbar.events({
     },
 
     // Toggle right sidebar
-    'click .right-sidebar-toggle': function(){
-        $('#right-sidebar').toggleClass('sidebar-open');
-    }
+    // 'click .right-sidebar-toggle': function(){
+    //     $('#right-sidebar').toggleClass('sidebar-open');
+    // }
 });
