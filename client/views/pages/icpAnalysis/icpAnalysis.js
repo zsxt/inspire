@@ -90,10 +90,20 @@ Template.icpAnalysis.rendered = function() {
         //     "enabled": true
         // }
     });
-}
+  }
 
-  console.log(OtherData.find().fetch())
-  pie2d('chart-pie-postfix', {category: '_id', value: 'value', yTitle: '数值'}, OtherData.find().fetch());
-  column2d('chart-line-postfix', {category: '_id', value: 'value', yTitle: '数值'}, OtherData.find().fetch());
+  function chart(context, attr) {
+    var id = context + attr.toLowerCase()
+    var r = OtherData.findOne({context: context, attr: attr})
+    pie2d('chart-pie-' + id, {category: 'id', value: 'value', yTitle: '数值'}, r.data);
+    column2d('chart-line-' + id, {category: 'id', value: 'value', yTitle: '数值'}, r.data);
+  }
 
+  chart('zt', 'BBFS')
+  chart('zt', 'LRYHLX')
+  chart('wz', 'LRYHLX')
+  chart('ymlb', 'POSTFIX')
+  chart('ip', 'FPFS')
+  chart('ip', 'IP_LX')
+  chart('ip', 'SFGN')
 }

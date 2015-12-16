@@ -1,0 +1,48 @@
+<template name="OtherData">
+  <div class="row">
+    {{#if pieRight}}
+      <div class="col-lg-5">
+        <div class="ibox">
+          <div class="ibox-title">
+            {{title}}
+          </div>
+          <div class="ibox-content">
+            <div id="chart-line-{{id}}" class="chart"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="ibox">
+          <div class="ibox-title">
+            {{title}}
+          </div>
+          <div class="ibox-content">
+            <div id="chart-pie-{{id}}" class="chart"></div>
+          </div>
+        </div>
+      </div>
+    {{else}}
+      <div class="col-lg-7">
+        <div class="ibox">
+          <div class="ibox-title">
+            {{title}}
+          </div>
+          <div class="ibox-content">
+            <div id="chart-pie-{{id}}" class="chart"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="ibox">
+          <div class="ibox-title">
+            {{title}}
+          </div>
+          <div class="ibox-content">
+            <div id="chart-line-{{id}}" class="chart"></div>
+          </div>
+        </div>
+      </div>
+    {{/if}}
+  </div>
+
+</template>
