@@ -1,11 +1,11 @@
 <template name="icpAnalysis">
   <div class="wrapper wrapper-content">
-  {{> OtherData id="ztbbfs" title="zt报备方式" pieRight="true"}}
-  {{> OtherData id="ztlryhlx" title="zt报录入用户类型"}}
-  {{> OtherData id="wzlryhlx" title="wz报录入用户类型" pieRight="true"}}
-  {{> OtherData id="ymlbpostfix" title="ymlb POSTFIX"}}
-  {{> OtherData id="ipsfgn" title="中国地址段内IP" pieRight="true"}}
-  {{> OtherData id="ipfpfs" title="分配方式"}}
-  {{> OtherData id="ipip_lx" title="IP类型" pieRight="true"}}
+  {{> OtherData context='zt' attr="BBFS" title="zt报备方式" pieRight="true"}}
+  {{> OtherData context='zt' attr="LRYHLX" title="zt报录入用户类型"}}
+  {{> OtherData context='wz' attr="LRYHLX" title="wz报录入用户类型" pieRight="true"}}
+  {{> OtherData context='ymlb' attr="POSTFIX" title="ymlb POSTFIX"}}
+  {{> OtherData context='ip' attr="SFGN" title="中国地址段内IP" pieRight="true"}}
+  {{> OtherData context='ip' attr="FPFS" title="分配方式"}}
+  {{> OtherData context='ip' attr="IP_LX" title="IP类型" pieRight="true"}}
   </div>
 </template>

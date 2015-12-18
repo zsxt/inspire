@@ -1,0 +1,26 @@
+<template name="configBox">
+  <div class="config-box" style="display:none">
+    <div class="row">
+      <div class="col-md-1">
+        <label>Limit</label>
+      </div>
+      <div class="col-md-5">
+        <input type="text" class="form-control limit-{{../context}}{{../attr}}">
+      </div>
+    </div>
+    <div style="height:5px;"></div>
+    <div class="row">
+      <div class="col-md-1">
+        <Label>Date</Label>
+      </div>
+      <div class="col-md-5">
+        <input type="text" class="form-control col-md-5 start-{{../context}}{{../attr}}">
+      </div>
+      <div class="col-md-1"> TO </div>
+      <div class="col-md-5">
+        <input type="text" class="form-control col-md-5 end-{{../context}}{{../attr}}">
+      </div>
+    </div>
+    <hr>
+  </div>
+</template>

@@ -5,9 +5,11 @@
         <div class="ibox">
           <div class="ibox-title">
             {{title}}
+            {{> configTools}}
           </div>
           <div class="ibox-content">
-            <div id="chart-line-{{id}}" class="chart"></div>
+            {{> configBox limit=true date=true}}
+            <div id="chart-line-{{context}}{{attr}}" class="chart"></div>
           </div>
         </div>
       </div>
@@ -15,9 +17,11 @@
         <div class="ibox">
           <div class="ibox-title">
             {{title}}
+            {{> configTools}}
           </div>
           <div class="ibox-content">
-            <div id="chart-pie-{{id}}" class="chart"></div>
+            {{> configBox limit=true date=true}}
+            <div id="chart-pie-{{context}}{{attr}}" class="chart"></div>
           </div>
         </div>
       </div>
@@ -26,9 +30,11 @@
         <div class="ibox">
           <div class="ibox-title">
             {{title}}
+            {{> configTools}}
           </div>
           <div class="ibox-content">
-            <div id="chart-pie-{{id}}" class="chart"></div>
+            {{> configBox limit=true}}
+            <div id="chart-pie-{{context}}{{attr}}" class="chart"></div>
           </div>
         </div>
       </div>
@@ -36,9 +42,11 @@
         <div class="ibox">
           <div class="ibox-title">
             {{title}}
+            {{> configTools}}
           </div>
           <div class="ibox-content">
-            <div id="chart-line-{{id}}" class="chart"></div>
+            {{> configBox limit=true}}
+            <div id="chart-line-{{context}}{{attr}}" class="chart"></div>
           </div>
         </div>
       </div>
