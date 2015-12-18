@@ -1,3 +1,5 @@
+var makersForBasicProfile = new L.LayerGroup();
+
 Template.basicProfile.helpers({
 
 });
@@ -7,25 +9,45 @@ Template.basicProfile.events({
         event.preventDefault();
         var inputIP = instance.find("#searchIP").value;
         var ip_bigint = instance.IPCovertToInt(inputIP);
-        console.log(ip_bigint);
         return instance.searchIP.set(ip_bigint);
     }
 });
 
 Template.basicProfile.onCreated(function() {
     var instance = Template.instance();
-    instance.searchIP = new ReactiveVar(0);
+    instance.searchIP = new ReactiveVar(-1);
     instance.map = new ReactiveVar();
+
     instance.autorun(function() {
-        var subscription = instance.subscribe('findIPbyBigint', instance.searchIP.get());
-        if (subscription.ready()) {
-            var ips = Inspire.Collection.IPAddr.find().fetch();
-            ips.forEach(function(ip){
-                var map = instance.map.get();
-                L.marker([ip.addr.lat, ip.addr.lng]).addTo(map)
-                    .bindPopup(ip.addr.country+ip.addr.province+ip.addr.city+ip.addr.district+ip.addr.street);
-            });
+        var map = instance.map.get();
+        if(map){
+            //首先清空标记图层
+            for (var i in makersForBasicProfile._layers) {
+                map.removeLayer(makersForBasicProfile._layers[i]);
+            }
+            makersForBasicProfile.clearLayers();
+
+            var lat = 0, lng = 0, viewZoom = 2;
+            var subscription = instance.subscribe('findIPbyBigint', instance.searchIP.get());
+            if (subscription.ready()) {
+                var ips = Inspire.Collection.IPAddr.find().fetch();
+                ips.forEach(function(ip){
+                    if(ip.addr.lat && ip.addr.lng){
+                        var marker = L.marker([ip.addr.lat, ip.addr.lng]).addTo(map)
+                            .bindPopup(ip.addr.country+ip.addr.province+ip.addr.city+ip.addr.district+ip.addr.street)
+                            .openPopup();
+
+                        makersForBasicProfile.addLayer(marker);
+                        lat = ip.addr.lat;
+                        lng = ip.addr.lng;
+                        viewZoom = 6;
+                    }
+                });
+
+                map.setView([lat, lng], viewZoom);
+            }
         }
+
     });
 
     instance.IPCovertToInt = function(ip) {
@@ -41,10 +63,11 @@ Template.basicProfile.rendered = function(){
     L.Icon.Default.imagePath = 'packages/bevanhunt_leaflet/images';
     var map = L.map('dmap', {
         doubleClickZoom: false
-    }).setView([0, 0], 2);
+    });
 
     L.tileLayer.provider('OpenStreetMap.HOT').addTo(map);
     this.map.set(map);
+    map.setView([0, 0], 2);
 
     // Options, data for doughnut chart
     var doughnutData = [
