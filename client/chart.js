@@ -1,3 +1,5 @@
+AmCharts_path = '/packages/em0ney_amcharts/lib'
+
 pie2d = function(domId, fields, data) {
     var chart = AmCharts.makeChart(domId, {
         "type": "pie",
@@ -86,4 +88,63 @@ column2d = function(domId, fields, data) {
       //     "enabled": true
       // }
   });
+}
+
+line = function(domId, fields, data) {
+    var chartData = data;
+    var chart = AmCharts.makeChart(domId, {
+        "pathToImages": "/packages/em0ney_amcharts/lib/images/",
+        "type": "serial",
+        "theme": "light",
+        "marginRight": 80,
+        "autoMarginOffset": 20,
+        "marginTop": 7,
+        "dataProvider": chartData,
+        "valueAxes": [{
+            "axisAlpha": 0.2,
+            "dashLength": 1,
+            "position": "left"
+        }],
+        "mouseWheelZoomEnabled": true,
+        "graphs": [{
+            "id": "g1",
+            "balloonText": "[[category]]<br/><b><span style='font-size:14px;'>value: [[value]]</span></b>",
+            "bullet": "round",
+            "bulletBorderAlpha": 1,
+            "bulletColor": "#FFFFFF",
+            "hideBulletsCount": 50,
+            "title": "red line",
+            "valueField": fields && fields.value || "value",
+            "useLineColorForBulletBorder": true
+        }],
+        "chartScrollbar": {
+            "oppositeAxis": false,
+            "autoGridCount": true,
+            "graph": "g1",
+            "scrollbarHeight": 40
+        },
+        "chartCursor": {
+
+        },
+        "categoryField": fields && fields.date || "date",
+        "categoryAxis": {
+            "parseDates": true,
+            "axisColor": "#DADADA",
+            "dashLength": 1,
+            "minorGridEnabled": true
+        },
+        // "export": {
+        //     "enabled": true
+        // }
+    });
+
+    chart.addListener("rendered", zoomChart);
+    zoomChart();
+
+    // this method is called when chart is first inited as we listen for "dataUpdated" event
+    function zoomChart() {
+        // different zoom methods can be used - zoomToIndexes, zoomToDates, zoomToCategoryValues
+        chart.zoomToIndexes(chartData.length - 40, chartData.length - 1);
+    }
+
 }
