@@ -1,11 +1,11 @@
-Template.OtherData.onCreated(function() {
+Template.BaxxChart.onCreated(function() {
   var instance = this
   instance.limit = new ReactiveVar(10)
   instance.start = new ReactiveVar('')
   instance.end = new ReactiveVar('')
   instance.autorun(function() {
     var limit = instance.limit.get()
-    var subscription = instance.subscribe('other_data', {
+    var subscription = instance.subscribe('baxx_stat', {
       context: instance.data.context,
       attr: instance.data.attr,
       limit: instance.limit.get(),
@@ -14,17 +14,17 @@ Template.OtherData.onCreated(function() {
     })
   })
   instance.result = function() {
-    return OtherData.find({context: instance.data.context, attr: instance.data.attr})
+    return BaxxStat.find({context: instance.data.context, attr: instance.data.attr})
   }
 })
 
-Template.OtherData.onRendered(function() {
+Template.BaxxChart.onRendered(function() {
   var self = this
   var id = self.data.context + self.data.attr
   this.autorun(function() {
     var r = self.result().fetch()
     pie2d('chart-pie-' + id, {category: 'id', value: 'value', yTitle: '数值'}, r);
-    column2d('chart-line-' + id, {category: 'id', value: 'value', yTitle: '数值'}, r);
+    column2d('chart-column-' + id, {category: 'id', value: 'value', yTitle: '数值'}, r);
   })
 
   $('.limit-' + id).val(this.limit.get())

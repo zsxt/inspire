@@ -6,7 +6,7 @@ collections = {
     'zt': Inspire.Collection.ICPGnBaxxZt
 }
 
-Meteor.publish('other_data', function(option) {
+Meteor.publish('baxx_stat', function(option) {
   var sub = this
   collection = collections[option.context]
   var projection = {
@@ -31,9 +31,8 @@ Meteor.publish('other_data', function(option) {
     }
   }
   var results = collection.aggregate(pipeline)
-  // sub.added('other_data', Random.id(), {data: results, context: option.context, attr: option.attr})
   _(results).each(function(r) {
-    sub.added('other_data', Random.id(), r)
+    sub.added('baxx_stat', Random.id(), r)
   })
   sub.ready()
 })

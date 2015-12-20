@@ -1,14 +1,14 @@
 <template name="icpAnalysis">
   <div class="wrapper wrapper-content">
-  {{> OtherData context='zt' attr="BBFS" title="zt报备方式" pieRight="true"}}
-  {{> OtherData context='zt' attr="LRYHLX" title="zt报录入用户类型"}}
+  {{> BaxxChart context='zt' attr="BBFS" title="zt报备方式" pieRight="true"}}
+  {{> BaxxChart context='zt' attr="LRYHLX" title="zt报录入用户类型"}}
   {{> BaxxTimeChart context='wz' title='Website amount'}}
-  {{> OtherData context='wz' attr="LRYHLX" title="wz报录入用户类型" pieRight="true"}}
+  {{> BaxxChart context='wz' attr="LRYHLX" title="wz报录入用户类型" pieRight="true"}}
   {{> BaxxTimeChart context='ymlb' title='Domain name amount'}}
-  {{> OtherData context='ymlb' attr="POSTFIX" title="ymlb POSTFIX"}}
+  {{> BaxxChart context='ymlb' attr="POSTFIX" title="ymlb POSTFIX"}}
   {{> BaxxTimeChart context='ip' title="IP filing amount"}}
-  {{> OtherData context='ip' attr="SFGN" title="中国地址段内IP" pieRight="true"}}
-  {{> OtherData context='ip' attr="FPFS" title="分配方式"}}
-  {{> OtherData context='ip' attr="IP_LX" title="IP类型" pieRight="true"}}
+  {{> BaxxChart context='ip' attr="SFGN" title="中国地址段内IP" pieRight="true"}}
+  {{> BaxxChart context='ip' attr="FPFS" title="分配方式"}}
+  {{> BaxxChart context='ip' attr="IP_LX" title="IP类型" pieRight="true"}}
   </div>
 </template>
