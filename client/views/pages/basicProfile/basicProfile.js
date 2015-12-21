@@ -7,6 +7,10 @@ Template.basicProfile.helpers({
         });
 
         return Session.get('ipAddrCount');
+    },
+
+    ipAddr: function() {
+        return Inspire.Collection.IPAddr.findOne();
     }
 });
 
