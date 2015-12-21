@@ -1,7 +1,13 @@
 var makersForBasicProfile = new L.LayerGroup();
 
 Template.basicProfile.helpers({
+    updateIPAddrCount: function() {
+        Meteor.call('getIPAddrCount', function (err, count) {
+            Session.set('ipAddrCount', count);
+        });
 
+        return Session.get('ipAddrCount');
+    }
 });
 
 Template.basicProfile.events({
