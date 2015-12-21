@@ -38,7 +38,7 @@ Template.basicProfile.onCreated(function() {
             makersForBasicProfile.clearLayers();
 
             var lat = 0, lng = 0, viewZoom = 2;
-            var subscription = instance.subscribe('findIPbyBigint', instance.searchIP.get());
+            var subscription = instance.subscribe('findIPAddr', instance.searchIP.get());
             if (subscription.ready()) {
                 var ips = Inspire.Collection.IPAddr.find().fetch();
                 ips.forEach(function(ip){
