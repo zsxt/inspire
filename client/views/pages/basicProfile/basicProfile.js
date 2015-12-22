@@ -32,9 +32,6 @@ Template.basicProfile.onCreated(function() {
         var map = instance.map.get();
         if(map){
             //首先清空标记图层
-            for (var i in makersForBasicProfile._layers) {
-                map.removeLayer(makersForBasicProfile._layers[i]);
-            }
             makersForBasicProfile.clearLayers();
 
             var lat = 0, lng = 0, viewZoom = 2;
@@ -43,14 +40,21 @@ Template.basicProfile.onCreated(function() {
                 var ips = Inspire.Collection.IPAddr.find().fetch();
                 ips.forEach(function(ip){
                     if(ip.addr.lat && ip.addr.lng){
-                        var marker = L.marker([ip.addr.lat, ip.addr.lng]).addTo(map)
+                        lat = ip.addr.lat;
+                        lng = ip.addr.lng;
+                        viewZoom = 12;
+
+                        var marker = L.marker([lat, lng]).addTo(makersForBasicProfile)
                             .bindPopup(ip.addr.country+ip.addr.province+ip.addr.city+ip.addr.district+ip.addr.street)
                             .openPopup();
 
-                        makersForBasicProfile.addLayer(marker);
-                        lat = ip.addr.lat;
-                        lng = ip.addr.lng;
-                        viewZoom = 6;
+                        var circle = L.circle([lat, lng], 1000, {
+                            color: 'red',
+                            fillColor: '#f03',
+                            fillOpacity: 0.3
+                        }).addTo(makersForBasicProfile);
+
+                        marker.circle=circle;
                     }
                 });
 
@@ -76,6 +80,7 @@ Template.basicProfile.rendered = function(){
     });
 
     L.tileLayer.provider('OpenStreetMap.HOT').addTo(map);
+    map.addLayer(makersForBasicProfile);
     this.map.set(map);
     map.setView([0, 0], 2);
 };
