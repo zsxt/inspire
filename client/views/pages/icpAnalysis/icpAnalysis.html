@@ -1,5 +1,6 @@
 <template name="icpAnalysis">
   <div class="wrapper wrapper-content">
+  {{> BaxxGeoChart context='zt' title='zt geo'}}
   {{> BaxxChart context='zt' attr="BBFS" title="zt报备方式" pieRight="true"}}
   {{> BaxxChart context='zt' attr="LRYHLX" title="zt报录入用户类型"}}
   {{> BaxxTimeChart context='wz' title='Website amount'}}
