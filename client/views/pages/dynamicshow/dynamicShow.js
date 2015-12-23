@@ -202,6 +202,8 @@ Template.dynamicShow.onCreated(function() {
                             'longitudes': [result.srcAddr.addr.lng, result.dstAddr.addr.lng]
                         });
 
+                        console.log(linesData);
+
                         imagesData.push({
                             'id': result.srcAddr.addr.city,
                             'svgPath': targetSVG,
