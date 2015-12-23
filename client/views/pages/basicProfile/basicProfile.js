@@ -40,21 +40,23 @@ Template.basicProfile.onCreated(function() {
                 var ips = Inspire.Collection.IPAddr.find().fetch();
                 ips.forEach(function(ip){
                     if(ip.addr.lat && ip.addr.lng){
-                        lat = ip.addr.lat;
-                        lng = ip.addr.lng;
-                        viewZoom = 12;
+                        if(ip.addr.lat != '*' && ip.addr.lat !='' && ip.addr.lng != '*' && ip.addr.lng != ''){
+                            lat = ip.addr.lat;
+                            lng = ip.addr.lng;
+                            viewZoom = 12;
 
-                        var marker = L.marker([lat, lng]).addTo(makersForBasicProfile)
-                            .bindPopup(ip.addr.country+ip.addr.province+ip.addr.city+ip.addr.district+ip.addr.street)
-                            .openPopup();
+                            var marker = L.marker([lat, lng]).addTo(makersForBasicProfile)
+                                .bindPopup(ip.addr.country+ip.addr.province+ip.addr.city+ip.addr.district+ip.addr.street)
+                                .openPopup();
 
-                        var circle = L.circle([lat, lng], 1000, {
-                            color: 'red',
-                            fillColor: '#f03',
-                            fillOpacity: 0.3
-                        }).addTo(makersForBasicProfile);
+                            var circle = L.circle([lat, lng], 1000, {
+                                color: 'red',
+                                fillColor: '#f03',
+                                fillOpacity: 0.3
+                            }).addTo(makersForBasicProfile);
 
-                        marker.circle=circle;
+                            marker.circle=circle;
+                        }
                     }
                 });
 
