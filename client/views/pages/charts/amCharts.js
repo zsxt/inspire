@@ -152,12 +152,12 @@ line = function(domId, fields, data) {
 mapWithCurvedLines = function(domId, areasData, linesData, imagesData){
     var map = AmCharts.makeChart(domId, {
         type: "map",
-        "theme": "dark",
+        "theme": "black",
         dataProvider: {
             map: "worldLow",
             zoomLevel: 1,
             zoomLongitude: 0,
-            zoomLatitude: 0,
+            zoomLatitude: 5,
 
             areas: areasData,
 
