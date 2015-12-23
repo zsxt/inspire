@@ -170,56 +170,65 @@ Template.dynamicShow.rendered = function(){
             .change()
     }, 1000);
 
-    mapWithCurvedLines('amChartsMapWithCurvedLines', this.areaData.get(), this.linesData.get(), this.imagesData.get());
 };
-
-Template.dynamicShow.onRendered(function() {
-    //amChartsMapWithCurvedLines
-    this.autorun(function() {
-
-    })
-});
 
 Template.dynamicShow.onCreated(function() {
     var instance = Template.instance();
-    instance.linesData = new ReactiveVar([]);
-    instance.areaData = new ReactiveVar([]);
-    instance.imagesData = new ReactiveVar([]);
+    //instance.linesData = new ReactiveVar([]);
+    //instance.areasData = new ReactiveVar([]);
+    //instance.imagesData = new ReactiveVar([]);
 
     instance.autorun(function() {
         var subscription = instance.subscribe('allEvents');
+        var linesData = [];
+        var imagesData = [];
+        var areasData = [];
+
         if (subscription.ready()) {
             var events = Inspire.Collection.IPEvent.find().fetch();
-            events.forEach(function(ipevent) {
-                Meteor.call('getEventAddrByIP', ipevent.ipsrc, ipevent.ipdst, function (err, result) {
-                    if(result.srcAddr && result.dstAddr){
-                        instance.linesData.get().push({
-                            'latitudes': [result.srcAddr.addr.lat, result.dstAddr.addr.lat],
-                            'longitudes': [result.srcAddr.addr.lng, result.dstAddr.addr.lng]
-                        });
 
-                        instance.imagesData.get().push({
-                            'id': result.srcAddr.addr.city,
-                            'svgPath': targetSVG,
-                            'title': result.srcAddr.addr.city,
-                            'latitude': result.srcAddr.addr.lat,
-                            'longitude': result.srcAddr.addr.lng,
-                            'scale': 1
-                        });
-                        instance.imagesData.get().push({
-                            'id': result.dstAddr.addr.city,
-                            'svgPath': targetSVG,
-                            'title': result.dstAddr.addr.city,
-                            'latitude': result.dstAddr.addr.lat,
-                            'longitude': result.dstAddr.addr.lng,
-                            'scale': 1
-                        });
-                    }
+            events.forEach(function(ipevent) {
+                var srcAddr = Inspire.Collection.IPAddr.findOne({
+                    'ipfrom': {$lte: ipevent.ipsrc},
+                    'ipto': {$gte: ipevent.ipsrc}
                 });
 
+                var dstAddr = Inspire.Collection.IPAddr.findOne({
+                    'ipfrom': {$lte: ipevent.ipdst},
+                    'ipto': {$gte: ipevent.ipdst}
+                });
+
+                if(srcAddr && dstAddr){
+                    linesData.push({
+                        'latitudes': [srcAddr.addr.lat, dstAddr.addr.lat],
+                        'longitudes': [srcAddr.addr.lng, dstAddr.addr.lng]
+                    });
+
+                    imagesData.push({
+                        'id': srcAddr.addr.city,
+                        'svgPath': targetSVG,
+                        'title': srcAddr.addr.city,
+                        'latitude': srcAddr.addr.lat,
+                        'longitude': srcAddr.addr.lng,
+                        'scale': 1
+                    });
+
+                    imagesData.push({
+                        'id': dstAddr.addr.city,
+                        'svgPath': targetSVG,
+                        'title': dstAddr.addr.city,
+                        'latitude': dstAddr.addr.lat,
+                        'longitude': dstAddr.addr.lng,
+                        'scale': 1
+                    });
+                }
             });
 
-            console.log(instance.linesData.get());
+            //instance.linesData.set(linesData);
+            //instance.areasData.set(areasData);
+            //instance.imagesData.set(imagesData);
         }
+
+        mapWithCurvedLines('amChartsMapWithCurvedLines', areasData, linesData, imagesData);
     });
 });
