@@ -189,22 +189,16 @@ Template.dynamicShow.onCreated(function() {
     instance.autorun(function() {
         var subscription = instance.subscribe('allEvents');
         if (subscription.ready()) {
-            var linesData = [];
-            var areaData = [];
-            var imagesData = [];
-
             var events = Inspire.Collection.IPEvent.find().fetch();
             events.forEach(function(ipevent) {
                 Meteor.call('getEventAddrByIP', ipevent.ipsrc, ipevent.ipdst, function (err, result) {
                     if(result.srcAddr && result.dstAddr){
-                        linesData.push({
+                        instance.linesData.push({
                             'latitudes': [result.srcAddr.addr.lat, result.dstAddr.addr.lat],
                             'longitudes': [result.srcAddr.addr.lng, result.dstAddr.addr.lng]
                         });
 
-                        console.log(linesData);
-
-                        imagesData.push({
+                        instance.imagesData.push({
                             'id': result.srcAddr.addr.city,
                             'svgPath': targetSVG,
                             'title': result.srcAddr.addr.city,
@@ -212,7 +206,7 @@ Template.dynamicShow.onCreated(function() {
                             'longitude': result.srcAddr.addr.lng,
                             'scale': 1
                         });
-                        imagesData.push({
+                        instance.imagesData.push({
                             'id': result.dstAddr.addr.city,
                             'svgPath': targetSVG,
                             'title': result.dstAddr.addr.city,
@@ -225,9 +219,7 @@ Template.dynamicShow.onCreated(function() {
 
             });
 
-            console.log(linesData);
-            instance.linesData.set(linesData);
-            instance.linesData.set(imagesData);
+            console.log(instance.linesData.get());
         }
     });
 });
