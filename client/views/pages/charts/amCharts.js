@@ -148,3 +148,51 @@ line = function(domId, fields, data) {
     }
 
 }
+
+mapWithCurvedLines = function(domId, areasData, linesData, imagesData){
+    var map = AmCharts.makeChart(domId, {
+        type: "map",
+        "theme": "dark",
+        dataProvider: {
+            map: "worldLow",
+            zoomLevel: 1,
+            zoomLongitude: 0,
+            zoomLatitude: 0,
+
+            areas: areasData,
+
+            lines: linesData,
+            images: imagesData
+        },
+
+        areasSettings: {
+            unlistedAreasColor: "#FFCC00",
+            unlistedAreasAlpha:0.9
+        },
+
+        imagesSettings: {
+            color: "#CC0000",
+            rollOverColor: "#CC0000",
+            selectedColor: "#000000"
+        },
+
+        linesSettings: {
+            arc: -0.7, // this makes lines curved. Use value from -1 to 1
+            arrow: "middle",
+            color: "#CC0000",
+            alpha: 0.4,
+            arrowAlpha: 1,
+            arrowSize: 4
+        },
+        zoomControl:{
+            gridHeight:100,
+            draggerAlpha:1,
+            gridAlpha:0.2
+        },
+
+        backgroundZoomsToTop: true,
+        linesAboveImages: true
+    });
+
+    map.validateNow();
+}
