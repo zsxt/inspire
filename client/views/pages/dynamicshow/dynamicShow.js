@@ -193,12 +193,12 @@ Template.dynamicShow.onCreated(function() {
             events.forEach(function(ipevent) {
                 Meteor.call('getEventAddrByIP', ipevent.ipsrc, ipevent.ipdst, function (err, result) {
                     if(result.srcAddr && result.dstAddr){
-                        instance.linesData.push({
+                        instance.linesData.get().push({
                             'latitudes': [result.srcAddr.addr.lat, result.dstAddr.addr.lat],
                             'longitudes': [result.srcAddr.addr.lng, result.dstAddr.addr.lng]
                         });
 
-                        instance.imagesData.push({
+                        instance.imagesData.get().push({
                             'id': result.srcAddr.addr.city,
                             'svgPath': targetSVG,
                             'title': result.srcAddr.addr.city,
@@ -206,7 +206,7 @@ Template.dynamicShow.onCreated(function() {
                             'longitude': result.srcAddr.addr.lng,
                             'scale': 1
                         });
-                        instance.imagesData.push({
+                        instance.imagesData.get().push({
                             'id': result.dstAddr.addr.city,
                             'svgPath': targetSVG,
                             'title': result.dstAddr.addr.city,
