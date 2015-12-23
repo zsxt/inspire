@@ -174,12 +174,8 @@ Template.dynamicShow.rendered = function(){
 
 Template.dynamicShow.onRendered(function() {
     //amChartsMapWithCurvedLines
-    var areasData = this.areaData.get();
-    var linesData = this.linesData.get();
-    var imagesData = this.imagesData.get();
-
     this.autorun(function() {
-        mapWithCurvedLines('amChartsMapWithCurvedLines', areasData, linesData, imagesData);
+        mapWithCurvedLines('amChartsMapWithCurvedLines', this.areaData.get(), this.linesData.get(), this.imagesData.get());
     })
 });
 
@@ -200,7 +196,6 @@ Template.dynamicShow.onCreated(function() {
             events.forEach(function(ipevent) {
                 Meteor.call('getEventAddrByIP', ipevent.ipsrc, ipevent.ipdst, function (err, result) {
                     if(result.srcAddr && result.dstAddr){
-                        console.log(result);
                         linesData.push({
                             'latitudes': [result.srcAddr.addr.lat, result.dstAddr.addr.lat],
                             'longitudes': [result.srcAddr.addr.lng, result.dstAddr.addr.lng]
@@ -227,6 +222,7 @@ Template.dynamicShow.onCreated(function() {
 
             });
 
+            console.log(linesData);
             instance.linesData.set(linesData);
             instance.linesData.set(imagesData);
         }
