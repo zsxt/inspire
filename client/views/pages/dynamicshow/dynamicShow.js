@@ -170,12 +170,13 @@ Template.dynamicShow.rendered = function(){
             .change()
     }, 1000);
 
+    mapWithCurvedLines('amChartsMapWithCurvedLines', this.areaData.get(), this.linesData.get(), this.imagesData.get());
 };
 
 Template.dynamicShow.onRendered(function() {
     //amChartsMapWithCurvedLines
     this.autorun(function() {
-        mapWithCurvedLines('amChartsMapWithCurvedLines', this.areaData.get(), this.linesData.get(), this.imagesData.get());
+
     })
 });
 
