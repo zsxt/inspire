@@ -4,7 +4,20 @@ var targetSVG = "M9,0C4.029,0,0,4.029,0,9s4.029,9,9,9s9-4.029,9-9S13.971,0,9,0z 
 var planeSVG = "M19.671,8.11l-2.777,2.777l-3.837-0.861c0.362-0.505,0.916-1.683,0.464-2.135c-0.518-0.517-1.979,0.278-2.305,0.604l-0.913,0.913L7.614,8.804l-2.021,2.021l2.232,1.061l-0.082,0.082l1.701,1.701l0.688-0.687l3.164,1.504L9.571,18.21H6.413l-1.137,1.138l3.6,0.948l1.83,1.83l0.947,3.598l1.137-1.137V21.43l3.725-3.725l1.504,3.164l-0.687,0.687l1.702,1.701l0.081-0.081l1.062,2.231l2.02-2.02l-0.604-2.689l0.912-0.912c0.326-0.326,1.121-1.789,0.604-2.306c-0.452-0.452-1.63,0.101-2.135,0.464l-0.861-3.838l2.777-2.777c0.947-0.947,3.599-4.862,2.62-5.839C24.533,4.512,20.618,7.163,19.671,8.11z";
 
 Template.dynamicEvents.helpers({
+    importantEvents: function(){
+        return Template.instance().importantEvents.get();
+    },
 
+    intCovertToIPString: function(num){
+        var str;
+        var tt = new Array();
+        tt[0] = (num >>> 24) >>> 0;
+        tt[1] = ((num << 8) >>> 24) >>> 0;
+        tt[2] = (num << 16) >>> 24;
+        tt[3] = (num << 24) >>> 24;
+        str = String(tt[0]) + "." + String(tt[1]) + "." + String(tt[2]) + "." + String(tt[3]);
+        return str;
+    }
 });
 
 Template.dynamicEvents.rendered = function(){
@@ -48,6 +61,15 @@ Template.dynamicEvents.rendered = function(){
     });
 
     this.map.set(map);
+
+    this.$('.full-height-scroll').slimscroll({
+        height: '600px',
+        railOpacity: 1,
+        color: '#cccccc',
+        opacity: 1,
+        alwaysVisible: true,
+        allowPageScroll: false
+    });
 };
 
 Template.dynamicEvents.onCreated(function() {
@@ -55,11 +77,12 @@ Template.dynamicEvents.onCreated(function() {
     //instance.linesData = new ReactiveVar([]);
     //instance.areasData = new ReactiveVar([]);
     //instance.imagesData = new ReactiveVar([]);
+    instance.importantEvents = new ReactiveVar([]);
     instance.map = new ReactiveVar();
 
     instance.autorun(function() {
         var selector = {};
-        var options = {limit: 20, sort: {updateAt: -1}};
+        var options = {limit: 20, sort: {eventAt: -1}};
         var subscription = instance.subscribe('findEvents', selector, options);
         if (subscription.ready()) {
             var events = Inspire.Collection.IPEvent.find().fetch();
@@ -67,6 +90,7 @@ Template.dynamicEvents.onCreated(function() {
             var linesData = [];
             var imagesData = [];
             var areasData = [];
+            var importantEvents = [];
             var map = instance.map.get();
 
             events.forEach(function(ipevent) {
@@ -81,6 +105,12 @@ Template.dynamicEvents.onCreated(function() {
                 });
 
                 if(srcAddr && dstAddr){
+                    importantEvents.push({
+                        'ipEvent': ipevent,
+                        'srcAddr': srcAddr,
+                        'dstAddr': dstAddr
+                    });
+
                     linesData.push({
                         'latitudes': [srcAddr.addr.lat, dstAddr.addr.lat],
                         'longitudes': [srcAddr.addr.lng, dstAddr.addr.lng]
@@ -110,6 +140,7 @@ Template.dynamicEvents.onCreated(function() {
             //instance.areasData.set(areasData);
             //instance.imagesData.set(imagesData);
             if(map){
+                instance.importantEvents.set(importantEvents);
                 map.dataProvider.areas = areasData;
                 map.dataProvider.lines = linesData;
                 map.dataProvider.images = imagesData;
