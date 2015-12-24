@@ -64,24 +64,3 @@ Meteor.publish('baxx_time_stat', function(option) {
   })
   sub.ready()
 })
-
-Meteor.publishComposite('allEvents', function(){
-  if (!this.userId) throw new Meteor.Error('403', '没有登录，权限不足');
-
-  return{
-    find: function() {
-      return Inspire.Collection.IPEvent.find();
-    },
-    children: [
-      {
-        find: function(ipevent) {
-          return Inspire.Collection.IPAddr.find(
-              { $or:[
-                {'ipfrom': {$lte: ipevent.ipsrc}, 'ipto': {$gte: ipevent.ipsrc}},
-                {'ipfrom': {$lte: ipevent.ipdst}, 'ipto': {$gte: ipevent.ipdst}}
-              ] });
-        }
-      }
-    ]
-  }
-});

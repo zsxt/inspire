@@ -58,7 +58,9 @@ Template.amMapWithCurvedLines.onCreated(function() {
     instance.map = new ReactiveVar();
 
     instance.autorun(function() {
-        var subscription = instance.subscribe('allEvents');
+        var selector = {};
+        var options = {limit: 20, sort: {updateAt: -1}};
+        var subscription = instance.subscribe('findEvents', selector, options);
         if (subscription.ready()) {
             var events = Inspire.Collection.IPEvent.find().fetch();
 
