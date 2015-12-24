@@ -122,7 +122,7 @@ Template.dynamicEvents.onCreated(function() {
                         'title': srcAddr.addr.city,
                         'latitude': srcAddr.addr.lat,
                         'longitude': srcAddr.addr.lng,
-                        'scale': 0.5
+                        'scale': 0.8
                     });
 
                     imagesData.push({
@@ -131,7 +131,7 @@ Template.dynamicEvents.onCreated(function() {
                         'title': dstAddr.addr.city,
                         'latitude': dstAddr.addr.lat,
                         'longitude': dstAddr.addr.lng,
-                        'scale': 0.5
+                        'scale': 0.8
                     });
                 }
             });
