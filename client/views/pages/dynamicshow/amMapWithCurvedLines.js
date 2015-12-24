@@ -90,7 +90,7 @@ Template.amMapWithCurvedLines.onCreated(function() {
                         'title': srcAddr.addr.city,
                         'latitude': srcAddr.addr.lat,
                         'longitude': srcAddr.addr.lng,
-                        'scale': 1
+                        'scale': 0.5
                     });
 
                     imagesData.push({
@@ -99,7 +99,7 @@ Template.amMapWithCurvedLines.onCreated(function() {
                         'title': dstAddr.addr.city,
                         'latitude': dstAddr.addr.lat,
                         'longitude': dstAddr.addr.lng,
-                        'scale': 1
+                        'scale': 0.5
                     });
                 }
             });
