@@ -108,6 +108,7 @@ Template.amMapWithCurvedLines.onCreated(function() {
             //instance.areasData.set(areasData);
             //instance.imagesData.set(imagesData);
             if(map){
+                console.log(linesData);
                 map.dataProvider.areas = areasData;
                 map.dataProvider.lines = linesData;
                 map.dataProvider.images = imagesData;
