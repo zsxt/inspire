@@ -28,7 +28,7 @@ Template.dynamicEvents.rendered = function(){
             map: "worldLow",
             zoomLevel: 1,
             zoomLongitude: 0,
-            zoomLatitude: 5
+            zoomLatitude: 40
         },
 
         areasSettings: {
