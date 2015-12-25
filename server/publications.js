@@ -73,12 +73,39 @@ Meteor.publish('ipevent_stat', function(option) {
   };
   projection[option.attr] = 1;
 
+  var group = {
+    _id: '$' + option.attr,
+    value: {$sum: 1}
+  };
+
+  var projection1 = {
+    _id: 0,
+    name: '$_id',
+    value: 1,
+    attr: {$literal: option.attr}
+  };
+
+  if(option.attr == 'eventAt'){
+    group = {
+      _id: { $dayOfYear: '$' + option.attr},
+      value: {$sum: 1},
+      first: {$min: '$' + option.attr}
+    };
+
+    projection1 = {
+      _id: 0,
+      name: '$first',
+      value: 1,
+      attr: {$literal: option.attr}
+    };
+  }
+
   var pipeline = [
     {$project: projection},
-    {$group: {_id: '$' + option.attr, value: {$sum: 1}}},
+    {$group: group},
     {$sort: {value: -1}},
     {$limit: option.limit},
-    {$project: {_id: 0, id: '$_id', value: 1, attr: {$literal: option.attr}}}
+    {$project: projection1}
   ];
 
   if (option.start && option.end) {
