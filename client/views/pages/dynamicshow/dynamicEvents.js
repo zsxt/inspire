@@ -74,78 +74,56 @@ Template.dynamicEvents.rendered = function(){
 
 Template.dynamicEvents.onCreated(function() {
     var instance = Template.instance();
-    //instance.linesData = new ReactiveVar([]);
-    //instance.areasData = new ReactiveVar([]);
-    //instance.imagesData = new ReactiveVar([]);
     instance.importantEvents = new ReactiveVar([]);
     instance.map = new ReactiveVar();
 
     instance.autorun(function() {
         var selector = {};
         var options = {limit: 20, sort: {eventAt: -1}};
-        var subscription = instance.subscribe('findEvents', selector, options);
-        if (subscription.ready()) {
-            var events = Inspire.Collection.IPEvent.find().fetch();
 
-            var linesData = [];
-            var imagesData = [];
-            var areasData = [];
-            var importantEvents = [];
-            var map = instance.map.get();
+        Meteor.call('formatDynamicEventData', selector, options, function (err, ipevents) {
+            if(!err){
+                var linesData = [];
+                var imagesData = [];
+                var areasData = [];
 
-            events.forEach(function(ipevent) {
-                var srcAddr = Inspire.Collection.IPAddr.findOne({
-                    'ipfrom': {$lte: ipevent.ipsrc},
-                    'ipto': {$gte: ipevent.ipsrc}
-                });
-
-                var dstAddr = Inspire.Collection.IPAddr.findOne({
-                    'ipfrom': {$lte: ipevent.ipdst},
-                    'ipto': {$gte: ipevent.ipdst}
-                });
-
-                if(srcAddr && dstAddr){
-                    importantEvents.push({
-                        'ipEvent': ipevent,
-                        'srcAddr': srcAddr,
-                        'dstAddr': dstAddr
-                    });
+                ipevents.forEach(function(ipevent) {
 
                     linesData.push({
-                        'latitudes': [srcAddr.addr.lat, dstAddr.addr.lat],
-                        'longitudes': [srcAddr.addr.lng, dstAddr.addr.lng]
+                        'latitudes': [ipevent.sAddr.lat, ipevent.dAddr.lat],
+                        'longitudes': [ipevent.sAddr.lng, ipevent.dAddr.lng]
                     });
 
                     imagesData.push({
-                        'id': srcAddr.addr.city,
+                        'id': ipevent.sAddr.city,
                         'svgPath': targetSVG,
-                        'title': srcAddr.addr.city,
-                        'latitude': srcAddr.addr.lat,
-                        'longitude': srcAddr.addr.lng,
+                        'title': ipevent.sAddr.city,
+                        'latitude': ipevent.sAddr.lat,
+                        'longitude': ipevent.sAddr.lng,
                         'scale': 0.8
                     });
 
                     imagesData.push({
-                        'id': dstAddr.addr.city,
+                        'id': ipevent.dAddr.city,
                         'svgPath': targetSVG,
-                        'title': dstAddr.addr.city,
-                        'latitude': dstAddr.addr.lat,
-                        'longitude': dstAddr.addr.lng,
+                        'title': ipevent.dAddr.city,
+                        'latitude': ipevent.dAddr.lat,
+                        'longitude': ipevent.dAddr.lng,
                         'scale': 0.8
                     });
+
+                });
+
+                var map = instance.map.get();
+                if(map){
+                    instance.importantEvents.set(ipevents);
+                    map.dataProvider.areas = areasData;
+                    map.dataProvider.lines = linesData;
+                    map.dataProvider.images = imagesData;
+                    map.validateNow();
                 }
-            });
-
-            //instance.linesData.set(linesData);
-            //instance.areasData.set(areasData);
-            //instance.imagesData.set(imagesData);
-            if(map){
-                instance.importantEvents.set(importantEvents);
-                map.dataProvider.areas = areasData;
-                map.dataProvider.lines = linesData;
-                map.dataProvider.images = imagesData;
-                map.validateNow();
             }
-        }
+        });
+
     });
 });

@@ -51,19 +51,18 @@ Meteor.methods({
                     'psrc': ipevent.portsrc,
                     'pdst': ipevent.portdst,
                     'pro': ipevent.pro,
-                    'srcAddr': {
+                    'eAt': ipevent.eventAt,
+                    'sAddr': {
                         'country': srcAddr.addr.country,
                         'province': srcAddr.addr.province,
                         'city': srcAddr.addr.city,
-                        'district': srcAddr.addr.district,
                         'lat': srcAddr.addr.lat,
                         'lng': srcAddr.addr.lng
                     },
-                    'dstAddr': {
+                    'dAddr': {
                         'country': dstAddr.addr.country,
                         'province': dstAddr.addr.province,
                         'city': dstAddr.addr.city,
-                        'district': dstAddr.addr.district,
                         'lat': dstAddr.addr.lat,
                         'lng': dstAddr.addr.lng
                     }

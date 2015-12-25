@@ -28,16 +28,16 @@
                                     <div class="row">
                                         <div class="col-xs-3 date">
                                             <i class="fa fa-file-o"></i>
-                                            {{ipEvent.eventAt}}
+                                            {{eAt}}
                                         </div>
                                         <div class="col-xs-7 content no-top-border">
                                             <p class="m-b-xs"><strong>攻击源</strong></p>
-                                            <p>{{intCovertToIPString ipEvent.ipsrc}} : {{ipEvent.portsrc}}</p>
-                                            <p>{{srcAddr.addr.country}} {{srcAddr.addr.province}} {{srcAddr.addr.city}}</p>
+                                            <p>{{intCovertToIPString ipsrc}} : {{psrc}}</p>
+                                            <p>{{sAddr.country}} {{sAddr.province}} {{sAddr.city}}</p>
 
                                             <p class="m-b-xs"><strong>目的地</strong></p>
-                                            <p>{{intCovertToIPString ipEvent.ipdst}} : {{ipEvent.portdst}}</p>
-                                            <p>{{dstAddr.addr.country}} {{dstAddr.addr.province}} {{dstAddr.addr.city}}</p>
+                                            <p>{{intCovertToIPString ipdst}} : {{pdst}}</p>
+                                            <p>{{dAddr.country}} {{dAddr.province}} {{dAddr.city}}</p>
                                         </div>
                                     </div>
                                 </div>
