@@ -4,7 +4,7 @@ collections = {
     'wz': Inspire.Collection.ICPGnBaxxWz,
     'ip': Inspire.Collection.ICPGnBaxx,
     'zt': Inspire.Collection.ICPGnBaxxZt
-}
+};
 
 Meteor.publish('baxx_stat', function(option) {
   var sub = this
@@ -35,7 +35,7 @@ Meteor.publish('baxx_stat', function(option) {
     sub.added('baxx_stat', Random.id(), r)
   })
   sub.ready()
-})
+});
 
 Meteor.publish('baxx_time_stat', function(option) {
   var sub = this
@@ -63,4 +63,33 @@ Meteor.publish('baxx_time_stat', function(option) {
     sub.added('baxx_time_stat', Random.id(), r)
   })
   sub.ready()
-})
+});
+
+Meteor.publish('ipevent_stat', function(option) {
+  var sub = this;
+  var collection = Inspire.Collection.IPEvent;
+  var projection = {
+    _id: 0
+  };
+  projection[option.attr] = 1;
+
+  var pipeline = [
+    {$project: projection},
+    {$group: {_id: '$' + option.attr, value: {$sum: 1}}},
+    {$sort: {value: -1}},
+    {$limit: option.limit},
+    {$project: {_id: 0, id: '$_id', value: 1, attr: {$literal: option.attr}}}
+  ];
+
+  if (option.start && option.end) {
+    var between = {$lte: new Date(option.end), $gte: new Date(option.start)};
+
+    pipeline.unshift({$match: {eventAt: between}})
+  }
+
+  var results = collection.aggregate(pipeline);
+  _(results).each(function(r) {
+    sub.added('ipevent_stat', Random.id(), r)
+  });
+  sub.ready()
+});

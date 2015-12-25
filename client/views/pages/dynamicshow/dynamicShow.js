@@ -170,4 +170,16 @@ Template.dynamicShow.rendered = function(){
 Template.dynamicShow.onCreated(function() {
     var instance = Template.instance();
 
+    instance.autorun(function() {
+        var limit = 10;
+        var subscription = instance.subscribe('ipevent_stat', {
+            attr: 'pro',
+            limit: limit
+        });
+
+        if (subscription.ready()) {
+           console.log(Inspire.Collection.IPEventStat.find().fetch());
+        }
+    })
+
 });
