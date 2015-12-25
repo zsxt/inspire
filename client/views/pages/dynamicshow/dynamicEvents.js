@@ -81,7 +81,7 @@ Template.dynamicEvents.onCreated(function() {
         var selector = {};
         var options = {limit: 20, sort: {eventAt: -1}};
 
-        Meteor.call('formatDynamicEventData', selector, options, function (err, ipevents) {
+        Meteor.call('formatDynamicEventsFromMemory', selector, options, function (err, ipevents) {
             if(!err){
                 var linesData = [];
                 var imagesData = [];
