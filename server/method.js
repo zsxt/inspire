@@ -30,7 +30,7 @@ Meteor.methods({
             options.limit = 20; //如果订阅时没有传递limit，默认只有20条
         }
 
-        var events = Inspire.Collection.IPEvent.find(selection, options).fetch();
+        var events = Inspire.Collection.IPEvent.find(selector, options).fetch();
         var results = [];
 
         events.forEach(function(ipevent) {
@@ -51,8 +51,22 @@ Meteor.methods({
                     'psrc': ipevent.portsrc,
                     'pdst': ipevent.portdst,
                     'pro': ipevent.pro,
-                    'srcAddr': srcAddr.addr,
-                    'dstAddr': dstAddr.addr
+                    'srcAddr': {
+                        'country': srcAddr.addr.country,
+                        'province': srcAddr.addr.province,
+                        'city': srcAddr.addr.city,
+                        'district': srcAddr.addr.district,
+                        'lat': srcAddr.addr.lat,
+                        'lng': srcAddr.addr.lng
+                    },
+                    'dstAddr': {
+                        'country': dstAddr.addr.country,
+                        'province': dstAddr.addr.province,
+                        'city': dstAddr.addr.city,
+                        'district': dstAddr.addr.district,
+                        'lat': dstAddr.addr.lat,
+                        'lng': dstAddr.addr.lng
+                    }
                 })
             }
         });
