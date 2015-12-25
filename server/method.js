@@ -20,7 +20,7 @@ Meteor.methods({
         return { 'srcAddr': srcAddr, 'dstAddr': dstAddr};
     },
 
-    formatDynamicEventData: function(selection, options)  {
+    formatDynamicEventData: function(selector, options)  {
         if (selector && selector.text && selector.text != '') {
             selector['si'] = new RegExp(selector.text,'i')
         }
