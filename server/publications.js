@@ -65,7 +65,7 @@ Meteor.publish('baxx_time_stat', function(option) {
   sub.ready()
 });
 
-Meteor.publish('ipevent_stat', function(option) {
+Meteor.publish('ipEventStat', function(option) {
   var sub = this;
   var collection = Inspire.Collection.IPEvent;
   var projection = {
