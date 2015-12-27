@@ -23,17 +23,17 @@ Template.dynamicEvents.helpers({
 Template.dynamicEvents.rendered = function(){
     var map = AmCharts.makeChart('amChartsMapWithCurvedLines', {
         type: "map",
-        "theme": "black",
+        "theme": "light",
         dataProvider: {
             map: "worldLow",
-            zoomLevel: 1,
-            zoomLongitude: 0,
-            zoomLatitude: 40
+            getAreasFromMap: true
         },
 
         areasSettings: {
-            unlistedAreasColor: "#FFCC00",
-            unlistedAreasAlpha:0.9
+            autoZoom: true,
+            unlistedAreasColor: "#8dd9ef",
+            unlistedAreasAlpha: 0.9,
+            selectedColor: "#CC0000"
         },
 
         imagesSettings: {
@@ -50,12 +50,13 @@ Template.dynamicEvents.rendered = function(){
             arrowAlpha: 1,
             arrowSize: 4
         },
+
         zoomControl:{
             gridHeight:100,
             draggerAlpha:1,
             gridAlpha:0.2
         },
-
+        
         backgroundZoomsToTop: true,
         linesAboveImages: true
     });
