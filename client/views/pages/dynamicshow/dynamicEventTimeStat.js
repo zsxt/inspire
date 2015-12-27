@@ -50,7 +50,7 @@ Template.dynamicEventTimeStat.onCreated(function() {
         });
 
         if (subscription.ready()) {
-            var ipEventStat = Inspire.Collection.IPEventStat.find().fetch();
+            var ipEventStat = Inspire.Collection.IPEventStat.find({attr: 'eventAt'}).fetch();
             var labels = [];
             var data = [];
             ipEventStat.forEach(function(stat) {
@@ -60,7 +60,6 @@ Template.dynamicEventTimeStat.onCreated(function() {
 
             var timeStat = instance.timeStat.get();
             if(timeStat){
-                console.log(data);
                 timeStatData.labels = labels;
                 timeStatData.datasets[0].data = data;
                 timeStat.Bar(timeStatData, timeStatOptions);
