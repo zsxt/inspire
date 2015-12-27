@@ -1,0 +1,16 @@
+<template name="dynamicEventIPSrcStat">
+    <ul class="list-group clear-list m-t">
+        {{#each dynamicEventIPSrc}}
+            {{>dynamicEventIPSrcElement}}
+        {{/each}}
+    </ul>
+</template>
+
+<template name="dynamicEventIPSrcElement">
+    <li class="list-group-item">
+        <span class="pull-right">
+            {{time}}
+        </span>
+        <span class="label label-{{labelClass}}">{{number}}</span> {{content}}
+    </li>
+</template>

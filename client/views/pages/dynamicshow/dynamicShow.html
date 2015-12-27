@@ -4,7 +4,7 @@
         <div class="col-sm-3">
             <h2>动态事件统计</h2>
             <small class="text-navy">事件总量：{{ipEventCount}}</small>
-            {{> notificationListNew notifications}}
+            {{> dynamicEventIPSrcStat}}
         </div>
         <div class="col-sm-6">
             {{> dynamicEventTimeStat}}
@@ -15,21 +15,4 @@
 
     </div>
     {{> dynamicEvents}}
-</template>
-
-<template name="notificationListNew">
-    <ul class="list-group clear-list m-t">
-        {{#each this}}
-            {{>notificationElementNew}}
-        {{/each}}
-    </ul>
-</template>
-
-<template name="notificationElementNew">
-    <li class="list-group-item">
-        <span class="pull-right">
-            {{time}}
-        </span>
-        <span class="label label-{{labelClass}}">{{number}}</span> {{content}}
-    </li>
 </template>
