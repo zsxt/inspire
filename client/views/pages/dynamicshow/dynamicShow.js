@@ -8,7 +8,16 @@ Template.dynamicShow.helpers({
         {number: 3, labelClass: 'primary', content: 'Open new shop', time: '08.22 pm'},
         {number: 4, labelClass: 'default', content: 'Call back to Sylvia', time: '11:06 pm'},
         {number: 5, labelClass: 'primary', content: 'Write a letter to Sandra', time: '12:00 pm'}
-    ]
+    ],
+
+    ipEventCount: function(){
+        var selector = {};
+        Meteor.call('getIPEventCount', selector,function (err, count) {
+            Session.set('ipEventCount', count);
+        });
+
+        return Session.get('ipEventCount');
+    }
 
 });
 
