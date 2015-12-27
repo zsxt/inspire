@@ -44,13 +44,14 @@ Template.dynamicEventTimeStat.onCreated(function() {
 
     instance.autorun(function() {
         var limit = 10;
+        var attr = 'eventAt';
         var subscription = instance.subscribe('ipEventStat', {
-            attr: 'eventAt',
+            attr: attr,
             limit: limit
         });
 
         if (subscription.ready()) {
-            var ipEventStat = Inspire.Collection.IPEventStat.find({attr: 'eventAt'}).fetch();
+            var ipEventStat = Inspire.Collection.IPEventStat.find({attr: attr}).fetch();
             var labels = [];
             var data = [];
             ipEventStat.forEach(function(stat) {
