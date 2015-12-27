@@ -4,7 +4,7 @@ var collections = {
     'wz': Inspire.Collection.ICPGnBaxxWz,
     'ip': Inspire.Collection.ICPGnBaxx,
     'zt': Inspire.Collection.ICPGnBaxxZt
-}
+};
 
 Meteor.publish('baxx_stat', function(option) {
   var sub = this
@@ -35,7 +35,7 @@ Meteor.publish('baxx_stat', function(option) {
     sub.added('baxx_stat', Random.id(), r)
   })
   sub.ready()
-})
+});
 
 Meteor.publish('baxx_time_stat', function(option) {
   var sub = this
@@ -63,6 +63,7 @@ Meteor.publish('baxx_time_stat', function(option) {
     sub.added('baxx_time_stat', Random.id(), r)
   })
   sub.ready()
+<<<<<<< HEAD
 })
 
 
@@ -121,3 +122,62 @@ Meteor.publish('baxx_geo_stat', baxxGeoStat)
 // Meteor.publish('baxx_geo_stat_all', function(option) {
 //   baxxGeoStat(_.extend(option, {level: 'sheng', region: 0}))
 // })
+=======
+});
+
+Meteor.publish('ipEventStat', function(option) {
+  var sub = this;
+  var collection = Inspire.Collection.IPEvent;
+  var projection = {
+    _id: 0
+  };
+  projection[option.attr] = 1;
+
+  var group = {
+    _id: '$' + option.attr,
+    value: {$sum: 1}
+  };
+
+  var projection1 = {
+    _id: 0,
+    name: '$_id',
+    value: 1,
+    attr: {$literal: option.attr}
+  };
+
+  if(option.attr == 'eventAt'){
+    group = {
+      _id: { $dayOfYear: '$' + option.attr},
+      value: {$sum: 1},
+      first: {$min: '$' + option.attr}
+    };
+
+    projection1 = {
+      _id: 0,
+      name: '$first',
+      value: 1,
+      attr: {$literal: option.attr}
+    };
+  }
+
+  var pipeline = [
+    {$project: projection},
+    {$group: group},
+    {$sort: {value: -1}},
+    {$limit: option.limit},
+    {$project: projection1}
+  ];
+
+  if (option.start && option.end) {
+    var between = {$lte: new Date(option.end), $gte: new Date(option.start)};
+
+    pipeline.unshift({$match: {eventAt: between}})
+  }
+
+  var results = collection.aggregate(pipeline);
+  _(results).each(function(r) {
+    sub.added('ipevent_stat', Random.id(), r)
+  });
+  sub.ready()
+});
+>>>>>>> 3dd07064454edf3259e5f046bdf74718001bcc97

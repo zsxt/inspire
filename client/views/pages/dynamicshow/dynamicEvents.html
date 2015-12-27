@@ -1,0 +1,56 @@
+<template name="dynamicEvents">
+    <div class="wrapper wrapper-content">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>事件展示</h5>
+                        <div class="ibox-tools">
+                            <span class="label label-warning-light">世界地图</span>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div id="amChartsMapWithCurvedLines" class="amcharts-map"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>重要节点</h5>
+                        {{>iboxTools}}
+                    </div>
+                    <div class="ibox-content inspinia-timeline">
+                        <div class="full-height-scroll col-sm-12">
+
+                            {{#each importantEvents}}
+                                <div class="timeline-item">
+                                    <div class="row">
+                                        <div class="col-xs-3 date">
+                                            <i class="fa fa-file-o"></i>
+                                            {{eAt}}
+                                        </div>
+                                        <div class="col-xs-7 content no-top-border">
+                                            <p class="m-b-xs"><strong>攻击源</strong></p>
+                                            <p>{{intCovertToIPString ipsrc}} : {{psrc}}</p>
+                                            <p>{{sAddr.country}} {{sAddr.province}} {{sAddr.city}}</p>
+
+                                            <p class="m-b-xs"><strong>目的地</strong></p>
+                                            <p>{{intCovertToIPString ipdst}} : {{pdst}}</p>
+                                            <p>{{dAddr.country}} {{dAddr.province}} {{dAddr.city}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {{/each}}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</template>
+
+

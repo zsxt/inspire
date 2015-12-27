@@ -1,0 +1,25 @@
+<template name="dynamicEventPortStat">
+    <div class="statistic-box">
+        <h4>
+            端口情况
+        </h4>
+
+        <p>
+            <small class="text-navy">源端口最多：{{portSrcMax.name}}，目的端口最多：{{portDstMax.name}}</small>
+        </p>
+
+        <div class="row text-center">
+            <div class="col-lg-6">
+                <canvas id="ipEventPortDstChart" width="100" height="100"></canvas>
+                <h5>目的端口 Top3</h5>
+            </div>
+            <div class="col-lg-6">
+                <canvas id="ipEventPortSrcChart" width="95" height="95"></canvas>
+                <h5>源端口 Top3</h5>
+            </div>
+        </div>
+        <div class="m-t">
+            <small>网络事件端口情况复杂多变，根据应用和协议的区别，开放端口各不相同</small>
+        </div>
+    </div>
+</template>
