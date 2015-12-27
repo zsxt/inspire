@@ -1,4 +1,4 @@
-<template name="BaxxGeoChart">
+<template name="BaxxGeoContainer">
   <div class="row">
     <div class="ibox">
       <div class="ibox-title">
@@ -7,10 +7,10 @@
       <div class="ibox-content">
         <dic class="row">
           <div class="col-md-6">
-            <div id="chart-map-{{context}}" class="chart"></div>
+            {{> BaxxGeoMap}}
           </div>
           <div class="col-md-6">
-            <div id="chart-map-bar-{{context}}" class="chart"></div>
+            {{> BaxxGeoBar}}
           </div>
         </dic>
       </div>

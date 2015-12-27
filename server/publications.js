@@ -71,7 +71,6 @@ function baxxGeoStat(option) {
   var collection = collections[option.context]
   var level = option.level || 'sheng'
   var region = parseInt(option.region)
-  console.log(region, 'hello')
   var m, g, p;
   if (level == 'sheng' || region === 0) {
     m = {}
@@ -103,18 +102,19 @@ function baxxGeoStat(option) {
   ]
 
   var results = collection.aggregate(pipeline)
-  console.log(pipeline)
   _(results).each(function(r) {
+    if (r.id === 999999) { // id of value "unknown"
+      return
+    }
     if (r.name === '黑龙') {
       r.name = '黑龙江'
     }
     else if (r.name === '内蒙') {
       r.name = '内蒙古'
     }
-    sub.added('baxx_geo_stat', Random.id(), r)
+    sub.added('baxx_geo_stat', r.context + '#' + r.id, r)
   })
   sub.ready()
-
 }
 
 Meteor.publish('baxx_geo_stat', baxxGeoStat)

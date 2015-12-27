@@ -4,7 +4,6 @@ Template.BaxxTimeChart.onCreated(function() {
     var subscription = instance.subscribe('baxx_time_stat', {
       context: instance.data.context
     })
-    console.log(subscription)
   })
 })
 
