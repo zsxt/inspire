@@ -140,5 +140,14 @@ Meteor.methods({
         });
 
         return results;
+    },
+
+    getIPEventCount: function (selector) {
+        if (selector && selector.text && selector.text != '') {
+            selector['si'] = new RegExp(selector.text,'i')
+        }
+        delete selector.text;
+
+        return Inspire.Collection.IPEvent.find(selector).count();
     }
 });
