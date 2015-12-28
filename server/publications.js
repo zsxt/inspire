@@ -117,11 +117,11 @@ function baxxGeoStat(option) {
   sub.ready()
 }
 
-Meteor.publish('baxx_geo_stat', baxxGeoStat){
+//Meteor.publish('baxx_geo_stat', baxxGeoStat){
 // Meteor.publish('baxx_geo_stat_all', function(option) {
 //   baxxGeoStat(_.extend(option, {level: 'sheng', region: 0}))
 // })
-}
+//}
 
 Meteor.publish('ipEventStat', function(option) {
   var sub = this;
