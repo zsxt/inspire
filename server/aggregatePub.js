@@ -43,6 +43,12 @@ Meteor.publish('ipAddrStat', function(options) {
         group['code'] = {$first: '$addr.countrycode'};
         projection1['code'] = 1;
     }
+    else if(options.attr == 'addr.province'){
+        projection['addr.country'] = 1;
+        projection['addr.adcode'] = 1;
+        group['code'] = {$first: '$addr.adcode'};
+        projection1['code'] = 1;
+    }
 
     var pipeline = [
         {$project: projection},
