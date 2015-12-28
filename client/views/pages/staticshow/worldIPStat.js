@@ -84,7 +84,8 @@ Template.worldIPStat.onCreated(function() {
         var attr = 'addr.country';
         var subscription = instance.subscribe('ipAddrStat', {
             attr: attr,
-            limit: limit
+            limit: limit,
+            match: {'addr.countrycode': {$ne: '*'}}
         });
 
         if (subscription.ready()) {
