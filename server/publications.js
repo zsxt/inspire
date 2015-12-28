@@ -63,7 +63,6 @@ Meteor.publish('baxx_time_stat', function(option) {
     sub.added('baxx_time_stat', Random.id(), r)
   })
   sub.ready()
-<<<<<<< HEAD
 })
 
 
@@ -118,12 +117,11 @@ function baxxGeoStat(option) {
   sub.ready()
 }
 
-Meteor.publish('baxx_geo_stat', baxxGeoStat)
+Meteor.publish('baxx_geo_stat', baxxGeoStat){
 // Meteor.publish('baxx_geo_stat_all', function(option) {
 //   baxxGeoStat(_.extend(option, {level: 'sheng', region: 0}))
 // })
-=======
-});
+}
 
 Meteor.publish('ipEventStat', function(option) {
   var sub = this;
@@ -180,4 +178,4 @@ Meteor.publish('ipEventStat', function(option) {
   });
   sub.ready()
 });
->>>>>>> 3dd07064454edf3259e5f046bdf74718001bcc97
+
