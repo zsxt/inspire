@@ -100,18 +100,10 @@ Meteor.publish('ipEventStat', function(options) {
     };
 
     if(options.attr == 'eventAt'){
-        group = {
-            _id: { $dayOfYear: '$' + options.attr},
-            value: {$sum: 1},
-            first: {$min: '$' + options.attr}
-        };
+        group['_id'] = { $dayOfYear: '$' + options.attr};
+        group['first'] = {$min: '$' + options.attr};
 
-        projection1 = {
-            _id: 0,
-            name: '$first',
-            value: 1,
-            attr: {$literal: options.attr}
-        };
+        projection1['name'] = '$first';
     }
 
     var pipeline = [
