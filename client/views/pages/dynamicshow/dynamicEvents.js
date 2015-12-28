@@ -30,10 +30,10 @@ Template.dynamicEvents.rendered = function(){
         },
 
         areasSettings: {
-            autoZoom: true,
             unlistedAreasColor: "#8dd9ef",
-            unlistedAreasAlpha: 0.9,
-            selectedColor: "#CC0000"
+            unlistedAreasAlpha:0.9,
+            autoZoom: true,
+            selectedColor: "#585869"
         },
 
         imagesSettings: {
