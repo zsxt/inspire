@@ -1,26 +1,26 @@
 <template name="worldIPStat">
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-7">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>世界地图</h5>
+                    <h5>IP分配世界分布情况</h5>
                     {{>iboxTools}}
                 </div>
 
                 <div class="ibox-content">
-                    <div id="jvectormap-world" style="height: 300px;"></div>
+                    <div id="ipstatmap-world" class="ipstatmap"></div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-5">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>统计图表1</h5>
+                    <h5>国家IP数量TOP10</h5>
                     {{>iboxTools}}
                 </div>
                 <div class="ibox-content">
                     <div>
-                        <canvas id="barChart" height="140"></canvas>
+                        <canvas id="barChart" height="200"></canvas>
                     </div>
                 </div>
             </div>

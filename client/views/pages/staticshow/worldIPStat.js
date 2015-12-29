@@ -1,40 +1,4 @@
 Template.worldIPStat.rendered = function(){
-    // Options, data for map plugin
-
-    var mapData = {
-        "US": 298,
-        "SA": 200,
-        "DE": 220,
-        "FR": 540,
-        "CN": 120,
-        "AU": 760,
-        "BR": 550,
-        "IN": 200,
-        "GB": 120
-    };
-
-    $('#jvectormap-world').vectorMap({
-        map: 'world_mill_en',
-        backgroundColor: "transparent",
-        regionStyle: {
-            initial: {
-                fill: '#e4e4e4',
-                "fill-opacity": 0.9,
-                stroke: 'none',
-                "stroke-width": 0,
-                "stroke-opacity": 0
-            }
-        },
-
-        series: {
-            regions: [{
-                values: mapData,
-                scale: ["#1ab394", "#22d6b1"],
-                normalizeFunction: 'polynomial'
-            }]
-        }
-    });
-
     //统计图标1
     var barData = {
         labels: ["January", "February", "March", "April", "May", "June", "July"],
@@ -77,10 +41,9 @@ Template.worldIPStat.rendered = function(){
 
 Template.worldIPStat.onCreated(function() {
     var instance = Template.instance();
-    //instance.worldIP = new ReactiveVar();
 
     instance.autorun(function() {
-        var limit = 5;
+        var limit = 240;
         var attr = 'addr.country';
         var subscription = instance.subscribe('ipAddrStat', {
             attr: attr,
@@ -88,9 +51,9 @@ Template.worldIPStat.onCreated(function() {
             match: {'addr.countrycode': {$ne: '*'}}
         });
 
-        if (subscription.ready()) {
-            var worldIPAddr = Inspire.Collection.IPAddrStat.find({attr: attr}).fetch();
-            console.log(worldIPAddr);
+        //if (subscription.ready()) {
+            //var worldIPAddr = Inspire.Collection.IPAddrStat.find({attr: attr}).fetch();
+            //console.log(worldIPAddr);
             //var data = [];
             //var labelClass = ['success', 'info', 'primary', 'default', 'primary'];
             //for(var i=0; i<ipEventSrc.length; i++){
@@ -103,7 +66,62 @@ Template.worldIPStat.onCreated(function() {
             //}
 
             //instance.ipSrc.set(data);
-        }
+        //}
     })
 
+});
+
+
+Template.worldIPStat.onRendered(function() {
+    var map = echarts.init(document.getElementById('ipstatmap-world'));
+
+    var mapOption = {
+        tooltip: {
+            trigger: 'item'
+        },
+        dataRange: {
+            //show: false,
+            min: 0,
+            max: 1000000,
+            text:['High','Low'],
+            realtime: false,
+            calculable : true,
+            color: ['orangered','yellow','lightskyblue']
+        },
+        series : [
+            {
+                "name":"数量",
+                "type":"map",
+                "mapType": 'world',
+                selectedMode: 'single',
+                roam: true,
+                mapLocation: {
+                    y : 60
+                },
+                itemStyle:{
+                    emphasis:{label:{show:true}}
+                },
+                "data":[]
+            }
+        ]
+    };
+
+    this.autorun(function() {
+        var worldData = Inspire.Collection.IPAddrStat.find().fetch();
+        var dataArray = [];
+        var maxValue = 0;
+        for (var i = 0; i < worldData.length; ++i) {
+            dataArray.push({
+                name: worldData[i].ctyen,
+                value: worldData[i].ipcount
+            });
+
+            if (maxValue < worldData[i].ipcount) {
+                maxValue = worldData[i].ipcount;
+            }
+        }
+        mapOption.series[0].data = dataArray;
+        mapOption.dataRange.max = parseInt(maxValue * 1.1);
+        map.setOption(mapOption);
+    })
 });
