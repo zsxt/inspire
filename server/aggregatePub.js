@@ -67,6 +67,41 @@ Meteor.publish('ipAddrStat', function(options) {
         r.ipcount = (r.ipto - r.ipfrom + r.ipseg)/10000;
         delete r.ipto;
         delete r.ipfrom;
+
+        if (r.label === '香港特别行政区') {
+            r.label = '香港'
+        }
+        else if (r.label === '广西壮族自治区') {
+            r.label = '广西'
+        }
+        else if (r.label === '内蒙古自治区') {
+            r.label = '内蒙古'
+        }
+        else if (r.label === '宁夏回族自治区') {
+            r.label = '宁夏'
+        }
+        else if (r.label === '新疆维吾尔自治区') {
+            r.label = '新疆'
+        }
+        else if (r.label === '澳门特别行政区') {
+            r.label = '澳门'
+        }
+        else if (r.label === '西藏自治区') {
+            r.label = '西藏'
+        }
+        else if (r.label === '重庆市') {
+            r.label = '重庆'
+        }
+        else if (r.label === '北京市') {
+            r.label = '北京'
+        }
+        else if (r.label === '上海市') {
+            r.label = '上海'
+        }
+        else if (r.label === '天津市') {
+            r.label = '天津'
+        }
+
         sub.added('ipaddr_stat', Random.id(), r)
     });
     sub.ready()

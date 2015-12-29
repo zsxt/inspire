@@ -1,15 +1,15 @@
 Template.worldIPStatTopN.onCreated(function() {
     var instance = Template.instance();
 
-    instance.autorun(function() {
-        var limit = 20;
-        var attr = 'addr.country';
-        var subscription = instance.subscribe('ipAddrStat', {
-            attr: attr,
-            limit: limit,
-            match: {'addr.countrycode': {$ne: '*'}}
-        });
-    })
+    //instance.autorun(function() {
+    //    var limit = 20;
+    //    var attr = 'addr.country';
+    //    var subscription = instance.subscribe('ipAddrStat', {
+    //        attr: attr,
+    //        limit: limit,
+    //        match: {'addr.countrycode': {$ne: '*'}}
+    //    });
+    //})
 
 });
 
@@ -61,7 +61,7 @@ Template.worldIPStatTopN.onRendered(function() {
     barTop10.validateNow();
 
     this.autorun(function() {
-        var worldData = Inspire.Collection.IPAddrStat.find({},{$sort: {ipcount: -1}, limit: 10}).fetch();
+        var worldData = Inspire.Collection.IPAddrStat.find({attr: "addr.country"},{$sort: {ipcount: -1}, limit: 10}).fetch();
         var dataTop10 = [];
         for (var i = 0; i < worldData.length; ++i) {
             dataTop10.push({

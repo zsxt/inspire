@@ -82,7 +82,7 @@ Template.worldIPStat.onRendered(function() {
     };
 
     this.autorun(function() {
-        var worldData = Inspire.Collection.IPAddrStat.find({},{$sort: {ipcount: -1}}).fetch();
+        var worldData = Inspire.Collection.IPAddrStat.find({attr: "addr.country"},{$sort: {ipcount: -1}}).fetch();
         var dataArray = [];
         var maxValue = 0;
         for (var i = 0; i < worldData.length; ++i) {
