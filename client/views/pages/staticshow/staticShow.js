@@ -12,18 +12,26 @@ Template.staticShow.destroyed = function(){
 
 Template.staticShow.helpers({
     worldIPCount: function(){
-        return Session.get('worldIPCount').toFixed(2);
+        if(Session.get('worldIPCount')){
+            return Session.get('worldIPCount').toFixed(2);
+        }
     },
 
     worldIPSeg: function() {
-        return Session.get('worldIPSeg');
+        if(Session.get('worldIPSeg')){
+            return Session.get('worldIPSeg');
+        }
     },
 
     chinaIPCount: function(){
-        return Session.get('chinaIPCount').toFixed(2);
+        if(Session.get('chinaIPCount')){
+            return Session.get('chinaIPCount').toFixed(2);
+        }
     },
 
     chinaIPSeg: function() {
-        return Session.get('chinaIPSeg');
+        if(Session.get('chinaIPSeg')){
+            return Session.get('chinaIPSeg');
+        }
     }
 });

@@ -1,3 +1,15 @@
+Template.worldIPStatTopN.helpers({
+    worldIPTop8: function(){
+        return Inspire.Collection.IPAddrStat.find({attr: "addr.country"},{$sort: {ipseg: -1}, limit: 8}).fetch();
+    },
+
+    fixNumber: function(num){
+        if(num){
+            return num.toFixed(2);
+        }
+    }
+});
+
 Template.worldIPStatTopN.onCreated(function() {
     var instance = Template.instance();
 

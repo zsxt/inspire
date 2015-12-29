@@ -1,3 +1,15 @@
+Template.chinaIPStatTopN.helpers({
+    chinaIPTop8: function(){
+        return Inspire.Collection.IPAddrStat.find({attr: "addr.province"},{$sort: {ipseg: -1}, limit: 8}).fetch();
+    },
+
+    fixNumber: function(num){
+        if(num){
+            return num.toFixed(2);
+        }
+    }
+});
+
 Template.chinaIPStatTopN.onCreated(function() {
     //var instance = Template.instance();
 
@@ -46,7 +58,7 @@ Template.chinaIPStatTopN.onRendered(function() {
             "bulletBorderThickness": 1,
             "dashLengthField": "dashLength",
             "legendValueText": "[[ipseg]]",
-            "title": "段数",
+            "title": "IP数量",
             "fillAlphas": 0,
             "valueField": "ipseg"
         }],
