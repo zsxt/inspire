@@ -40,8 +40,11 @@ Meteor.publish('ipAddrStat', function(options) {
 
     if(options.attr == 'addr.country'){
         projection['addr.countrycode'] = 1;
+        projection['addr.countryen'] = 1;
         group['code'] = {$first: '$addr.countrycode'};
+        group['ctyen'] = {$first: '$addr.countryen'};
         projection1['code'] = 1;
+        projection1['ctyen'] = 1;
     }
     else if(options.attr == 'addr.province'){
         projection['addr.country'] = 1;
