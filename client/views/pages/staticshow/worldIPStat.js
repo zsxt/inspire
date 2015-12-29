@@ -2,7 +2,7 @@ Template.worldIPStat.onCreated(function() {
     var instance = Template.instance();
 
     instance.autorun(function() {
-        var limit = 240;
+        var limit = 260;
         var attr = 'addr.country';
         var subscription = instance.subscribe('ipAddrStat', {
             attr: attr,
