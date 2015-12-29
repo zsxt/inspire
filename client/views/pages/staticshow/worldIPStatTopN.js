@@ -16,38 +16,44 @@ Template.worldIPStatTopN.onCreated(function() {
 
 Template.worldIPStatTopN.onRendered(function() {
     var barTop10 = AmCharts.makeChart("ipstattop10-world", {
-        type: "serial",
-        theme: "light",
-        categoryField: "label",
-        rotate: true,
-        startDuration: 1,
-        categoryAxis: {
-            gridPosition: "start",
-            position: "left"
+        "type": "serial",
+        "theme": "light",
+        "legend": {
+            "useGraphSettings": true,
+            "markerSize":12,
+            "valueWidth":0,
+            "verticalGap":0
         },
-        trendLines: [],
-        graphs: [
-            {
-                "balloonText": "[[label]]:[[value]]万",
-                "fillAlphas": 0.8,
-                "id": "AmGraph-2",
-                "lineAlpha": 0.2,
-                "title": "数量",
-                "type": "column",
-                "valueField": "value"
-            }
-        ],
-        guides: [],
-        valueAxes: [
-            {
-                id: "ValueAxis-1",
-                position: "top",
-                axisAlpha: 0
-            }
-        ],
-        allLabels: [],
-        balloon: {},
-        titles: [],
+        "valueAxes": [{
+            "position": "top",
+            "axisAlpha":0,
+            "gridAlpha": 0
+        }],
+        "startDuration": 1,
+        "graphs": [{
+            "balloonText": "[[ipcount]]万",
+            "title": "IP数量",
+            "type": "column",
+            "fillAlphas": 0.8,
+            "valueField": "ipcount"
+        }, {
+            "balloonText": "[[ipseg]]",
+            "bullet": "round",
+            "bulletBorderAlpha": 1,
+            "bulletColor": "#FFFFFF",
+            "useLineColorForBulletBorder": true,
+            "fillAlphas": 0,
+            "lineThickness": 2,
+            "lineAlpha": 1,
+            "bulletSize": 7,
+            "title": "段数",
+            "valueField": "ipseg"
+        }],
+        "rotate": true,
+        "categoryField": "label",
+        "categoryAxis": {
+            "gridPosition": "start"
+        },
         export: {
             enabled: false
         }
@@ -60,7 +66,8 @@ Template.worldIPStatTopN.onRendered(function() {
         for (var i = 0; i < worldData.length; ++i) {
             dataTop10.push({
                 label: worldData[i].label,
-                value: worldData[i].ipcount
+                ipcount: worldData[i].ipcount,
+                ipseg: worldData[i].ipseg
             })
         }
         barTop10.dataProvider = dataTop10;
