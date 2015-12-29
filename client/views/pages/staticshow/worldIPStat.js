@@ -82,43 +82,43 @@ Template.worldIPStat.onRendered(function() {
     };
 
     var barTop10 = AmCharts.makeChart("ipstattop10-world", {
-        "type": "serial",
-        "theme": "light",
-        "categoryField": "country",
-        "rotate": true,
-        "startDuration": 1,
-        "categoryAxis": {
-            "gridPosition": "start",
-            "position": "left"
+        type: "serial",
+        theme: "light",
+        categoryField: "country",
+        rotate: true,
+        startDuration: 1,
+        categoryAxis: {
+            gridPosition: "start",
+            position: "left"
         },
-        "trendLines": [],
-        "graphs": [
+        trendLines: [],
+        graphs: [
             {
                 "balloonText": "[[country]]:[[count]]",
                 "fillAlphas": 0.8,
                 "id": "AmGraph-2",
                 "lineAlpha": 0.2,
-                "title": "Expenses",
+                "title": "数量",
                 "type": "column",
                 "valueField": "count"
             }
         ],
-        "guides": [],
-        "valueAxes": [
+        guides: [],
+        valueAxes: [
             {
-                "id": "ValueAxis-1",
-                "position": "top",
-                "axisAlpha": 0
+                id: "ValueAxis-1",
+                position: "top",
+                axisAlpha: 0
             }
         ],
-        "allLabels": [],
-        "balloon": {},
-        "titles": [],
-        dataProvider: [],
+        allLabels: [],
+        balloon: {},
+        titles: [],
         export: {
             enabled: false
         }
     });
+    barTop10.validateNow();
 
     this.autorun(function() {
         var worldData = Inspire.Collection.IPAddrStat.find({},{$sort: {ipcount: -1}}).fetch();
@@ -148,7 +148,7 @@ Template.worldIPStat.onRendered(function() {
 
         if(dataTop10.length > 0){
             barTop10.dataProvider = dataTop10;
-            barTop10.validateNow();
+            barTop10.validateData();
         }
     })
 });
