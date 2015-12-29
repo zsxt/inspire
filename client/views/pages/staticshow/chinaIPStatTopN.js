@@ -48,7 +48,7 @@ Template.chinaIPStatTopN.onRendered(function() {
             "dashLengthField": "dashLength",
             "fillAlphas": 0.7,
             "legendValueText": "[[ipcount]] 万",
-            "title": "COUNT",
+            "title": "IP数量",
             "type": "column",
             "valueField": "ipcount",
             "valueAxis": "distanceAxis"
@@ -58,7 +58,7 @@ Template.chinaIPStatTopN.onRendered(function() {
             "bulletBorderThickness": 1,
             "dashLengthField": "dashLength",
             "legendValueText": "[[ipseg]]",
-            "title": "IP数量",
+            "title": "段数",
             "fillAlphas": 0,
             "valueField": "ipseg"
         }],
