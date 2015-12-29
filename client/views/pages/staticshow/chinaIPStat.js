@@ -71,7 +71,6 @@ Template.chinaIPStat.onRendered(function() {
 
 Template.chinaIPStat.onCreated(function() {
     var instance = Template.instance();
-    //instance.worldIP = new ReactiveVar();
 
     instance.autorun(function() {
         var limit = 35;
@@ -82,22 +81,19 @@ Template.chinaIPStat.onCreated(function() {
             match: {'addr.country': '中国'}
         });
 
-        //if (subscription.ready()) {
-            //var chinaIPAddr = Inspire.Collection.IPAddrStat.find({attr: attr}).fetch();
+        if (subscription.ready()) {
+            var chinaIP = Inspire.Collection.IPAddrStat.find({attr: attr}).fetch();
 
-            //var data = [];
-            //var labelClass = ['success', 'info', 'primary', 'default', 'primary'];
-            //for(var i=0; i<ipEventSrc.length; i++){
-            //    data.push({
-            //        number: i+1,
-            //        count: ipEventSrc[i].value,
-            //        labelClass: labelClass[i],
-            //        ipsrc: ipEventSrc[i].name
-            //    });
-            //}
+            var allIPCount = 0;
+            var allIPSeg = 0;
+            chinaIP.forEach(function(ip) {
+                allIPCount += ip.ipcount;
+                allIPSeg += ip.ipseg;
+            });
 
-            //instance.ipSrc.set(data);
-        //}
+            Session.set('chinaIPCount', allIPCount);
+            Session.set('chinaIPSeg', allIPSeg);
+        }
     })
 
 });

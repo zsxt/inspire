@@ -10,22 +10,19 @@ Template.worldIPStat.onCreated(function() {
             match: {'addr.countrycode': {$ne: '*'}}
         });
 
-        //if (subscription.ready()) {
-            //var worldIPAddr = Inspire.Collection.IPAddrStat.find({attr: attr}).fetch();
-            //console.log(worldIPAddr);
-            //var data = [];
-            //var labelClass = ['success', 'info', 'primary', 'default', 'primary'];
-            //for(var i=0; i<ipEventSrc.length; i++){
-            //    data.push({
-            //        number: i+1,
-            //        count: ipEventSrc[i].value,
-            //        labelClass: labelClass[i],
-            //        ipsrc: ipEventSrc[i].name
-            //    });
-            //}
+        if (subscription.ready()) {
+            var worldIP = Inspire.Collection.IPAddrStat.find({attr: attr}).fetch();
 
-            //instance.ipSrc.set(data);
-        //}
+            var allIPCount = 0;
+            var allIPSeg = 0;
+            worldIP.forEach(function(ip) {
+                allIPCount += ip.ipcount;
+                allIPSeg += ip.ipseg;
+            });
+
+            Session.set('worldIPCount', allIPCount);
+            Session.set('worldIPSeg', allIPSeg);
+        }
     })
 
 });
