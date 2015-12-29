@@ -1,44 +1,3 @@
-Template.worldIPStat.rendered = function(){
-    //统计图标1
-    var barData = {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
-        datasets: [
-            {
-                label: "My First dataset",
-                fillColor: "rgba(220,220,220,0.5)",
-                strokeColor: "rgba(220,220,220,0.8)",
-                highlightFill: "rgba(220,220,220,0.75)",
-                highlightStroke: "rgba(220,220,220,1)",
-                data: [65, 59, 80, 81, 56, 55, 40]
-            },
-            {
-                label: "My Second dataset",
-                fillColor: "rgba(26,179,148,0.5)",
-                strokeColor: "rgba(26,179,148,0.8)",
-                highlightFill: "rgba(26,179,148,0.75)",
-                highlightStroke: "rgba(26,179,148,1)",
-                data: [28, 48, 40, 19, 86, 27, 90]
-            }
-        ]
-    };
-
-    var barOptions = {
-        scaleBeginAtZero: true,
-        scaleShowGridLines: true,
-        scaleGridLineColor: "rgba(0,0,0,.05)",
-        scaleGridLineWidth: 1,
-        barShowStroke: true,
-        barStrokeWidth: 2,
-        barValueSpacing: 5,
-        barDatasetSpacing: 1,
-        responsive: true
-    };
-
-
-    var ctx = document.getElementById("barChart").getContext("2d");
-    var myNewChart = new Chart(ctx).Bar(barData, barOptions);
-};
-
 Template.worldIPStat.onCreated(function() {
     var instance = Template.instance();
 
@@ -76,28 +35,44 @@ Template.worldIPStat.onRendered(function() {
     var map = echarts.init(document.getElementById('ipstatmap-world'));
 
     var mapOption = {
-        tooltip: {
+        tooltip : {
             trigger: 'item'
+        },
+        toolbox: {
+            show : true,
+            orient : 'vertical',
+            x: 'right',
+            y: 'center',
+            feature : {
+                mark : {show: true},
+                dataView : {show: false, readOnly: false},
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
         },
         dataRange: {
             //show: false,
             min: 0,
             max: 1000000,
-            text:['High','Low'],
+            text:['高','低'],
             realtime: false,
             calculable : true,
-            color: ['orangered','yellow','lightskyblue']
+            color: ['orangered','yellow','lightskyblue'],
+            orient: 'vertical',
+            x: 'left',
+            y: 'bottom',
+            precision: 2
         },
         series : [
             {
-                "name":"数量",
-                "type":"map",
-                "mapType": 'world',
-                selectedMode: 'single',
+                name:"数量(万)",
+                type:"map",
+                mapType: 'world',
+                //selectedMode: 'single',
                 roam: true,
-                mapLocation: {
-                    y : 60
-                },
+                //mapLocation: {
+                //    y : 100
+                //},
                 itemStyle:{
                     emphasis:{label:{show:true}}
                 },
@@ -106,15 +81,62 @@ Template.worldIPStat.onRendered(function() {
         ]
     };
 
+    var barTop10 = AmCharts.makeChart("ipstattop10-world", {
+        "type": "serial",
+        "theme": "light",
+        "categoryField": "country",
+        "rotate": true,
+        "startDuration": 1,
+        "categoryAxis": {
+            "gridPosition": "start",
+            "position": "left"
+        },
+        "trendLines": [],
+        "graphs": [
+            {
+                "balloonText": "[[country]]:[[count]]",
+                "fillAlphas": 0.8,
+                "id": "AmGraph-2",
+                "lineAlpha": 0.2,
+                "title": "Expenses",
+                "type": "column",
+                "valueField": "count"
+            }
+        ],
+        "guides": [],
+        "valueAxes": [
+            {
+                "id": "ValueAxis-1",
+                "position": "top",
+                "axisAlpha": 0
+            }
+        ],
+        "allLabels": [],
+        "balloon": {},
+        "titles": [],
+        dataProvider: [],
+        export: {
+            enabled: false
+        }
+    });
+
     this.autorun(function() {
-        var worldData = Inspire.Collection.IPAddrStat.find().fetch();
+        var worldData = Inspire.Collection.IPAddrStat.find({},{$sort: {ipcount: -1}}).fetch();
         var dataArray = [];
+        var dataTop10 = [];
         var maxValue = 0;
         for (var i = 0; i < worldData.length; ++i) {
             dataArray.push({
                 name: worldData[i].ctyen,
                 value: worldData[i].ipcount
             });
+
+            if(i<10){
+                dataTop10.push({
+                    country: worldData[i].label,
+                    count: worldData[i].ipcount
+                });
+            }
 
             if (maxValue < worldData[i].ipcount) {
                 maxValue = worldData[i].ipcount;
@@ -123,5 +145,10 @@ Template.worldIPStat.onRendered(function() {
         mapOption.series[0].data = dataArray;
         mapOption.dataRange.max = parseInt(maxValue * 1.1);
         map.setOption(mapOption);
+
+        if(dataTop10.length > 0){
+            barTop10.dataProvider = dataTop10;
+            barTop10.validateNow();
+        }
     })
 });

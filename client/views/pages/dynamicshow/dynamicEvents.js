@@ -23,7 +23,7 @@ Template.dynamicEvents.helpers({
 Template.dynamicEvents.rendered = function(){
     var map = AmCharts.makeChart('amChartsMapWithCurvedLines', {
         type: "map",
-        "theme": "light",
+        theme: "light",
         dataProvider: {
             map: "worldLow",
             getAreasFromMap: true

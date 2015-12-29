@@ -64,7 +64,7 @@ Meteor.publish('ipAddrStat', function(options) {
 
     var results = collection.aggregate(pipeline);
     _(results).each(function(r) {
-        r.ipcount = r.ipto - r.ipfrom + r.ipseg;
+        r.ipcount = (r.ipto - r.ipfrom + r.ipseg)/10000;
         delete r.ipto;
         delete r.ipfrom;
         sub.added('ipaddr_stat', Random.id(), r)
