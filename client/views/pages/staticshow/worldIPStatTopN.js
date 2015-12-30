@@ -1,6 +1,6 @@
 Template.worldIPStatTopN.helpers({
-    worldIPTop8: function(){
-        return Inspire.Collection.IPAddrStat.find({attr: "addr.country"},{$sort: {ipseg: -1}, limit: 8}).fetch();
+    worldIPDetail: function(){
+        return Inspire.Collection.IPAddrStat.find({attr: "addr.country"},{$sort: {ipseg: -1}}).fetch();
     },
 
     fixNumber: function(num){
@@ -27,6 +27,15 @@ Template.worldIPStatTopN.onCreated(function() {
 
 
 Template.worldIPStatTopN.onRendered(function() {
+    this.$('.full-height-scroll').slimscroll({
+        height: '300px',
+        railOpacity: 1,
+        color: '#cccccc',
+        opacity: 1,
+        alwaysVisible: true,
+        allowPageScroll: false
+    });
+
     var barTop10 = AmCharts.makeChart("ipstattop10-world", {
         "type": "serial",
         "theme": "light",

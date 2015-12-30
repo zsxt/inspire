@@ -2,7 +2,7 @@
     <div class="col-lg-4">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>国家IP数量 TOP10</h5>
+                <h5>世界IP数量 TOP10</h5>
                 {{>iboxTools}}
             </div>
             <div class="ibox-content">
@@ -13,30 +13,32 @@
     <div class="col-lg-3">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>世界IP详情 TOP8</h5>
+                <h5>世界IP详情</h5>
                 {{>iboxTools}}
             </div>
             <div class="ibox-content">
-                <table class="table table-hover no-margins">
-                    <thead>
-                    <tr>
-                        <th>地区</th>
-                        <th>代码</th>
-                        <th>IP段数</th>
-                        <th>IP总量 (万)</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {{#each worldIPTop8}}
+                <div class="full-height-scroll col-sm-12">
+                    <table class="table table-hover no-margins">
+                        <thead>
                         <tr>
-                            <td><small>{{label}}</small></td>
-                            <td><small>{{code}}</small></td>
-                            <td class="text-navy">{{ipseg}}</td>
-                            <td class="text-navy">{{fixNumber ipcount}}</td>
+                            <th>地区</th>
+                            <th>代码</th>
+                            <th>IP段数</th>
+                            <th>IP总量 (万)</th>
                         </tr>
-                    {{/each}}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        {{#each worldIPDetail}}
+                            <tr>
+                                <td><small>{{label}}</small></td>
+                                <td><small>{{code}}</small></td>
+                                <td class="text-navy">{{ipseg}}</td>
+                                <td class="text-navy">{{fixNumber ipcount}}</td>
+                            </tr>
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

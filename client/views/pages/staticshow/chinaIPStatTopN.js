@@ -1,6 +1,6 @@
 Template.chinaIPStatTopN.helpers({
-    chinaIPTop8: function(){
-        return Inspire.Collection.IPAddrStat.find({attr: "addr.province"},{$sort: {ipseg: -1}, limit: 8}).fetch();
+    chinaIPDetail: function(){
+        return Inspire.Collection.IPAddrStat.find({attr: "addr.province"},{$sort: {ipseg: -1}}).fetch();
     },
 
     fixNumber: function(num){
@@ -26,6 +26,15 @@ Template.chinaIPStatTopN.onCreated(function() {
 });
 
 Template.chinaIPStatTopN.onRendered(function() {
+    this.$('.full-height-scroll').slimscroll({
+        height: '300px',
+        railOpacity: 1,
+        color: '#cccccc',
+        opacity: 1,
+        alwaysVisible: true,
+        allowPageScroll: false
+    });
+
     var barTop10 = AmCharts.makeChart("ipstattop10-china", {
         type: "serial",
         theme: "light",
