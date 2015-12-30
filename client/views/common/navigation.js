@@ -31,8 +31,11 @@ Template.navigation.helpers({
             else if(roles[0] == 'analyst'){
                 return '数据分析师'
             }
-            else{
+            else if(roles[0] == 'normal'){
                 return '一般用户'
+            }
+            else{
+                return '匿名游客'
             }
         }
     },
