@@ -2,14 +2,27 @@
 
     {{> pageHeading title='拓扑展示' }}
 
-    <div class="wrapper wrapper-content animated fadeInRight">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="text-center m-t-lg">
-                    <h1>
-                        Simple example of second view
-                    </h1>
-                    <small>Writen in pageTwo.html file.</small>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>树状关系网络</h5>
+                    {{>iboxTools}}
+                </div>
+                <div class="ibox-content">
+                    <div id="topologyChart-tree" class="topologychart"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>标准和弦图</h5>
+                    {{>iboxTools}}
+                </div>
+                <div class="ibox-content">
+                    <div id="topologyChart-tree1" class="topologychart"></div>
                 </div>
             </div>
         </div>
