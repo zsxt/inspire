@@ -2,7 +2,7 @@ var collections = {
     'ymlb': Inspire.Collection.ICPGnBaxxYmlb,
     'iplb': Inspire.Collection.ICPGnBaxxIPlb,
     'wz': Inspire.Collection.ICPGnBaxxWz,
-    'ip': Inspire.Collection.ICPGnBaxx,
+    'ip': Inspire.Collection.IPGnBaxx,
     'zt': Inspire.Collection.ICPGnBaxxZt
 };
 
@@ -117,9 +117,8 @@ function baxxGeoStat(option) {
   sub.ready()
 }
 
-//Meteor.publish('baxx_geo_stat', baxxGeoStat){
+Meteor.publish('baxx_geo_stat', baxxGeoStat)
 // Meteor.publish('baxx_geo_stat_all', function(option) {
 //   baxxGeoStat(_.extend(option, {level: 'sheng', region: 0}))
 // })
-//}
 
