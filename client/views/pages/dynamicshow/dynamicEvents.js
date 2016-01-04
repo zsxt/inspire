@@ -7,6 +7,7 @@ Template.dynamicEvents.rendered = function(){
 };
 
 Template.dynamicEvents.onRendered(function() {
+    //1. 事件地图
     var map = echarts.init(document.getElementById('dynamicEventsMap'));
 
     var mapOption = {
@@ -100,9 +101,123 @@ Template.dynamicEvents.onRendered(function() {
         ]
     };
 
+    //2. 事件表格
     var table = this.$('.dataTables-example').DataTable({
         "dom": 'T<"clear">lfrtip'
     });
+
+    //3. 攻防关系
+    var attRelChart = echarts.init(document.getElementById('attRelChart'));
+    var attRelOption = {
+        tooltip : {
+            trigger: 'item',
+            formatter: function (params) {
+                if (params.indicator2) {    // is edge
+                    return params.indicator2 + ' ' + params.name + ' ' + params.indicator;
+                } else {    // is node
+                    return params.name
+                }
+            }
+        },
+        toolbox: {
+            show : true,
+            orient : 'vertical',
+            x: 'right',
+            y: 'center',
+            feature : {
+                restore : {show: true},
+                magicType: {show: true, type: ['force', 'chord']},
+                saveAsImage : {show: true}
+            }
+        },
+        legend: {
+            orient : 'vertical',
+            x: 'left'
+        },
+        series : [
+            {
+                type:'chord',
+                sort : 'ascending',
+                sortSub : 'descending',
+                showScale : false,
+                itemStyle : {
+                    normal : {
+                        label : {
+                            show: false,
+                            rotate : true
+                        }
+                    }
+                }
+            }
+        ]
+    };
+
+
+    //4.攻击占比
+    var attSrcChart = echarts.init(document.getElementById('attSrcChart'));
+    var attSrcOption = {
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            orient : 'vertical',
+            x : 'left'
+        },
+        toolbox: {
+            show : true,
+            orient : 'vertical',
+            x: 'right',
+            y: 'center',
+            feature : {
+                mark : {show: true},
+                dataView : {show: true, readOnly: false},
+                magicType : {
+                    show: true,
+                    type: ['pie', 'funnel'],
+                    option: {
+                        funnel: {
+                            x: '25%',
+                            width: '50%',
+                            funnelAlign: 'center',
+                            max: 1548
+                        }
+                    }
+                },
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
+        },
+        calculable : true,
+        series : [
+            {
+                name:'攻击来源',
+                type:'pie',
+                radius : ['50%', '70%'],
+                itemStyle : {
+                    normal : {
+                        label : {
+                            show : false
+                        },
+                        labelLine : {
+                            show : false
+                        }
+                    },
+                    emphasis : {
+                        label : {
+                            show : true,
+                            position : 'center',
+                            textStyle : {
+                                fontSize : '30',
+                                fontWeight : 'bold'
+                            }
+                        }
+                    }
+                }
+            }
+        ]
+    };
+
 
     var instance = this;
     instance.autorun(function() {
@@ -115,9 +230,12 @@ Template.dynamicEvents.onRendered(function() {
                 var markPointData = [];
                 var geoCoord = {};
                 var countrySrc = [];
-                var countryDst = [];
+                var seriesLinks = [];
+                var seriesNodes = [];
+                var legendData = [];
 
                 ipevents.forEach(function(ipevent) {
+                    //1. map
                     markLinesData.push([
                         {name: ipevent.sAddr.city},
                         {name: ipevent.dAddr.city, value: ipevent.dAddr.lng}
@@ -131,6 +249,8 @@ Template.dynamicEvents.onRendered(function() {
                     geoCoord[ipevent.sAddr.city] = [ipevent.sAddr.lng, ipevent.sAddr.lat];
                     geoCoord[ipevent.dAddr.city] = [ipevent.dAddr.lng, ipevent.dAddr.lat];
 
+
+                    //2. table
                     table.row.add( [
                         ipevent.eAt.toLocaleString(),
                         instance.intCovertToIPString(ipevent.ipsrc),
@@ -142,23 +262,35 @@ Template.dynamicEvents.onRendered(function() {
                         ipevent.dAddr.country+'-'+ipevent.dAddr.province+'-' +ipevent.dAddr.city
                     ] ).draw( false );
 
+
+                    //3. attack relation
+                    seriesLinks.push({
+                        source: ipevent.sAddr.country,
+                        target: ipevent.dAddr.country,
+                        weight: 0.9,
+                        name: '攻击'
+                    });
+
+                    seriesLinks.push({
+                        source: ipevent.dAddr.country,
+                        target: ipevent.sAddr.country,
+                        name: '攻击'
+                    });
+
                     if(!countrySrc[ipevent.sAddr.country]){
                         countrySrc[ipevent.sAddr.country] = 1;
+                        seriesNodes.push({name: ipevent.sAddr.country});
+                        legendData.push(ipevent.sAddr.country);
                     }
                     else{
                         countrySrc[ipevent.sAddr.country] += 1;
                     }
-
-                    if(!countryDst[ipevent.dAddr.country]){
-                        countryDst[ipevent.dAddr.country] = 1;
-                    }
-                    else{
-                        countryDst[ipevent.dAddr.country] += 1;
-                    }
                 });
 
-                console.log(countrySrc);
-                console.log(countryDst);
+                var attSrcSeriesData = [];
+                legendData.forEach(function(cty) {
+                    attSrcSeriesData.push({value:countrySrc[cty], name:cty});
+                });
 
                 mapOption.series[0].markLine.data = markLinesData;
                 mapOption.series[0].markPoint.data = markPointData;
@@ -168,6 +300,15 @@ Template.dynamicEvents.onRendered(function() {
                     mapOption.series[0].markPoint.large = true;
                 }
                 map.setOption(mapOption);
+
+                attRelOption.legend.data = legendData;
+                attRelOption.series[0].links = seriesLinks;
+                attRelOption.series[0].nodes = seriesNodes;
+                attRelChart.setOption(attRelOption);
+
+                attSrcOption.legend.data = legendData;
+                attSrcOption.series[0].data = attSrcSeriesData;
+                attSrcChart.setOption(attSrcOption);
             }
         });
 
