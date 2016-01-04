@@ -1,29 +1,9 @@
 Template.dynamicEvents.helpers({
-    importantEvents: function(){
-        return Template.instance().importantEvents.get();
-    },
 
-    intCovertToIPString: function(num){
-        var str;
-        var tt = new Array();
-        tt[0] = (num >>> 24) >>> 0;
-        tt[1] = ((num << 8) >>> 24) >>> 0;
-        tt[2] = (num << 16) >>> 24;
-        tt[3] = (num << 24) >>> 24;
-        str = String(tt[0]) + "." + String(tt[1]) + "." + String(tt[2]) + "." + String(tt[3]);
-        return str;
-    }
 });
 
 Template.dynamicEvents.rendered = function(){
-    this.$('.full-height-scroll').slimscroll({
-        height: '500px',
-        railOpacity: 1,
-        color: '#cccccc',
-        opacity: 1,
-        alwaysVisible: true,
-        allowPageScroll: false
-    });
+
 };
 
 Template.dynamicEvents.onRendered(function() {
@@ -120,6 +100,10 @@ Template.dynamicEvents.onRendered(function() {
         ]
     };
 
+    var table = this.$('.dataTables-example').DataTable({
+        "dom": 'T<"clear">lfrtip'
+    });
+
     var instance = this;
     instance.autorun(function() {
         var selector = {};
@@ -130,6 +114,8 @@ Template.dynamicEvents.onRendered(function() {
                 var markLinesData = [];
                 var markPointData = [];
                 var geoCoord = {};
+                var countrySrc = [];
+                var countryDst = [];
 
                 ipevents.forEach(function(ipevent) {
                     markLinesData.push([
@@ -144,9 +130,36 @@ Template.dynamicEvents.onRendered(function() {
 
                     geoCoord[ipevent.sAddr.city] = [ipevent.sAddr.lng, ipevent.sAddr.lat];
                     geoCoord[ipevent.dAddr.city] = [ipevent.dAddr.lng, ipevent.dAddr.lat];
+
+                    table.row.add( [
+                        ipevent.eAt.toLocaleString(),
+                        instance.intCovertToIPString(ipevent.ipsrc),
+                        ipevent.psrc,
+                        instance.intCovertToIPString(ipevent.ipdst),
+                        ipevent.pdst,
+                        ipevent.pro,
+                        ipevent.sAddr.country+'-'+ipevent.sAddr.province+'-' +ipevent.sAddr.city,
+                        ipevent.dAddr.country+'-'+ipevent.dAddr.province+'-' +ipevent.dAddr.city
+                    ] ).draw( false );
+
+                    if(!countrySrc[ipevent.sAddr.country]){
+                        countrySrc[ipevent.sAddr.country] = 1;
+                    }
+                    else{
+                        countrySrc[ipevent.sAddr.country] += 1;
+                    }
+
+                    if(!countryDst[ipevent.dAddr.country]){
+                        countryDst[ipevent.dAddr.country] = 1;
+                    }
+                    else{
+                        countryDst[ipevent.dAddr.country] += 1;
+                    }
                 });
 
-                instance.importantEvents.set(ipevents);
+                console.log(countrySrc);
+                console.log(countryDst);
+
                 mapOption.series[0].markLine.data = markLinesData;
                 mapOption.series[0].markPoint.data = markPointData;
                 mapOption.series[0].geoCoord = geoCoord;
@@ -159,9 +172,19 @@ Template.dynamicEvents.onRendered(function() {
         });
 
     });
+
+    instance.intCovertToIPString = function(num){
+        var str;
+        var tt = new Array();
+        tt[0] = (num >>> 24) >>> 0;
+        tt[1] = ((num << 8) >>> 24) >>> 0;
+        tt[2] = (num << 16) >>> 24;
+        tt[3] = (num << 24) >>> 24;
+        str = String(tt[0]) + "." + String(tt[1]) + "." + String(tt[2]) + "." + String(tt[3]);
+        return str;
+    }
 });
 
 Template.dynamicEvents.onCreated(function() {
     var instance = Template.instance();
-    instance.importantEvents = new ReactiveVar([]);
 });
