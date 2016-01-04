@@ -101,7 +101,7 @@ Template.dynamicEvents.onRendered(function() {
                 markPoint : {
                     symbol: 'emptyCircle',
                     symbolSize : function (v){
-                        return 10 + v/10
+                        return 5 + v/36
                     },
                     effect : {
                         show: true,
