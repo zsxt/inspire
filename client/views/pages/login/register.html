@@ -1,11 +1,8 @@
 <template name="register">
-    <div class="middle-box text-center loginscreen animated fadeInDown">
+    <div class="login-middle-box text-center animated fadeInDown">
         <div>
-            <h1 class="logo-name">IN+</h1>
+            <h2 class="login-name">系统注册</h2><br />
         </div>
-        <h3>Register to DataSys</h3>
-
-        <p>Create account to see it in action.</p>
 
         <form class="m-t" role="form" action="#">
             <div class="form-group">
@@ -21,19 +18,20 @@
                 <p>
                     <button type="button" class="btn btn-outline btn-default">系统管理</button>
                     <button type="button" class="btn btn-outline btn-primary">数据分析</button>
-                    <button type="button" class="btn btn-outline btn-success">一般用户</button>
+                    <button type="button" class="btn btn-outline btn-danger">一般用户</button>
+                    <button type="button" class="btn btn-outline btn-warning">临时访客</button>
                 </p>
             </div>
 
             <button type="submit" class="btn btn-primary block full-width m-b">注册</button>
 
-            <p class="text-muted text-center">
+            <p class="text-muted-reg text-center">
                 <small>取消注册 返回首页</small>
             </p>
             <a class="btn btn-sm btn-white btn-block" href="{{pathFor route='home'}}">取消</a>
         </form>
-        <p class="m-t">
-            <small>数据分析展示系统 &copy; 2015</small>
+        <p class="m-t text-muted-reg">
+            <small>互联网基础数据展示系统 &copy; 2015-2016</small>
         </p>
     </div>
 </template>
