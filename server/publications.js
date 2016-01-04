@@ -54,7 +54,7 @@ Meteor.publish('baxx_time_stat', function(option) {
 
   var pipeline = [
     {$project: projection},
-    {$group: {'_id': '$' + attr, value: {'$sum': '$VALUE'}}},
+    {$group: {'_id': {$dateToString: {format: '%Y-%m', date: '$' + attr}}, value: {'$sum': '$VALUE'}}},
     {$sort: {'_id': 1}},
     {$project: {id: '$_id', _id: 0, value: 1, context: {$literal: option.context}}}
   ]
@@ -121,4 +121,3 @@ Meteor.publish('baxx_geo_stat', baxxGeoStat)
 // Meteor.publish('baxx_geo_stat_all', function(option) {
 //   baxxGeoStat(_.extend(option, {level: 'sheng', region: 0}))
 // })
-
