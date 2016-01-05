@@ -1,0 +1,21 @@
+<template name="totalNum">
+  <div class="row">
+    {{> total title='Domain' value=domain}}
+    {{> total title='Major' value=major}}
+    {{> total title='Website' value=website}}
+  </div>
+</template>
+
+<template name="total">
+  <div class="col-md-4">
+      <div class="ibox float-e-margins">
+          <div class="ibox-title">
+              <span class="label label-success pull-right">Total</span>
+              <h5>{{title}}</h5>
+          </div>
+          <div class="ibox-content">
+              <h1 class="no-margins">{{value}}</h1>
+          </div>
+      </div>
+  </div>
+</template>
