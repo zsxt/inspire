@@ -33,8 +33,8 @@ Template.dynamicEvents.onRendered(function() {
         },
 
         dataRange: {
-            min : -180,
-            max : 180,
+            min : -360,
+            max : 360,
             calculable : true,
             color: ['#ff3333', 'orange', 'yellow','lime','aqua', 'aliceblue'],
             textStyle:{
@@ -82,7 +82,7 @@ Template.dynamicEvents.onRendered(function() {
                 markPoint : {
                     symbol: 'emptyCircle',
                     symbolSize : function (v){
-                        return 5 + v/36
+                        return 5 + v/72
                     },
                     effect : {
                         show: true,
@@ -238,12 +238,12 @@ Template.dynamicEvents.onRendered(function() {
                     //1. map
                     markLinesData.push([
                         {name: ipevent.sAddr.city},
-                        {name: ipevent.dAddr.city, value: ipevent.dAddr.lng}
+                        {name: ipevent.dAddr.city, value: ipevent.dAddr.lng-ipevent.sAddr.lng}
                     ]);
 
                     markPointData.push({
                         name: ipevent.dAddr.city,
-                        value: ipevent.dAddr.lng
+                        value: ipevent.dAddr.lng-ipevent.sAddr.lng
                     });
 
                     geoCoord[ipevent.sAddr.city] = [ipevent.sAddr.lng, ipevent.sAddr.lat];
