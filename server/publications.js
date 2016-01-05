@@ -118,6 +118,18 @@ function baxxGeoStat(option) {
 }
 
 Meteor.publish('baxx_geo_stat', baxxGeoStat)
-// Meteor.publish('baxx_geo_stat_all', function(option) {
-//   baxxGeoStat(_.extend(option, {level: 'sheng', region: 0}))
-// })
+
+Meteor.publish('baxx_total', function() {
+  var domain = collections['ymlb'].aggregate([
+    {$group: {_id: null, value: {$sum: '$VALUE'}}}
+  ])[0].value;
+  var major = collections['zt'].aggregate([
+    {$group: {_id: null, value: {$sum: '$VALUE'}}}
+  ])[0].value;
+  var website = collections['wz'].aggregate([
+    {$group: {_id: null, value: {$sum: '$VALUE'}}}
+  ])[0].value;
+
+  this.added('baxx_total', 0, {domain: domain, major: major, website: website})
+  this.ready()
+})
