@@ -53,7 +53,6 @@ Template.webScanStatChina.onRendered(function() {
         var dataArray = [];
         var maxValue = 0;
         var webScanChinaServer = 0;
-        console.log(webScanChina);
         webScanChina.forEach(function(webScan) {
             webScanChinaServer += webScan.value;
 

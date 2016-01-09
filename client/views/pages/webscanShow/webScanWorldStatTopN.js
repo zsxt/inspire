@@ -41,8 +41,8 @@ Template.webScanWorldStatTopN.onRendered(function() {
         }],
         "startDuration": 1,
         "graphs": [{
-            "balloonText": "[[value]]",
-            "title": "扫描数量",
+            "balloonText": "[[value]] 万",
+            "title": "数量(万)",
             "type": "column",
             "fillAlphas": 0.8,
             "valueField": "value"
@@ -64,7 +64,7 @@ Template.webScanWorldStatTopN.onRendered(function() {
         for (var i = 0; i < worldData.length; ++i) {
             dataTop10.push({
                 label: worldData[i].label,
-                value: worldData[i].value
+                value: worldData[i].value / 10000
             })
         }
         barTop10.dataProvider = dataTop10;
