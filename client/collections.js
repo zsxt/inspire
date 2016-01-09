@@ -5,3 +5,5 @@ BaxxTotal = new Mongo.Collection('baxx_total')
 
 Inspire.Collection.IPEventStat = new Mongo.Collection('ipevent_stat');
 Inspire.Collection.IPAddrStat = new Mongo.Collection('ipaddr_stat');
+Inspire.Collection.WebScanStatWorldStat = new Mongo.Collection('webscan_statworld_stat');
+

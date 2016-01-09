@@ -164,3 +164,60 @@ Meteor.publish('ipEventStat', function(options) {
     });
     sub.ready()
 });
+
+//WebScanStatWorld统计
+Meteor.publish('webScanStatWorldStat', function(options) {
+    if (!this.userId) throw new Meteor.Error('403', '没有登录，权限不足');
+    if(!options.attr){
+        throw new Meteor.Error('404', 'Not found!');
+    }
+
+    if(!options.match){
+        options.match = {};
+    }
+
+    if(!options.limit){
+        options.limit = 10;
+    }
+
+    var sub = this;
+    var collection = Inspire.Collection.WebScanStatWorld;
+    var projection = {
+        _id: 0,
+        cnt: 1
+    };
+    projection[options.attr] = 1;
+
+    var group = {
+        _id: '$' + options.attr,
+        value: {$sum: '$cnt'}
+    };
+
+    var projection1 = {
+        _id: 0,
+        label: '$_id',
+        value: 1,
+        attr: {$literal: options.attr}
+    };
+
+    if(options.attr == 'country'){
+        projection['countryen'] = 1;
+        group['ctyen'] = {$first: '$countryen'};
+        projection1['ctyen'] = 1;
+    }
+
+    var pipeline = [
+        {$project: projection},
+        {$match: options.match},
+        {$group: group},
+        {$sort: {value: -1}},
+        {$limit: options.limit},
+        {$project: projection1}
+    ];
+
+    var results = collection.aggregate(pipeline);
+    _(results).each(function(r) {
+        sub.added('webscan_statworld_stat', Random.id(), r)
+    });
+    sub.ready()
+});
