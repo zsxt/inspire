@@ -3,33 +3,18 @@ Template.webScanStatWorld.onCreated(function() {
 
     instance.autorun(function() {
         var limit = 260;
-        var attr = 'addr.country';
-        var subscription = instance.subscribe('ipAddrStat', {
+        var attr = 'country';
+        var subscription = instance.subscribe('webScanStatWorldStat', {
             attr: attr,
-            limit: limit,
-            match: {'addr.countrycode': {$ne: '*'}}
+            limit: limit
         });
-
-        if (subscription.ready()) {
-            var worldIP = Inspire.Collection.IPAddrStat.find({attr: attr}).fetch();
-
-            var allIPCount = 0;
-            var allIPSeg = 0;
-            worldIP.forEach(function(ip) {
-                allIPCount += ip.ipcount;
-                allIPSeg += ip.ipseg;
-            });
-
-            Session.set('webScanWorldServerNum', allIPCount);
-            Session.set('webScanWorldCountryNum', allIPSeg);
-        }
     })
 
 });
 
 
 Template.webScanStatWorld.onRendered(function() {
-    var map = echarts.init(document.getElementById('ipstatmap-world'));
+    var map = echarts.init(document.getElementById('webScanWorldStatMap'));
 
     var mapOption = {
         tooltip : {
@@ -62,7 +47,7 @@ Template.webScanStatWorld.onRendered(function() {
         },
         series : [
             {
-                name:"数量(万)",
+                name:"数量",
                 type:"map",
                 mapType: 'world',
                 //selectedMode: 'single',
@@ -79,20 +64,28 @@ Template.webScanStatWorld.onRendered(function() {
     };
 
     this.autorun(function() {
-        var worldData = Inspire.Collection.IPAddrStat.find({attr: "addr.country"},{$sort: {ipcount: -1}}).fetch();
+        var webScanWorld = Inspire.Collection.WebScanStatWorldStat.find({attr: 'country'}).fetch();
+        console.log(webScanWorld);
         var dataArray = [];
         var maxValue = 0;
-        for (var i = 0; i < worldData.length; ++i) {
+        var worldServer = 0;
+        webScanWorld.forEach(function(webScan) {
+            worldServer += webScan.value;
+
             dataArray.push({
-                name: worldData[i].ctyen,
-                value: worldData[i].ipcount
+                name: webScan.ctyen,
+                value: webScan.value
             });
 
 
-            if (maxValue < worldData[i].ipcount) {
-                maxValue = worldData[i].ipcount;
+            if (maxValue < webScan.value) {
+                maxValue = webScan.value;
             }
-        }
+        });
+
+        Session.set('webScanWorldServer', worldServer);
+        Session.set('webScanWorldCountry', webScanWorld.length);
+
         mapOption.series[0].data = dataArray;
         mapOption.dataRange.max = parseInt(maxValue * 1.1);
         map.setOption(mapOption);

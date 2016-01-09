@@ -11,15 +11,15 @@ Template.webScanShow.destroyed = function(){
 };
 
 Template.webScanShow.helpers({
-    worldIPCount: function(){
-        if(Session.get('worldIPCount')){
-            return Session.get('worldIPCount').toFixed(2);
+    webScanWorldCountry: function(){
+        if(Session.get('webScanWorldCountry')){
+            return Session.get('webScanWorldCountry');
         }
     },
 
-    worldIPSeg: function() {
-        if(Session.get('worldIPSeg')){
-            return Session.get('worldIPSeg');
+    webScanWorldServer: function() {
+        if(Session.get('webScanWorldServer')){
+            return Session.get('webScanWorldServer');
         }
     },
 

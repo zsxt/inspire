@@ -49,20 +49,29 @@ Template.chinaIPStat.onRendered(function() {
     };
 
     this.autorun(function() {
-        var chinaData = Inspire.Collection.IPAddrStat.find({attr: "addr.province"},{$sort: {ipcount: -1}}).fetch();
+        var chinaIP = Inspire.Collection.IPAddrStat.find({attr: "addr.province"},{$sort: {ipcount: -1}}).fetch();
         var dataArray = [];
         var maxValue = 0;
-        for (var i = 0; i < chinaData.length; ++i) {
+        var allIPCount = 0;
+        var allIPSeg = 0;
+        chinaIP.forEach(function(ip) {
+            allIPCount += ip.ipcount;
+            allIPSeg += ip.ipseg;
+
             dataArray.push({
-                name: chinaData[i].label,
-                value: chinaData[i].ipcount
+                name: ip.label,
+                value: ip.ipcount
             });
 
 
-            if (maxValue < chinaData[i].ipcount) {
-                maxValue = chinaData[i].ipcount;
+            if (maxValue < ip.ipcount) {
+                maxValue = ip.ipcount;
             }
-        }
+        });
+
+        Session.set('chinaIPCount', allIPCount);
+        Session.set('chinaIPSeg', allIPSeg);
+
         mapOption.series[0].data = dataArray;
         mapOption.dataRange.max = parseInt(maxValue * 1.1);
         map.setOption(mapOption);
@@ -80,20 +89,6 @@ Template.chinaIPStat.onCreated(function() {
             limit: limit,
             match: {'addr.country': '中国'}
         });
-
-        if (subscription.ready()) {
-            var chinaIP = Inspire.Collection.IPAddrStat.find({attr: attr}).fetch();
-
-            var allIPCount = 0;
-            var allIPSeg = 0;
-            chinaIP.forEach(function(ip) {
-                allIPCount += ip.ipcount;
-                allIPSeg += ip.ipseg;
-            });
-
-            Session.set('chinaIPCount', allIPCount);
-            Session.set('chinaIPSeg', allIPSeg);
-        }
     })
 
 });

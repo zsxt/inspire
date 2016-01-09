@@ -9,20 +9,6 @@ Template.worldIPStat.onCreated(function() {
             limit: limit,
             match: {'addr.countrycode': {$ne: '*'}}
         });
-
-        if (subscription.ready()) {
-            var worldIP = Inspire.Collection.IPAddrStat.find({attr: attr}).fetch();
-
-            var allIPCount = 0;
-            var allIPSeg = 0;
-            worldIP.forEach(function(ip) {
-                allIPCount += ip.ipcount;
-                allIPSeg += ip.ipseg;
-            });
-
-            Session.set('worldIPCount', allIPCount);
-            Session.set('worldIPSeg', allIPSeg);
-        }
     })
 
 });
@@ -79,20 +65,29 @@ Template.worldIPStat.onRendered(function() {
     };
 
     this.autorun(function() {
-        var worldData = Inspire.Collection.IPAddrStat.find({attr: "addr.country"},{$sort: {ipcount: -1}}).fetch();
+        var worldIP = Inspire.Collection.IPAddrStat.find({attr: "addr.country"},{$sort: {ipcount: -1}}).fetch();
         var dataArray = [];
         var maxValue = 0;
-        for (var i = 0; i < worldData.length; ++i) {
+        var allIPCount = 0;
+        var allIPSeg = 0;
+        worldIP.forEach(function(ip) {
+            allIPCount += ip.ipcount;
+            allIPSeg += ip.ipseg;
+
             dataArray.push({
-                name: worldData[i].ctyen,
-                value: worldData[i].ipcount
+                name: ip.ctyen,
+                value: ip.ipcount
             });
 
 
-            if (maxValue < worldData[i].ipcount) {
-                maxValue = worldData[i].ipcount;
+            if (maxValue < ip.ipcount) {
+                maxValue = ip.ipcount;
             }
-        }
+        });
+
+        Session.set('worldIPCount', allIPCount);
+        Session.set('worldIPSeg', allIPSeg);
+
         mapOption.series[0].data = dataArray;
         mapOption.dataRange.max = parseInt(maxValue * 1.1);
         map.setOption(mapOption);
