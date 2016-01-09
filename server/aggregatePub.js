@@ -68,39 +68,7 @@ Meteor.publish('ipAddrStat', function(options) {
         delete r.ipto;
         delete r.ipfrom;
 
-        if (r.label === '香港特别行政区') {
-            r.label = '香港'
-        }
-        else if (r.label === '广西壮族自治区') {
-            r.label = '广西'
-        }
-        else if (r.label === '内蒙古自治区') {
-            r.label = '内蒙古'
-        }
-        else if (r.label === '宁夏回族自治区') {
-            r.label = '宁夏'
-        }
-        else if (r.label === '新疆维吾尔自治区') {
-            r.label = '新疆'
-        }
-        else if (r.label === '澳门特别行政区') {
-            r.label = '澳门'
-        }
-        else if (r.label === '西藏自治区') {
-            r.label = '西藏'
-        }
-        else if (r.label === '重庆市') {
-            r.label = '重庆'
-        }
-        else if (r.label === '北京市') {
-            r.label = '北京'
-        }
-        else if (r.label === '上海市') {
-            r.label = '上海'
-        }
-        else if (r.label === '天津市') {
-            r.label = '天津'
-        }
+        r.label = r.label.replace(/省|市|特别行政区|壮族|维吾尔|回族|自治区/g, '');
 
         sub.added('ipaddr_stat', Random.id(), r)
     });
@@ -218,6 +186,58 @@ Meteor.publish('webScanStatWorldStat', function(options) {
     var results = collection.aggregate(pipeline);
     _(results).each(function(r) {
         sub.added('webscan_statworld_stat', Random.id(), r)
+    });
+    sub.ready()
+});
+
+//WebScanStatChina统计
+Meteor.publish('webScanStatChinaStat', function(options) {
+    if (!this.userId) throw new Meteor.Error('403', '没有登录，权限不足');
+    if(!options.attr){
+        throw new Meteor.Error('404', 'Not found!');
+    }
+
+    if(!options.match){
+        options.match = {};
+    }
+
+    if(!options.limit){
+        options.limit = 10;
+    }
+
+    var sub = this;
+    var collection = Inspire.Collection.WebScanStatChina;
+    var projection = {
+        _id: 0,
+        cnt: 1
+    };
+    projection[options.attr] = 1;
+
+    var group = {
+        _id: '$' + options.attr,
+        value: {$sum: '$cnt'}
+    };
+
+    var projection1 = {
+        _id: 0,
+        label: '$_id',
+        value: 1,
+        attr: {$literal: options.attr}
+    };
+
+    var pipeline = [
+        {$project: projection},
+        {$match: options.match},
+        {$group: group},
+        {$sort: {value: -1}},
+        {$limit: options.limit},
+        {$project: projection1}
+    ];
+
+    var results = collection.aggregate(pipeline);
+    _(results).each(function(r) {
+        r.label = r.label.replace(/省|市|特别行政区|壮族|维吾尔|回族|自治区/g, '');
+        sub.added('webscan_statchina_stat', Random.id(), r)
     });
     sub.ready()
 });

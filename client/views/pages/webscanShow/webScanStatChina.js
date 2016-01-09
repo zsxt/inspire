@@ -1,20 +1,5 @@
-Template.webScanStatWorld.onCreated(function() {
-    var instance = Template.instance();
-
-    instance.autorun(function() {
-        var limit = 260;
-        var attr = 'country';
-        var subscription = instance.subscribe('webScanStatWorldStat', {
-            attr: attr,
-            limit: limit
-        });
-    })
-
-});
-
-
-Template.webScanStatWorld.onRendered(function() {
-    var map = echarts.init(document.getElementById('webScanWorldStatMap'));
+Template.webScanStatChina.onRendered(function() {
+    var map = echarts.init(document.getElementById('WebScanStatChinaStatMap'));
 
     var mapOption = {
         tooltip : {
@@ -35,7 +20,7 @@ Template.webScanStatWorld.onRendered(function() {
         dataRange: {
             //show: false,
             min: 0,
-            max: 1000000,
+            max: 10000,
             text:['高','低'],
             realtime: false,
             calculable : true,
@@ -49,7 +34,7 @@ Template.webScanStatWorld.onRendered(function() {
             {
                 name:"数量",
                 type:"map",
-                mapType: 'world',
+                mapType: 'china',
                 //selectedMode: 'single',
                 roam: true,
                 //mapLocation: {
@@ -64,15 +49,16 @@ Template.webScanStatWorld.onRendered(function() {
     };
 
     this.autorun(function() {
-        var webScanWorld = Inspire.Collection.WebScanStatWorldStat.find({attr: 'country'}).fetch();
+        var webScanChina = Inspire.Collection.WebScanStatChinaStat.find({attr: "region"}).fetch();
         var dataArray = [];
         var maxValue = 0;
-        var worldServer = 0;
-        webScanWorld.forEach(function(webScan) {
-            worldServer += webScan.value;
+        var webScanChinaServer = 0;
+        console.log(webScanChina);
+        webScanChina.forEach(function(webScan) {
+            webScanChinaServer += webScan.value;
 
             dataArray.push({
-                name: webScan.ctyen,
+                name: webScan.label,
                 value: webScan.value
             });
 
@@ -82,11 +68,25 @@ Template.webScanStatWorld.onRendered(function() {
             }
         });
 
-        Session.set('webScanWorldServer', worldServer);
-        Session.set('webScanWorldCountry', webScanWorld.length);
+        Session.set('webScanChinaServer', webScanChinaServer);
+        Session.set('webScanChinaRegion', webScanChina.length);
 
         mapOption.series[0].data = dataArray;
         mapOption.dataRange.max = parseInt(maxValue * 1.1);
         map.setOption(mapOption);
     })
+});
+
+Template.webScanStatChina.onCreated(function() {
+    var instance = Template.instance();
+
+    instance.autorun(function() {
+        var limit = 35;
+        var attr = 'region';
+        var subscription = instance.subscribe('webScanStatChinaStat', {
+            attr: attr,
+            limit: limit
+        });
+    })
+
 });

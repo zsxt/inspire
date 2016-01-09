@@ -1,0 +1,16 @@
+<template name="webScanStatChina">
+    <div class="row">
+        <div class="col-lg-5">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>主动扫描中国分布情况</h5>
+                    {{>iboxTools}}
+                </div>
+                <div class="ibox-content">
+                    <div id="WebScanStatChinaStatMap" class="ipstatmap"></div>
+                </div>
+            </div>
+        </div>
+        {{> chinaIPStatTopN}}
+    </div>
+</template>

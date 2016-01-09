@@ -23,15 +23,15 @@ Template.webScanShow.helpers({
         }
     },
 
-    chinaIPCount: function(){
-        if(Session.get('chinaIPCount')){
-            return Session.get('chinaIPCount').toFixed(2);
+    webScanChinaRegion: function(){
+        if(Session.get('webScanChinaRegion')){
+            return Session.get('webScanChinaRegion');
         }
     },
 
-    chinaIPSeg: function() {
-        if(Session.get('chinaIPSeg')){
-            return Session.get('chinaIPSeg');
+    webScanChinaServer: function() {
+        if(Session.get('webScanChinaServer')){
+            return Session.get('webScanChinaServer');
         }
     }
 });
