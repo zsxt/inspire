@@ -1,0 +1,31 @@
+<template name="webScanStatChinaDetail">
+    <div class="col-lg-3">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>中国扫描详情</h5>
+                {{>iboxTools}}
+            </div>
+            <div class="ibox-content">
+                <div class="full-height-scroll col-sm-12">
+                    <table class="table table-hover no-margins">
+                        <thead>
+                        <tr>
+                            <th>地区</th>
+                            <th>总量</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#each webScanChinaDetail}}
+                            <tr>
+                                <td><small>{{label}}</small></td>
+                                <td class="text-navy">{{value}}</td>
+                            </tr>
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</template>

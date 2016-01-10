@@ -1,3 +1,29 @@
+Template.webScanStatChina.helpers({
+    webScanChinaRegion: function(){
+        if(Session.get('webScanChinaRegion')){
+            return Session.get('webScanChinaRegion');
+        }
+    },
+
+    webScanChinaServer: function() {
+        if(Session.get('webScanChinaServer')){
+            return Session.get('webScanChinaServer');
+        }
+    },
+
+    webScanChinaRegionMax: function(){
+        if(Session.get('webScanChinaRegionMax')){
+            return Session.get('webScanChinaRegionMax');
+        }
+    },
+
+    webScanChinaRegionMin: function() {
+        if(Session.get('webScanChinaRegionMin')){
+            return Session.get('webScanChinaRegionMin');
+        }
+    }
+});
+
 Template.webScanStatChina.onRendered(function() {
     var map = echarts.init(document.getElementById('WebScanStatChinaStatMap'));
 
@@ -66,6 +92,12 @@ Template.webScanStatChina.onRendered(function() {
                 maxValue = webScan.value;
             }
         });
+
+        if(webScanChina.length > 0)
+        {
+            Session.set('webScanChinaRegionMax', webScanChina[0].label);
+            Session.set('webScanChinaRegionMin', webScanChina[webScanChina.length - 1].label);
+        }
 
         Session.set('webScanChinaServer', webScanChinaServer);
         Session.set('webScanChinaRegion', webScanChina.length);
