@@ -1,5 +1,61 @@
 <template name="webScanStatWorld">
     <div class="row">
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-success pull-right">World</span>
+                    <h5>扫描国家总数</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">{{webScanWorldCountry}}</h1>
+
+                    <div class="stat-percent font-bold text-success">单位：个</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-info pull-right">World</span>
+                    <h5>主动扫描总数</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">{{webScanWorldServer}}</h1>
+
+                    <div class="stat-percent font-bold text-info">单位：个</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-primary pull-right">World</span>
+                    <h5>数量最多国家</h5>
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">{{webScanWorldCountryMax}}</h1>
+
+                    <div class="stat-percent font-bold text-navy">单位</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-danger pull-right">World</span>
+                    <h5>数量最少国家</h5>
+                </div>
+                <div class="ibox-content">
+                    <h3 class="no-margins">{{webScanWorldCountryMin}}</h3>
+
+                    <div class="stat-percent font-bold text-danger">单位</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        {{> webScanWorldStatTopN}}
         <div class="col-lg-5">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
@@ -12,6 +68,6 @@
                 </div>
             </div>
         </div>
-        {{> webScanWorldStatTopN}}
+        {{> webScanWorldStatDetail}}
     </div>
 </template>

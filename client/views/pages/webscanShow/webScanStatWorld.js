@@ -1,3 +1,29 @@
+Template.webScanStatWorld.helpers({
+    webScanWorldCountry: function(){
+        if(Session.get('webScanWorldCountry')){
+            return Session.get('webScanWorldCountry');
+        }
+    },
+
+    webScanWorldServer: function() {
+        if(Session.get('webScanWorldServer')){
+            return Session.get('webScanWorldServer');
+        }
+    },
+
+    webScanWorldCountryMax: function(){
+        if(Session.get('webScanWorldCountryMax')){
+            return Session.get('webScanWorldCountryMax');
+        }
+    },
+
+    webScanWorldCountryMin: function() {
+        if(Session.get('webScanWorldCountryMin')){
+            return Session.get('webScanWorldCountryMin');
+        }
+    }
+});
+
 Template.webScanStatWorld.onCreated(function() {
     var instance = Template.instance();
 
@@ -82,6 +108,11 @@ Template.webScanStatWorld.onRendered(function() {
             }
         });
 
+        if(webScanWorld.length > 0)
+        {
+            Session.set('webScanWorldCountryMax', webScanWorld[0].label);
+            Session.set('webScanWorldCountryMin', webScanWorld[webScanWorld.length - 1].label);
+        }
         Session.set('webScanWorldServer', worldServer);
         Session.set('webScanWorldCountry', webScanWorld.length);
 
