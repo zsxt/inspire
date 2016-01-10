@@ -3,11 +3,17 @@ Template.webScanStatChina.helpers({
         if(Session.get('webScanChinaRegion')){
             return Session.get('webScanChinaRegion');
         }
+        else{
+            return '未知';
+        }
     },
 
     webScanChinaServer: function() {
         if(Session.get('webScanChinaServer')){
             return Session.get('webScanChinaServer');
+        }
+        else{
+            return '未知';
         }
     },
 
@@ -15,11 +21,17 @@ Template.webScanStatChina.helpers({
         if(Session.get('webScanChinaRegionMax')){
             return Session.get('webScanChinaRegionMax');
         }
+        else{
+            return '未知';
+        }
     },
 
     webScanChinaRegionMin: function() {
         if(Session.get('webScanChinaRegionMin')){
             return Session.get('webScanChinaRegionMin');
+        }
+        else{
+            return '未知';
         }
     }
 });

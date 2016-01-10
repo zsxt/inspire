@@ -15,11 +15,17 @@ Template.staticShow.helpers({
         if(Session.get('worldIPCount')){
             return Session.get('worldIPCount').toFixed(2);
         }
+        else{
+            return '未知';
+        }
     },
 
     worldIPSeg: function() {
         if(Session.get('worldIPSeg')){
             return Session.get('worldIPSeg');
+        }
+        else{
+            return '未知';
         }
     },
 
@@ -27,11 +33,17 @@ Template.staticShow.helpers({
         if(Session.get('chinaIPCount')){
             return Session.get('chinaIPCount').toFixed(2);
         }
+        else{
+            return '未知';
+        }
     },
 
     chinaIPSeg: function() {
         if(Session.get('chinaIPSeg')){
             return Session.get('chinaIPSeg');
+        }
+        else{
+            return '未知';
         }
     }
 });

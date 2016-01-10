@@ -3,11 +3,17 @@ Template.webScanStatWorld.helpers({
         if(Session.get('webScanWorldCountry')){
             return Session.get('webScanWorldCountry');
         }
+        else{
+            return '未知';
+        }
     },
 
     webScanWorldServer: function() {
         if(Session.get('webScanWorldServer')){
             return Session.get('webScanWorldServer');
+        }
+        else{
+            return '未知';
         }
     },
 
@@ -15,11 +21,17 @@ Template.webScanStatWorld.helpers({
         if(Session.get('webScanWorldCountryMax')){
             return Session.get('webScanWorldCountryMax');
         }
+        else{
+            return '未知';
+        }
     },
 
     webScanWorldCountryMin: function() {
         if(Session.get('webScanWorldCountryMin')){
             return Session.get('webScanWorldCountryMin');
+        }
+        else{
+            return '未知';
         }
     }
 });
