@@ -20,14 +20,16 @@ Template.webScanStatWorldService.onRendered(function() {
             trigger: 'item',
             formatter: "{a} <br/>{b} : {c} ({d}%)"
         },
-        //legend: {
-        //    orient : 'vertical',
-        //    x : 'left',
-        //    data: []
-        //},
+        legend: {
+            x: 'left',
+            y: 'top',
+            orient: 'vertical',
+            data: []
+        },
         toolbox: {
             x: 'right',
-            y: 'bottom',
+            y: 'center',
+            orient: 'vertical',
             show : true,
             feature : {
                 mark : {show: true},
@@ -39,10 +41,20 @@ Template.webScanStatWorldService.onRendered(function() {
         calculable : true,
         series : [
             {
+                itemStyle : {
+                    normal: {
+                        label: {
+                            show: false
+                        },
+                        labelLine: {
+                            show: false
+                        }
+                    }
+                },
                 name:'Service',
                 type:'pie',
                 radius : '65%',
-                center: ['50%', '45%'],
+                center: ['50%', '50%'],
                 data: []
             }
         ]
@@ -55,11 +67,11 @@ Template.webScanStatWorldService.onRendered(function() {
             var dataValue = [];
 
             findData.forEach(function(webScan) {
-                //legendData.push(webScan.label);
+                legendData.push(webScan.label);
                 dataValue.push({value:webScan.value, name:webScan.label});
             });
 
-            //chartOptions.legend.data = legendData;
+            chartOptions.legend.data = legendData;
             chartOptions.series[0].data = dataValue;
             chart.setOption(chartOptions);
         }

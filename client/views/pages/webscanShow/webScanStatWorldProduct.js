@@ -16,12 +16,14 @@ Template.webScanStatWorldProduct.onRendered(function() {
 
     var chart = echarts.init(document.getElementById('webScanStatWorldProductChart'));
     var chartOptions = {
+        color: ["#6699FF", "#ff6666", "#3cb371", "#b8860b", "#30e0e0"],
         tooltip : {
             trigger: 'axis'
         },
         toolbox: {
             x: 'right',
-            y: 'bottom',
+            y: 'center',
+            orient: 'vertical',
             show : true,
             feature : {
                 mark : {show: true},
@@ -34,7 +36,7 @@ Template.webScanStatWorldProduct.onRendered(function() {
         polar : [
             {
                 indicator : [],
-                center: ['50%', '45%']
+                center: ['50%', '50%']
             }
         ],
         series : [
