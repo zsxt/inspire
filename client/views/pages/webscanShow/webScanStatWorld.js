@@ -44,7 +44,8 @@ Template.webScanStatWorld.onCreated(function() {
         var attr = 'country';
         var subscription = instance.subscribe('webScanStatWorldStat', {
             attr: attr,
-            limit: limit
+            limit: limit,
+            match: {'$and':[{'country': {$ne: ''}}, {'country': {$ne: null}}]}
         });
     })
 

@@ -128,7 +128,8 @@ Template.webScanStatChina.onCreated(function() {
         var attr = 'region';
         var subscription = instance.subscribe('webScanStatChinaStat', {
             attr: attr,
-            limit: limit
+            limit: limit,
+            match: {'$and':[{'region': {$ne: ''}}, {'region': {$ne: null}}]}
         });
     })
 
