@@ -11,7 +11,7 @@
 3、注意该链接语句的生存周期，仅在当前终端有效，关闭重启后数据库恢复为meteor自带的mongodb
 
 学习知识：
-1、推荐使用WebStorm
+1、推荐使用WebStorm编辑代码，注册方法：注册时选择“License server”，输入“http://15.idea.lanyus.com/”
 2、代码构成：JS/CSS3/HTML5/MongoDB
 3、Meteor官方教程（BLAZE框架）：https://www.meteor.com/tutorials/blaze/creating-an-app
 4、必学材料：https://github.com/wmzhai/learning-meteor
