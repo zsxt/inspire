@@ -41,7 +41,7 @@ Template.webScanStatWorldService.onRendered(function() {
             {
                 name:'Service',
                 type:'pie',
-                //radius : '65%',
+                radius : '65%',
                 center: ['50%', '45%'],
                 data: []
             }
