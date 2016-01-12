@@ -33,7 +33,8 @@ Template.webScanStatWorldProduct.onRendered(function() {
         calculable : true,
         polar : [
             {
-                indicator : []
+                indicator : [],
+                center: ['50%', '45%']
             }
         ],
         series : [
