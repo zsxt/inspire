@@ -16,7 +16,7 @@ Template.webScanStatWorldProduct.onRendered(function() {
 
     var chart = echarts.init(document.getElementById('webScanStatWorldProductChart'));
     var chartOptions = {
-        color: ["#6699FF", "#ff6666", "#3cb371", "#b8860b", "#30e0e0"],
+        color: ["#87cefa", "#da70d6", "#32cd32", "#6495ed", "#ff69b4", "#ba55d3", "#cd5c5c"],
         tooltip : {
             trigger: 'axis'
         },
@@ -27,7 +27,7 @@ Template.webScanStatWorldProduct.onRendered(function() {
             show : true,
             feature : {
                 mark : {show: true},
-                dataView : {show: true, readOnly: false},
+                dataView : {show: false, readOnly: false},
                 restore : {show: true},
                 saveAsImage : {show: true}
             }

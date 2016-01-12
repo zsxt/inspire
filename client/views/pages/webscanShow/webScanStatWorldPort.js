@@ -1,26 +1,32 @@
-Template.webScanStatWorldOs.onCreated(function() {
+Template.webScanStatWorldPort.onCreated(function() {
     var instance = Template.instance();
 
     instance.autorun(function() {
         var limit = 5;
-        var attr = 'os';
+        var attr = 'port';
         var subscription = instance.subscribe('webScanStatWorldStat', {
             attr: attr,
             limit: limit,
-            match: {'os': {$ne: null}}
+            match: {'port': {$ne: null}}
         });
     })
 
 });
 
-Template.webScanStatWorldOs.onRendered(function() {
+Template.webScanStatWorldPort.onRendered(function() {
 
-    var chart = echarts.init(document.getElementById('webScanStatWorldOsChart'));
+    var chart = echarts.init(document.getElementById('webScanStatWorldPortChart'));
     var chartOptions = {
-        color: ["#6699FF", "#ff6666", "#3cb371", "#b8860b", "#30e0e0"],
+        color: ["#cd5c5c", "#ffa500", "#40e0d0", "#1e90ff", "#ff6347", "#7b68ee", "#00fa9a", "#ffd700"],
         tooltip : {
             trigger: 'item',
             formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            x: 'left',
+            y: 'top',
+            orient: 'vertical',
+            data: []
         },
         toolbox: {
             x: 'right',
@@ -34,20 +40,14 @@ Template.webScanStatWorldOs.onRendered(function() {
                 saveAsImage : {show: true}
             }
         },
-        legend: {
-            x: 'left',
-            y: 'top',
-            orient: 'vertical',
-            data : []
-        },
         calculable : true,
         series : [
             {
-                name:'OS',
+                name:'Port',
                 type:'pie',
-                radius : ['50%', '65%'],
+                radius : ['10%', '65%'],
                 center: ['50%', '50%'],
-                sort : 'ascending',
+                roseType : 'radius',
                 itemStyle : {
                     normal : {
                         label : {
@@ -59,12 +59,10 @@ Template.webScanStatWorldOs.onRendered(function() {
                     },
                     emphasis : {
                         label : {
-                            show : true,
-                            position : 'center',
-                            textStyle : {
-                                fontSize : '12',
-                                fontWeight : 'bold'
-                            }
+                            show : true
+                        },
+                        labelLine : {
+                            show : true
                         }
                     }
                 }
@@ -73,7 +71,7 @@ Template.webScanStatWorldOs.onRendered(function() {
     };
 
     this.autorun(function() {
-        var findData = Inspire.Collection.WebScanStatWorldStat.find({attr: "os"}).fetch();
+        var findData = Inspire.Collection.WebScanStatWorldStat.find({attr: 'port'}).fetch();
         if(findData.length > 0){
             var legendData = [];
             var dataValue = [];
