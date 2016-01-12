@@ -68,7 +68,9 @@ Meteor.publish('ipAddrStat', function(options) {
         delete r.ipto;
         delete r.ipfrom;
 
-        r.label = r.label.replace(/省|市|特别行政区|壮族|维吾尔|回族|自治区/g, '');
+        if(options.attr == 'addr.province'){
+            r.label = r.label.replace(/省|市|特别行政区|壮族|维吾尔|回族|自治区/g, '');
+        }
 
         sub.added('ipaddr_stat', Random.id(), r)
     });
@@ -236,7 +238,9 @@ Meteor.publish('webScanStatChinaStat', function(options) {
 
     var results = collection.aggregate(pipeline);
     _(results).each(function(r) {
-        r.label = r.label.replace(/省|市|特别行政区|壮族|维吾尔|回族|自治区/g, '');
+        if(options.attr == 'region'){
+            r.label = r.label.replace(/省|市|特别行政区|壮族|维吾尔|回族|自治区/g, '');
+        }
         sub.added('webscan_statchina_stat', Random.id(), r)
     });
     sub.ready()
