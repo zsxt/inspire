@@ -6,7 +6,8 @@ Template.webScanStatWorldProduct.onCreated(function() {
         var attr = 'product';
         var subscription = instance.subscribe('webScanStatWorldStat', {
             attr: attr,
-            limit: limit
+            limit: limit,
+            match: {'product': {$ne: null}}
         });
     })
 

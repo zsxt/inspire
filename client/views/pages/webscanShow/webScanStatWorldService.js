@@ -6,7 +6,8 @@ Template.webScanStatWorldService.onCreated(function() {
         var attr = 'service';
         var subscription = instance.subscribe('webScanStatWorldStat', {
             attr: attr,
-            limit: limit
+            limit: limit,
+            match: {'service': {$ne: null}}
         });
     })
 

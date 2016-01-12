@@ -6,7 +6,8 @@ Template.webScanStatChinaProduct.onCreated(function() {
         var attr = 'product';
         var subscription = instance.subscribe('webScanStatChinaStat', {
             attr: attr,
-            limit: limit
+            limit: limit,
+            match: {'product': {$ne: null}}
         });
     })
 

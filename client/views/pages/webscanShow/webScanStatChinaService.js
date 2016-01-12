@@ -6,7 +6,8 @@ Template.webScanStatChinaService.onCreated(function() {
         var attr = 'service';
         var subscription = instance.subscribe('webScanStatChinaStat', {
             attr: attr,
-            limit: limit
+            limit: limit,
+            match: {'service': {$ne: null}}
         });
     })
 
