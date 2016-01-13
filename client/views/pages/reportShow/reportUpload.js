@@ -1,8 +1,6 @@
-var myDropZone = undefined;
-var uploadFile = undefined;
-
 Template.reportUpload.events({
     'show.bs.modal #reportUploadModal': function() {
+        var myDropZone = Template.instance().myDropZone.get();
         if (myDropZone) {
             myDropZone.removeAllFiles();
         }
@@ -10,6 +8,9 @@ Template.reportUpload.events({
     },
     'click button[type=submit]': function(e, t) {
         e.preventDefault();
+        var uploadFile = Template.instance().uploadFile.get();
+        var myDropZone = Template.instance().myDropZone.get();
+
         if (!uploadFile) {
             alert('请选择报告文件！');
             return;
@@ -58,7 +59,9 @@ Template.reportUpload.helpers({
 });
 
 Template.reportUpload.rendered = function() {
-    myDropZone = new Dropzone('#dropzoneDiv', {
+    var instance = this;
+
+    var myDropZone = new Dropzone('#dropzoneDiv', {
         url: "handle-upload.php",
         maxFiles: 1,
         maxFilesize: 10,
@@ -67,13 +70,15 @@ Template.reportUpload.rendered = function() {
             this.on('success', function(file) {
                 var fileWithoutExtension = file.name.substring(0, file.name.lastIndexOf('.'));
                 $('#title_report').val(fileWithoutExtension);
-                return uploadFile = file;
+                instance.uploadFile.set(file);
             });
             return this.on('removedfile', function(file) {
-                return uploadFile = undefined;
+                instance.uploadFile.set(undefined);
             });
         }
     });
+
+    instance.myDropZone.set(myDropZone);
 
     this.$('#date_report').datetimepicker({
         timepicker: false,
@@ -87,3 +92,9 @@ Template.reportUpload.rendered = function() {
         }
     });
 };
+
+Template.reportUpload.onCreated(function() {
+    var instance = Template.instance();
+    instance.myDropZone = new ReactiveVar(undefined);
+    instance.uploadFile = new ReactiveVar(undefined);
+});

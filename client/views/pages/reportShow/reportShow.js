@@ -22,3 +22,13 @@ Template.reportShow.events({
     }
 
 });
+
+
+Template.reportShow.onCreated(function() {
+    var instance = Template.instance();
+
+    instance.autorun(function() {
+        var subscription = instance.subscribe('reports');
+    })
+
+});
