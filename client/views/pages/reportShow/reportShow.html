@@ -1,5 +1,6 @@
 <template name="reportShow">
 
+    {{> reportUpload}}
     <!-- Page heading -->
     {{> pageHeading title='Timeline - version 2'}}
 
@@ -101,6 +102,17 @@
 
                     </div>
                 </div>
+
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <span>报告</span>
+                        <a class="collapse-link font-gray-lighter" data-toggle="modal" href="#reportUploadModal">
+                            <i class="fa fa-plus-square-o pull-right m-t-xs" id="reportUpload"></i>
+                        </a>
+                    </div>
+
+                </div>
+
             </div>
         </div>
     </div>
