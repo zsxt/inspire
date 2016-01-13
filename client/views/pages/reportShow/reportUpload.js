@@ -65,7 +65,8 @@ Template.reportUpload.rendered = function() {
         acceptedFiles: ".jpg,.pdf,.jpeg",
         init: function() {
             this.on('success', function(file) {
-                $('#title_report').val(file.name);
+                var fileWithoutExtension = file.name.substring(0, file.name.lastIndexOf('.'));
+                $('#title_report').val(fileWithoutExtension);
                 return uploadFile = file;
             });
             return this.on('removedfile', function(file) {

@@ -16,19 +16,18 @@
                             <span class="font-size-50 font-color-dark-gray">单击上传文件</span>
                         </div>
                     </div>
-                    <div class="form-group col-sm-12 m-t-sm m-b-sm">
-                        <div class="row">
-                            <div class="input-group physicals_date center-block">
-                                <input type="text" class="form-control text-center line-style-input pull-left" id="title_report" placeholder="标题">
-                                <input type="text" class="form-control text-center line-style-input pull-left" id="abstract_report" placeholder="摘要">
-                                <!--这个input使用了datetimepicker插件-->
-                                <span class="font-size-20 no-borders pull-left text-left">
-                                        <i class="fa fa-calendar font-gray-lighter"></i>
-                                </span>
-                                <input type="text" class="form-control text-center line-style-input pull-left" id="date_report" placeholder="时间">
-                            </div>
+
+                    <form class="m-t" role="form" action="#">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="title_report" placeholder="标题" required="">
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="abstract_report" placeholder="摘要" required="">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="date_report" placeholder="时间" required="">
+                        </div>
+                    </form>
                 </div>
                 <div class="clearfix"></div>
                 <div class="modal-footer">
