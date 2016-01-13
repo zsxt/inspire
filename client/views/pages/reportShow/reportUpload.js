@@ -5,6 +5,8 @@ Template.reportUpload.events({
             myDropZone.removeAllFiles();
         }
         $('#date_report').val('');
+        $('#title_report').val('');
+        $('#abstract_report').val('');
     },
     'click button[type=submit]': function(e, t) {
         e.preventDefault();
@@ -29,6 +31,9 @@ Template.reportUpload.events({
         }
 
         var abstract = t.find('#abstract_report').value;
+        if (!abstract) {
+            abstract = '';
+        }
 
         return Inspire.Collection.ReportFile.insert(uploadFile, function(error, fileObj) {
             var newReport;
