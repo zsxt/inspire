@@ -32,3 +32,10 @@ rajit:bootstrap3-datepicker
 aldeed:simple-schema
 ieverx:echarts
 reywood:publish-composite
+
+cfs:filesystem
+cfs:standard-packages
+cfs:gridfs
+cfs:ui
+aldeed:autoform
+yogiben:autoform-file
