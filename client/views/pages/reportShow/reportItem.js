@@ -38,6 +38,21 @@ Template.reportItem.helpers({
         else{
             return "fa fa-paperclip";
         }
+    },
+
+    reportType: function(){
+        if(this.type == 'data'){
+            return "基础数据";
+        }
+        else if(this.type == 'analysis'){
+            return "数据分析";
+        }
+        else if(this.type == 'trend'){
+            return "行业态势";
+        }
+        else{
+            return "其他类型";
+        }
     }
 });
 
