@@ -23,6 +23,25 @@ Template.reportShow.events({
 
 });
 
+Template.reportShow.helpers({
+    reports: function(){
+        return Inspire.Collection.Report.find();
+    },
+
+    reportAt: function(createdAt){
+        return createdAt.toLocaleString();
+    },
+
+    reportUrl: function(fid){
+        var reportFile = Inspire.Collection.ReportFile.findOne(fid);
+        if(reportFile){
+            return Inspire.Collection.ReportFile.findOne(fid).url();
+        }
+
+    }
+});
+
+
 
 Template.reportShow.onCreated(function() {
     var instance = Template.instance();
