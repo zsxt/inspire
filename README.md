@@ -5,9 +5,9 @@
 4、终端进入代码目录，执行meteor运行
 5、本地chrome或firefox浏览器中打开http://localhost:3000
 6、若有需求使用GridFS，需安装以下项：
-  sudo apt-get install nodejs npm
-  sudo apt-get install meteorite
-  sudo apt-get install GraphicsMagick
+  sudo apt-get install nodejs npm;
+  sudo apt-get install meteorite;
+  sudo apt-get install GraphicsMagick;
 
 更改链接数据库命令：
 1、export MONGO_URL=mongodb://localhost:27017/your_db
