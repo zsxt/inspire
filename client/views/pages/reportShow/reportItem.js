@@ -1,6 +1,8 @@
 Template.reportItem.helpers({
     reportDate: function(reportAt){
-        return reportAt.toLocaleDateString();
+        if(reportAt){
+            return reportAt.toLocaleDateString();
+        }
     },
 
     reportUrl: function(fid){
