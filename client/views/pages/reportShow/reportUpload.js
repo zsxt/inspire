@@ -10,6 +10,22 @@ Template.reportUpload.events({
         $("#upload_msg")[0].setAttribute('class', '');
         $("#upload_msg")[0].innerHTML = '';
     },
+    'click button[id=data_report]': function(e, t){
+        e.preventDefault();
+        Template.instance().reportType.set('data');
+    },
+    'click button[id=analysis_report]': function(e, t){
+        e.preventDefault();
+        Template.instance().reportType.set('analysis');
+    },
+    'click button[id=trend_report]': function(e, t){
+        e.preventDefault();
+        Template.instance().reportType.set('trend');
+    },
+    'click button[id=other_report]': function(e, t){
+        e.preventDefault();
+        Template.instance().reportType.set('other');
+    },
     'click button[type=submit]': function(e, t) {
         e.preventDefault();
         var uploadFile = Template.instance().uploadFile.get();
@@ -37,6 +53,12 @@ Template.reportUpload.events({
             abstract = '';
         }
 
+        var type = Template.instance().reportType.get();
+        if (!type) {
+            $("#upload_msg")[0].setAttribute("class", "alert alert-danger");
+            return $("#upload_msg")[0].innerHTML = "请选择报告类型！";
+        }
+
         return Inspire.Collection.ReportFile.insert(uploadFile, function(error, fileObj) {
             var newReport;
             if (!error) {
@@ -45,9 +67,9 @@ Template.reportUpload.events({
                     fid: fileObj._id,
                     title: title,
                     abstract: abstract,
+                    type: type,
                     reportAt: new Date(date)
                 };
-                //console.log(newReport);
                 Inspire.Collection.Report.insert(newReport);
                 uploadFile = undefined;
                 if (myDropZone) {
@@ -105,4 +127,5 @@ Template.reportUpload.onCreated(function() {
     var instance = Template.instance();
     instance.myDropZone = new ReactiveVar(undefined);
     instance.uploadFile = new ReactiveVar(undefined);
+    instance.reportType = new ReactiveVar(undefined);
 });
