@@ -47,7 +47,7 @@ Template.reportUpload.events({
                     abstract: abstract,
                     reportAt: new Date(date)
                 };
-                console.log(newReport);
+                //console.log(newReport);
                 Inspire.Collection.Report.insert(newReport);
                 uploadFile = undefined;
                 if (myDropZone) {
@@ -55,7 +55,8 @@ Template.reportUpload.events({
                 }
                 return t.$("#reportUploadModal").modal('hide');
             } else {
-                return console.log(error);
+                $("#upload_msg")[0].setAttribute("class", "alert alert-danger");
+                return $("#upload_msg")[0].innerHTML = error;
             }
         });
     }
