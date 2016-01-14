@@ -8,6 +8,36 @@ Template.reportItem.helpers({
         if(reportFile){
             return reportFile.url();
         }
+    },
+
+    timelineIcon: function(){
+        if(this.type == 'data'){
+            return "vertical-timeline-icon yellow-bg";
+        }
+        else if(this.type == 'analysis'){
+            return "vertical-timeline-icon blue-bg";
+        }
+        else if(this.type == 'trend'){
+            return "vertical-timeline-icon red-bg";
+        }
+        else{
+            return "vertical-timeline-icon lazur-bg";
+        }
+    },
+
+    fileIcon: function(){
+        if(this.type == 'data'){
+            return "fa fa-file-text";
+        }
+        else if(this.type == 'analysis'){
+            return "fa fa-tasks";
+        }
+        else if(this.type == 'trend'){
+            return "fa fa-cloud";
+        }
+        else{
+            return "fa fa-paperclip";
+        }
     }
 });
 

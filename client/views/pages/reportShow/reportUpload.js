@@ -71,7 +71,6 @@ Template.reportUpload.events({
                     reportAt: new Date(date)
                 };
                 Inspire.Collection.Report.insert(newReport);
-                uploadFile = undefined;
                 if (myDropZone) {
                     myDropZone.removeAllFiles();
                 }
@@ -104,6 +103,7 @@ Template.reportUpload.rendered = function() {
             });
             return this.on('removedfile', function(file) {
                 instance.uploadFile.set(undefined);
+                instance.reportType.set(undefined);
             });
         }
     });
