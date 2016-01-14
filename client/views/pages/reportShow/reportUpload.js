@@ -45,7 +45,7 @@ Template.reportUpload.events({
                     fid: fileObj._id,
                     title: title,
                     abstract: abstract,
-                    createAt: date
+                    reportAt: new Date(date)
                 };
                 console.log(newReport);
                 Inspire.Collection.Report.insert(newReport);

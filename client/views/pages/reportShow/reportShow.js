@@ -13,8 +13,8 @@ Template.reportShow.helpers({
         return Inspire.Collection.Report.find();
     },
 
-    reportAt: function(createdAt){
-        return createdAt.toLocaleString();
+    reportDate: function(reportAt){
+        return reportAt.toLocaleDateString();
     },
 
     reportUrl: function(fid){
