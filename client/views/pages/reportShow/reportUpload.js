@@ -7,6 +7,8 @@ Template.reportUpload.events({
         $('#date_report').val('');
         $('#title_report').val('');
         $('#abstract_report').val('');
+        $("#upload_msg")[0].setAttribute('class', '');
+        $("#upload_msg")[0].innerHTML = '';
     },
     'click button[type=submit]': function(e, t) {
         e.preventDefault();
@@ -14,20 +16,20 @@ Template.reportUpload.events({
         var myDropZone = Template.instance().myDropZone.get();
 
         if (!uploadFile) {
-            alert('请选择报告文件！');
-            return;
+            $("#upload_msg")[0].setAttribute("class", "alert alert-danger");
+            return $("#upload_msg")[0].innerHTML = "请选择报告文件！";
         }
 
         var title = t.find('#title_report').value;
         if (!title) {
-            alert('请添加报告标题');
-            return;
+            $("#upload_msg")[0].setAttribute("class", "alert alert-danger");
+            return $("#upload_msg")[0].innerHTML = "请添加报告标题！";
         }
 
         var date = t.find('#date_report').value;
         if (!date) {
-            alert('请选择报告时间');
-            return;
+            $("#upload_msg")[0].setAttribute("class", "alert alert-danger");
+            return $("#upload_msg")[0].innerHTML = "请选择报告时间！";
         }
 
         var abstract = t.find('#abstract_report').value;
