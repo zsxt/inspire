@@ -10,7 +10,7 @@ Template.reportShow.events({
 
 Template.reportShow.helpers({
     reports: function(){
-        return Inspire.Collection.Report.find();
+        return Inspire.Collection.Report.find({},{sort:{reportAt: -1}});
     }
 });
 
