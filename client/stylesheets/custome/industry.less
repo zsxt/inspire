@@ -1,0 +1,32 @@
+.content-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: #2f4050;
+  font-size: 0;
+  font-family: 'Microsoft Yahei';
+  color: white;
+
+  a {
+    color: white;
+    &:hover {
+      color: white;
+    }
+  }
+
+  & > li {
+    display: inline-block;
+    position: relative;
+    padding: 10px 20px;
+    font-size: 13px;
+
+    &.active {
+      border-top: 4px solid rgb(25,170,141);
+      background-color: #293846;
+    }
+
+    &:hover {
+      background-color: #293846;
+    }
+  }
+}
