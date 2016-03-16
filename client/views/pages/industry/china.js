@@ -1,111 +1,14 @@
+Template.industryChina.onCreated(function() {
+  var instance = Template.instance()
+  instance.autorun(function() {
+      var subscription = instance.subscribe('industry_control_china');
+  })
+})
+
 Template.industryChina.onRendered(function() {
   var dom = document.getElementById('chart');
   var map = echarts.init(dom);
-
-  var data = [{
-				name : '北京',
-				value : 3404
-			}, {
-				name : '天津',
-				value : 931
-			}, {
-				name : '上海',
-				value : 2785
-			}, {
-				name : '重庆',
-				value : 1394
-			}, {
-				name : '河北',
-				value : 2243
-			}, {
-				name : '河南',
-				value : 2818
-			}, {
-				name : '云南',
-				value : 1193
-			}, {
-				name : '辽宁',
-				value : 7984
-			}, {
-				name : '黑龙江',
-				value : 1548
-			}, {
-				name : '湖南',
-				value : 1369
-			}, {
-				name : '安徽',
-				value : 2660
-			}, {
-				name : '山东',
-				value : 6028
-			}, {
-				name : '新疆',
-				value : 732
-			}, {
-				name : '江苏',
-				value : 11342
-			}, {
-				name : '浙江',
-				value : 5223
-			}, {
-				name : '江西',
-				value : 1810
-			}, {
-				name : '湖北',
-				value : 1978
-			}, {
-				name : '广西',
-				value : 1021
-			}, {
-				name : '甘肃',
-				value : 828
-			}, {
-				name : '山西',
-				value : 1786
-			}, {
-				name : '内蒙古',
-				value : 1879
-			}, {
-				name : '陕西',
-				value : 1704
-			}, {
-				name : '吉林',
-				value :3248
-			}, {
-				name : '福建',
-				value : 5905
-			}, {
-				name : '贵州',
-				value : 1045
-			}, {
-				name : '广东',
-				value : 38586
-			}, {
-				name : '青海',
-				value : 116
-			}, {
-				name : '西藏',
-				value : 130
-			}, {
-				name : '四川',
-				value : 1744
-			}, {
-				name : '宁夏',
-				value : 179
-			}, {
-				name : '海南',
-				value : 511
-			}, {
-				name : '台湾',
-				value : 77340
-			}, {
-				name : '香港',
-				value : 11740
-			}, {
-				name : '澳门',
-				value : 1209
-			}
-		];
+  var data = [];
 
   var mapOption = {
 		//backgroundColor:'rgba(232, 232, 232, 1)',
@@ -220,5 +123,30 @@ Template.industryChina.onRendered(function() {
 		]
 	};
 
-  map.setOption(mapOption);
+  this.autorun(function() {
+    var result = IndustryControlChina.find({});
+    console.log(result.fetch());
+    data = result.fetch();
+    mapOption.series[0].data = data;
+    var m = 0;
+    for (var i = 0; i < data.length; ++i) {
+      if (data[i].value > m) {
+        m = data[i].value;
+      }
+    }
+
+    var size = m / 6;
+    var segs = [];
+    for (var j = 1; j < 6; ++j) {
+      segs[6 - j] = {
+        start: size * j,
+        end: size * (j + 1) - 1
+      }
+    }
+    segs[6] = {end: size};
+    segs[0] = {start: size * 6 - 1};
+    mapOption.dataRange.splitList = segs;
+
+    map.setOption(mapOption);
+  })
 });
