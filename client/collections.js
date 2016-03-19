@@ -8,4 +8,6 @@ Inspire.Collection.IPAddrStat = new Mongo.Collection('ipaddr_stat');
 Inspire.Collection.WebScanStatWorldStat = new Mongo.Collection('webscan_statworld_stat');
 Inspire.Collection.WebScanStatChinaStat = new Mongo.Collection('webscan_statchina_stat');
 
-IndustryControlChina = new Mongo.Collection('industry_control_china')
+IndustryControlChina = new  Mongo.Collection('industry_control_china')
+IndustryControlGlobe = new  Mongo.Collection('industry_control_globe')
+IndustryControlBrand = new  Mongo.Collection('industry_control_brand')
