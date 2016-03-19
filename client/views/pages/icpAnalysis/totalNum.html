@@ -1,8 +1,8 @@
 <template name="totalNum">
   <div class="row">
-    {{> total title='Domain' value=domain}}
-    {{> total title='Major' value=major}}
-    {{> total title='Website' value=website}}
+    {{> total title='主体' value=major}}
+    {{> total title='网站' value=website}}
+    {{> total title='域名' value=domain}}
   </div>
 </template>
 
@@ -10,7 +10,7 @@
   <div class="col-md-4">
       <div class="ibox float-e-margins">
           <div class="ibox-title">
-              <span class="label label-success pull-right">Total</span>
+              <span class="label label-info pull-right">Total</span>
               <h5>{{title}}</h5>
           </div>
           <div class="ibox-content">

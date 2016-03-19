@@ -26,25 +26,37 @@ Template.BaxxGeoBar.onRendered(function() {
     noDataLoadingOption: {
       effect: ''
     }
-  })
+  });
+  var direction = this.data.direction;
 
   function extractBarOption(data) {
       var cats = [], values = [];
-      data.slice(0, 10).forEach(function(e) {
+      if (direction === 'horizontal') {
+        data.slice(0, 10).forEach(function(e) {
+            cats.unshift(e.name);
+            values.unshift(e.value);
+        });
+        barOption.yAxis[0].data = cats;
+      } else {
+        data.slice(0, 10).forEach(function(e) {
           cats.push(e.name);
           values.push(e.value);
-      });
-      barOption.xAxis[0].data = cats;
+        });
+        barOption.xAxis[0].data = cats;
+      }
       barOption.series[0].data = values;
       return barOption;
   }
 
+  var colors = ['#27ae60', '#16a085', '#f39c12', '#34495e', '#9b59b6', '#1abc9c', '#c0392b'];
+  var c = colors[Math.floor(Math.random() * colors.length)];
+
   var barOption = {
     title: {
-        text: '主体数量'
+        text: '数量'
     },
     tooltip: {
-        trigger: 'axis'
+        trigger: 'item'
     },
     xAxis: [
         {
@@ -59,12 +71,22 @@ Template.BaxxGeoBar.onRendered(function() {
     ],
     series: [
         {
-            name: '域名数量',
+            name: '数量',
             type: 'bar',
+            itemStyle: {
+                normal: {
+                    color: c
+                }
+            },
             data: []
         }
     ]
+  };
+  if (direction === 'horizontal') {
+      barOption.xAxis = [{type: 'value'}];
+      barOption.yAxis = [{type: 'category', data: []}];
   }
+  console.log(barOption);
 
   this.autorun(function() {
     var region = Session.get(ctx + '-region')

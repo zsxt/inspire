@@ -6,12 +6,12 @@ pie2d = function(domId, fields, data) {
         "startDuration": 1,
         "theme": "light",
         "addClassNames": true,
-        "legend": {
-            "position": "right",
-            "marginRight": 150,
-            "autoMargins": false,
-            "valueWidth": 100
-        },
+        // "legend": {
+        //     "position": "right",
+        //     "marginRight": 150,
+        //     "autoMargins": false,
+        //     "valueWidth": 100
+        // },
         "labelsEnabled": false,
         "innerRadius": "30%",
         "defs": {

@@ -1,0 +1,13 @@
+<template name="ZtOther">
+    <div class="row">
+        <div class="col-md-4">
+            {{> SimpleChart context='zt' attr='BBFS' type='pie' title='报备情况统计'}}
+        </div>
+        <div class="col-md-4">
+            {{> SimpleChart context='zt' attr='LRYHLX' type='column' title='录入用户类型统计'}}
+        </div>
+        <div class="col-md-4">
+            {{> InfoTable context='zt' box=true title='主体备案分省详细'}}
+        </div>
+    </div>
+</template>

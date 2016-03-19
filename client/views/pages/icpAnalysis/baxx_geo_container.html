@@ -1,19 +1,33 @@
 <template name="BaxxGeoContainer">
   <div class="row">
-    <div class="ibox">
-      <div class="ibox-title">
-        {{title}}
-      </div>
-      <div class="ibox-content">
-        <dic class="row">
-          <div class="col-md-6">
-            {{> BaxxGeoMap}}
-          </div>
-          <div class="col-md-6">
-            {{> BaxxGeoBar}}
-          </div>
-        </dic>
-      </div>
+    <div class="col-md-12">
+        <div class="ibox">
+            <div class="ibox-title">
+                {{title}}
+            </div>
+            <div class="ibox-content">
+                <div class="row">
+                    {{#if table}}
+                        <div class="col-md-4">
+                            {{> BaxxGeoBar}}
+                        </div>
+                        <div class="col-md-5">
+                            {{> BaxxGeoMap}}
+                        </div>
+                        <div class="col-md-3" style="overflow-y:scroll">
+                            {{> InfoTable}}
+                        </div>
+                    {{else}}
+                        <div class="col-md-6">
+                            {{> BaxxGeoMap}}
+                        </div>
+                        <div class="col-md-6">
+                            {{> BaxxGeoBar}}
+                        </div>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
     </div>
   </div>
 </template>
