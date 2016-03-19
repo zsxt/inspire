@@ -1,0 +1,12 @@
+<template name="SimpleChart">
+    <div class="ibox">
+        <div class="ibox-title">
+            {{title}}
+            {{> configTools}}
+        </div>
+        <div class="ibox-content">
+            {{> configBox limit=true date=true}}
+            <div id="chart-{{type}}-{{context}}{{attr}}" class="chart"></div>
+        </div>
+    </div>
+</template>

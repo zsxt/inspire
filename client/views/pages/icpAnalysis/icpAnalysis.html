@@ -1,20 +1,18 @@
 <template name="icpAnalysis">
   <div class="wrapper wrapper-content">
-  {{> totalNum}}
-  {{> BaxxGeoContainer context='zt' title='zt geo'}}
-  {{> BaxxChart context='zt' attr="BBFS" title="zt报备方式" pieRight="true"}}
-  {{> BaxxChart context='zt' attr="LRYHLX" title="zt报录入用户类型"}}
-  {{> BaxxGeoContainer context='wz' title='wz geo'}}
-  {{> BaxxTimeChart context='wz' title='Website amount'}}
-  {{> BaxxChart context='wz' attr="LRYHLX" title="wz报录入用户类型" pieRight="true"}}
-  {{> BaxxGeoContainer context='ymlb' title='ymlb geo'}}
-  {{> BaxxTimeChart context='ymlb' title='Domain name amount'}}
-  {{> BaxxChart context='ymlb' attr="POSTFIX" title="ymlb POSTFIX"}}
-  {{> BaxxGeoContainer context='ip' title='ip geo'}}
-  {{> BaxxTimeChart context='ip' title="IP filing amount"}}
-  {{> BaxxChart context='ip' attr="SFGN" title="中国地址段内IP" pieRight="true"}}
-  {{> BaxxChart context='ip' attr="FPFS" title="分配方式"}}
-  {{> BaxxChart context='ip' attr="IP_LX" title="IP类型" pieRight="true"}}
-  {{> BaxxGeoContainer context='iplb' title='iplb geo'}}
+    {{> totalNum}}
+    
+    {{> Introduction text='主体备案情况说明'}}
+    {{> BaxxGeoContainer context='zt' title='主体备案全国分布'}}
+    {{> ZtOther}}
+    
+    {{> Introduction text='网站备案情况说明'}}
+    {{> BaxxGeoContainer context='wz' title='网站备案全国分布' table=true  direction='horizontal'}}
+    {{> WzOther }}
+    
+    {{> Introduction text='域名备案情况说明'}}
+    {{> BaxxGeoContainer context='ymlb' title='域名备案全国分布' table=true direction='horizontal'}}
+    {{> YmOther }}
+
   </div>
 </template>

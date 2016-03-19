@@ -1,0 +1,10 @@
+<template name="YmOther">
+    <div class="row">
+        <div class="col-md-8">
+            {{> BaxxTimeChart context='ymlb' title='域名数量变化'}}
+        </div>
+        <div class="col-md-4">
+            {{> SimpleChart context='ymlb' attr="POSTFIX" title="域名后缀分布" type='pie'}}
+        </div>
+    </div>
+</template>
