@@ -1,3 +1,9 @@
+Template.industryResult.onCreated(function(){
+	var instance = Template.instance()
+	instance.autorun(function(){
+		var subscription = instance.subscribe('industry_control_brand');
+	})
+})
 Template.industryResult.onRendered(function(){
 	var dom = document.getElementById('compBar');
 	var bar = echarts.init(dom);
@@ -10,7 +16,7 @@ Template.industryResult.onRendered(function(){
 				y : 'top',
 			},
 			tooltip : {
-				trigger : 'axis'
+				trigger : 'item'
 			},
 			toolbox : {
 				show : true,
@@ -121,7 +127,7 @@ Template.industryResult.onRendered(function(){
 				y : 'top',
 			},
 			tooltip : {
-				trigger : 'axis',
+				trigger : 'item',
 			},
 			// legend : {
 				// data : ['全国搜索结果', '全球搜索结果'],
