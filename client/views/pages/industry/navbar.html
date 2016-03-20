@@ -1,0 +1,25 @@
+<template name="industryNavbar">
+  <ul class="content-nav">
+    <li class="{{isActiveRoute regex='introduction'}}">
+      <a href="{{ pathFor route='industry.introduction' }}">Introdution</a>
+    </li>
+    <li class="{{isActiveRoute regex='result'}}">
+      <a href="{{ pathFor route='industry.result' }}">Result</a>
+    </li>
+    <li class="{{isActiveRoute regex='globe'}}">
+      <a href="{{ pathFor route='industry.globe' }}">Globe</a>
+    </li>
+    <li class="{{isActiveRoute regex='china'}}">
+      <a href="{{ pathFor route='industry.china' }}">China</a>
+    </li>
+    <li class="{{isActiveRoute regex='realtime'}}">
+      <a href="{{ pathFor route='industry.realtime' }}">Realtime</a>
+    </li>
+    <li class="{{isActiveRoute regex='attack'}}">
+      <a href="{{ pathFor route='industry.attack' }}">Attack</a>
+    </li>
+    <li class="{{isActiveRoute regex='monitor'}}">
+      <a href="{{ pathFor route='industry.monitor' }}">Montior</a>
+    </li>
+  </ul>
+</template>
