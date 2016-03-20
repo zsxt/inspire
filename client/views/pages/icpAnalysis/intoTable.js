@@ -26,10 +26,8 @@ Template.InfoTable.onRendered(function() {
     table.append(tbody)
     $('#' + domId).empty().append(table)
   }
-  console.log('asdf');
   this.autorun(function() {
     var r = BaxxGeoStat.find({context: ctx, region: 0}).fetch()
-    console.log(r);
     textInfo('infotable-' + ctx, {ta: '省市', tb: '数量'}, r)
   })
 })

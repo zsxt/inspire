@@ -86,7 +86,6 @@ Template.BaxxGeoBar.onRendered(function() {
       barOption.xAxis = [{type: 'value'}];
       barOption.yAxis = [{type: 'category', data: []}];
   }
-  console.log(barOption);
 
   this.autorun(function() {
     var region = Session.get(ctx + '-region')
