@@ -120,16 +120,22 @@ function baxxGeoStat(option) {
 Meteor.publish('baxx_geo_stat', baxxGeoStat)
 
 Meteor.publish('baxx_total', function() {
-  var domain = collections['ymlb'].aggregate([
-    {$group: {_id: null, value: {$sum: '$VALUE'}}}
-  ])[0].value;
-  var major = collections['zt'].aggregate([
-    {$group: {_id: null, value: {$sum: '$VALUE'}}}
-  ])[0].value;
-  var website = collections['wz'].aggregate([
-    {$group: {_id: null, value: {$sum: '$VALUE'}}}
-  ])[0].value;
-
-  this.added('baxx_total', 0, {domain: domain, major: major, website: website})
+  
+  var ret = {domain: 0, major: 0, website: 0};
+  
+  function sumValue(c) {
+    var result = collections[c].aggregate([
+      {$group: {_id: null, value: {$sum: '$VALUE'}}}
+    ]);
+    if (result && result[0]) {
+      return result[0].value;
+    }
+    return 0;
+  }
+  ret.domain = sumValue('ymlb');
+  ret.major = sumValue('zt');
+  ret.website = sumValue('wz');
+  
+  this.added('baxx_total', 0, ret)
   this.ready()
 })
