@@ -22,6 +22,7 @@ Template.BaxxGeoMap.onRendered(function() {
         x: 'left',
         y: 'bottom',
         text:['高','低'],           // 文本，默认为数值文本
+        color: ['orangered','yellow','lightskyblue'],
         calculable : true
     },
     series : [
