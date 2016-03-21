@@ -39,16 +39,156 @@ Template.SimpleChart.onRendered(function() {
     $('#' + domId).empty().append(table)
   }
 
+  var chartType = self.data.chartType;
+  var dom = document.getElementById('chart-' + chartType + '-' + id);
+  var chart = echarts.init(dom, {
+    loadingOption: {
+      text: 'spin',
+      effect: 'spin',
+      textStyle: {
+        fontSize: 36
+      }
+    },
+    noDataLoadingOption: {
+      effect: ''
+    }
+  });
+  var option = {};
+  switch (chartType) {
+    case "pie":
+      option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: "{b}: {c} ({d}%)"
+        },
+        legend: {
+            orient: 'vertical',
+            x: 'left',
+            data:[]
+        },
+        series: [
+            {
+                type:'pie',
+                radius: '60%',
+                avoidLabelOverlap: true,
+                label: {
+                    normal: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        show: true,
+                        textStyle: {
+                            fontSize: '30',
+                            fontWeight: 'bold'
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        show: false
+                    }
+                },
+                data:[]
+            }
+        ]
+      };
+      break;
+    case "pie2":
+      option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: "{b}: {c} ({d}%)"
+        },
+        legend: {
+            orient: 'vertical',
+            x: 'left',
+            data:[]
+        },
+        series: [
+            {
+                type:'pie',
+                radius: ['15%', '70%'],
+                avoidLabelOverlap: false,
+                label: {
+                    normal: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        show: true,
+                        textStyle: {
+                            fontSize: '30',
+                            fontWeight: 'bold'
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        show: false
+                    }
+                },
+                data:[]
+            }
+        ]
+      };
+      break;
+    case "pie3":
+      option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: "{b}: {c} ({d}%)"
+        },
+        legend: {
+            orient: 'vertical',
+            x: 'left',
+            data:[]
+        },
+        series: [
+            {
+                type:'pie',
+                radius: ['15%', '70%'],
+                avoidLabelOverlap: false,
+                roseType: 'area',
+                label: {
+                    normal: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        show: true,
+                        textStyle: {
+                            fontSize: '30',
+                            fontWeight: 'bold'
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        show: false
+                    }
+                },
+                data:[]
+            }
+        ]
+      };
+      break;
+  }
+  chart.setOption(option);
+
   this.autorun(function() {
     var r = self.result().fetch()
-    if (self.data.type === 'pie') {
-        pie2d('chart-pie-' + id, {category: 'id', value: 'value', yTitle: '数值'}, r);
-    } else if (self.data.type === 'column') {
-        column2d('chart-column-' + id, {category: 'id', value: 'value', yTitle: '数值'}, r);
-    }
+    r = r.slice(0, self.limit.get());
+    _.each(r, function(obj) {
+      obj['name'] = obj['id'];
+      delete obj['id'];
+    });
     
-    // textInfo('chart-column-' + id, {ta: 'A', tb: 'B'}, r)
-    // 
+    option.series[0].data = r;
+    var names = _.pluck(r, 'name');
+    option.legend.data = names;
+    chart.hideLoading()
+    chart.setOption(option, true);
   })
 
   $('.limit-' + id).val(this.limit.get())

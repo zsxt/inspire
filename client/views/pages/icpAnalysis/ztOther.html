@@ -1,10 +1,10 @@
 <template name="ZtOther">
     <div class="row">
         <div class="col-md-4">
-            {{> SimpleChart context='zt' attr='BBFS' type='pie' title='报备情况统计'}}
+            {{> SimpleChart context='zt' attr='BBFS' type='pie' title='报备情况统计' chartType='pie3'}}
         </div>
         <div class="col-md-4">
-            {{> SimpleChart context='zt' attr='LRYHLX' type='column' title='录入用户类型统计'}}
+            {{> SimpleChart context='zt' attr='LRYHLX' type='column' title='录入用户类型统计' chartType='pie2'}}
         </div>
         <div class="col-md-4">
             {{> InfoTable context='zt' box=true title='主体备案分省详细'}}
