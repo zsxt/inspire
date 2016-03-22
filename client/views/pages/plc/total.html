@@ -1,0 +1,26 @@
+<template name="plcTotal">
+  <div class="row">
+    {{> plcLabel title='PLC设备总量' value=ip label='Total'}}
+    {{> plcLabel title='设备种类' value=device label='Total'}}
+    {{> plcLabel title='分布最多地区' value=maxProvince label='Max'}}
+    {{> plcLabel title='数量最多设备' value=maxDevice label='Max'}}
+  </div>
+</template>
+
+<template name="plcLabel">
+  <div class="col-md-3">
+      <div class="ibox float-e-margins">
+          <div class="ibox-title">
+              {{#if equals label 'Total' }}
+                <span class="label label-info pull-right">Total</span>
+              {{else}}
+                <span class="label label-success pull-right">Max</span>
+              {{/if}}
+              <h5>{{title}}</h5>
+          </div>
+          <div class="ibox-content">
+              <h1 class="no-margins">{{value}}</h1>
+          </div>
+      </div>
+  </div>
+</template>

@@ -1,18 +1,40 @@
 <template name="icpAnalysis">
   <div class="wrapper wrapper-content">
-    {{> totalNum}}
-    
-    {{> Introduction text='主体备案情况说明'}}
-    {{> BaxxGeoContainer context='zt' title='主体备案全国分布'}}
-    {{> ZtOther}}
-    
-    {{> Introduction text='网站备案情况说明'}}
-    {{> BaxxGeoContainer context='wz' title='网站备案全国分布' table=true  direction='horizontal'}}
-    {{> WzOther }}
-    
-    {{> Introduction text='域名备案情况说明'}}
-    {{> BaxxGeoContainer context='ymlb' title='域名备案全国分布' table=true direction='horizontal'}}
-    {{> YmOther }}
-
+    <div class="row">
+      <div class="col-lg-12">
+        {{> totalNum}}
+      </div>
+    </div>
   </div>
+  
+    {{> Introduction text='主体备案情况统计'}}
+    <div class="wrapper wrapper-content">
+      <div class="row">
+        <div class="col-lg-12">
+          {{> BaxxGeoContainer context='zt' title='主体备案全国分布'}}
+          {{> ZtOther}}
+        </div>
+      </div>
+    </div>
+    
+    {{> Introduction text='网站备案情况统计'}}
+    <div class="wrapper wrapper-content">
+      <div class="row">
+        <div class="col-lg-12">
+          {{> BaxxGeoContainer context='wz' title='网站备案全国分布' table=true  direction='horizontal'}}
+          {{> WzOther }}
+        </div>
+      </div>
+    </div>
+    
+    {{> Introduction text='域名备案情况统计'}}
+    <div class="wrapper wrapper-content">
+      <div class="row">
+        <div class="col-lg-12">
+          {{> BaxxGeoContainer context='ymlb' title='域名备案全国分布' table=true direction='horizontal'}}
+          {{> YmOther }}
+        </div>
+      </div>
+    </div>
+
 </template>
