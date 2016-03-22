@@ -30,7 +30,7 @@ Template.plcTotal.helpers({
   }
 })
 
-Template.plcTotal.helpers({
+Template.plcLabel.helpers({
   equals: function(a, b) {
     return a == b;
   }
