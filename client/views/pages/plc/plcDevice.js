@@ -49,9 +49,10 @@ Template.plcDevice.onRendered(function() {
   
   this.autorun(function() {
     var data = PlcStat.find({attr: 'device'}).fetch()
-    // var cats = _.pluck(data, 'name');
-    // option.legend.data = cats;
-    option.series[0].data = data;
+    data.sort(function(a, b) {
+      return b - a;
+    });
+    option.series[0].data = data.slice(0, 5);
     chart.hideLoading();
     chart.setOption(option, true);
   })
