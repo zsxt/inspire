@@ -34,7 +34,7 @@ Template.basicProfile.onCreated(function() {
             //首先清空标记图层
             makersForBasicProfile.clearLayers();
 
-            var lat = 30, lng = 180, viewZoom = 2;
+            var lat = 30, lng = 160, viewZoom = 2;
             var subscription = instance.subscribe('findIPAddr', instance.searchIP.get());
             if (subscription.ready()) {
                 var ips = Inspire.Collection.IPAddr.find().fetch();
@@ -84,5 +84,5 @@ Template.basicProfile.rendered = function(){
     L.tileLayer.provider('OpenStreetMap.HOT').addTo(map);
     map.addLayer(makersForBasicProfile);
     this.map.set(map);
-    map.setView([30, 180], 2);
+    map.setView([30, 160], 2);
 };
