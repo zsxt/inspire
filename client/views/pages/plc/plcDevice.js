@@ -9,13 +9,13 @@ Template.plcDevice.onRendered(function() {
   var chart = echarts.init(document.getElementById('device'))
   var option = {
     tooltip: {
-        show: false,
+        show: true,
         trigger: 'item',
         formatter: "{b}: {c} ({d}%)"
     },
     legend: {
-        show: false,
-        orient: 'vertical',
+        show: true,
+        orient: 'horizontal',
         x: 'left',
         data:[]
     },
