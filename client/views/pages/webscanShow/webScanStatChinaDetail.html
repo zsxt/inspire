@@ -1,8 +1,8 @@
 <template name="webScanStatChinaDetail">
-    <div class="col-lg-3">
+    <div class="col-lg-6">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>中国分布详情</h5>
+                <h5>中国扫描详情</h5>
                 {{>iboxTools}}
             </div>
             <div class="ibox-content">
@@ -10,6 +10,7 @@
                     <table class="table table-hover no-margins">
                         <thead>
                         <tr>
+                            <th>#</th>
                             <th>地区</th>
                             <th>总量</th>
                         </tr>
@@ -17,6 +18,7 @@
                         <tbody>
                         {{#each webScanChinaDetail}}
                             <tr>
+                                <td>{{@index}}</td>
                                 <td><small>{{label}}</small></td>
                                 <td class="text-navy">{{value}}</td>
                             </tr>

@@ -14,8 +14,8 @@ Template.plcDevice.onRendered(function() {
         formatter: "{b}: {c} ({d}%)"
     },
     legend: {
-        show: true,
-        orient: 'horizontal',
+        show: false,
+        orient: 'vertical',
         x: 'left',
         data:[]
     },
@@ -24,22 +24,10 @@ Template.plcDevice.onRendered(function() {
             type:'pie',
             radius: ['35%', '70%'],
             avoidLabelOverlap: false,
-            label: {
+            itemStyle: {
                 normal: {
-                    show: false,
-                    position: 'center'
-                },
-                emphasis: {
-                    show: true,
-                    textStyle: {
-                        fontSize: '30',
-                        fontWeight: 'bold'
-                    }
-                }
-            },
-            labelLine: {
-                normal: {
-                    show: false
+                  label: {show:false}, 
+                  labelLine: {show:false}
                 }
             },
             data:[]

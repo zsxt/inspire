@@ -52,12 +52,9 @@ Template.plcProvince.onRendered(function() {
     data.sort(function(a, b) {
       return b.value - a.value;
     });
-    console.log(data);
     data = data.slice(0, 10).reverse();
-    console.log(data);
     option.yAxis[0].data = _.pluck(data, 'name');
     option.series[0].data = _.pluck(data, 'value');
-    console.log(option);
     chart.hideLoading();
     chart.setOption(option, true);
   })

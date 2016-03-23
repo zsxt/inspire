@@ -1,11 +1,13 @@
 <template name="InfoTable">
     {{#if box }}
+      <div class="ibox">
         <div class="ibox-title">
             <h5>{{title}}</h5>
         </div>
         <div class="ibox-content" style="overflow-y:scroll">
-            <div id="infotable-{{context}}" class="chart"></div>
+            <div id="infotable-{{context}}" class="chart-short"></div>
         </div>
+      </div>
     {{else}}
         <div id="infotable-{{context}}" class="chart"></div>
     {{/if}}

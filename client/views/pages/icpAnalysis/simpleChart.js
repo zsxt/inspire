@@ -71,22 +71,10 @@ Template.SimpleChart.onRendered(function() {
                 type:'pie',
                 radius: '60%',
                 avoidLabelOverlap: true,
-                label: {
+                itemStyle: {
                     normal: {
-                        show: false,
-                        position: 'center'
-                    },
-                    emphasis: {
-                        show: true,
-                        textStyle: {
-                            fontSize: '30',
-                            fontWeight: 'bold'
-                        }
-                    }
-                },
-                labelLine: {
-                    normal: {
-                        show: false
+                      label: {show:false}, 
+                      labelLine: {show:false}
                     }
                 },
                 data:[]
@@ -110,22 +98,10 @@ Template.SimpleChart.onRendered(function() {
                 type:'pie',
                 radius: ['15%', '70%'],
                 avoidLabelOverlap: false,
-                label: {
+                itemStyle: {
                     normal: {
-                        show: false,
-                        position: 'center'
-                    },
-                    emphasis: {
-                        show: true,
-                        textStyle: {
-                            fontSize: '30',
-                            fontWeight: 'bold'
-                        }
-                    }
-                },
-                labelLine: {
-                    normal: {
-                        show: false
+                      label: {show:false}, 
+                      labelLine: {show:false}
                     }
                 },
                 data:[]
@@ -150,22 +126,10 @@ Template.SimpleChart.onRendered(function() {
                 radius: ['15%', '70%'],
                 avoidLabelOverlap: false,
                 roseType: 'area',
-                label: {
+                itemStyle: {
                     normal: {
-                        show: false,
-                        position: 'center'
-                    },
-                    emphasis: {
-                        show: true,
-                        textStyle: {
-                            fontSize: '30',
-                            fontWeight: 'bold'
-                        }
-                    }
-                },
-                labelLine: {
-                    normal: {
-                        show: false
+                      label: {show:false}, 
+                      labelLine: {show:false}
                     }
                 },
                 data:[]
