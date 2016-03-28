@@ -3,3 +3,17 @@
   height	: 300px;
   font-size	: 11px;
 }
+
+.chart-container {
+  width: 100%;
+}
+
+.h400 {
+  width: 100%;
+  height: 400px;
+}
+
+.h300 {
+  width: 100%;
+  height: 300px;
+}

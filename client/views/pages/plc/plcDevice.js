@@ -14,7 +14,7 @@ Template.plcDevice.onRendered(function() {
         formatter: "{b}: {c} ({d}%)"
     },
     legend: {
-        show: false,
+        show: true,
         orient: 'vertical',
         x: 'left',
         data:[]
@@ -40,7 +40,9 @@ Template.plcDevice.onRendered(function() {
     data.sort(function(a, b) {
       return b - a;
     });
-    option.series[0].data = data.slice(0, 5);
+    data = data.slice(0, 5);
+    option.series[0].data = data;
+    option.legend.data = _.pluck(data, 'name');
     chart.hideLoading();
     chart.setOption(option, true);
   })

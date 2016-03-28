@@ -3,7 +3,7 @@
     {{> plcLabel title='PLC设备总量' value=ip label='Total'}}
     {{> plcLabel title='设备种类' value=device label='Total'}}
     {{> plcLabel title='分布最多地区' value=maxProvince label='Max'}}
-    {{> plcLabel title='数量最多设备' value=maxDevice label='Max'}}
+    {{> plcLabel title='数量最多设备' value=maxDevice label='Max' useP=true}}
   </div>
 </template>
 
@@ -19,7 +19,11 @@
               <h5>{{title}}</h5>
           </div>
           <div class="ibox-content">
+            {{#if useP }}
+              <p class="no-margins">{{value}}</p>
+            {{else}}
               <h1 class="no-margins">{{value}}</h1>
+            {{/if}}
           </div>
       </div>
   </div>
