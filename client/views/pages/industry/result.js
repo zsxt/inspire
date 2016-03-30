@@ -1,9 +1,9 @@
-Template.industryResult.onCreated(function(){
+/*Template.industryResult.onCreated(function(){
 	var instance = Template.instance()
 	instance.autorun(function(){
 		var subscription = instance.subscribe('industry_control_brand');
 	})
-})
+})*/
 Template.industryResult.onRendered(function(){
 	var dom = document.getElementById('compBar');
 	var bar = echarts.init(dom);
@@ -12,7 +12,7 @@ Template.industryResult.onRendered(function(){
 		myBar.setOption({
 			title : {
 				text : '安防监控品牌Top 10',
-				x : 'center',
+				x : 'left',
 				y : 'top',
 			},
 			tooltip : {
@@ -99,23 +99,6 @@ Template.industryResult.onRendered(function(){
 							}
 						}
 					},
-					/* markPoint : {
-					data : [{
-					type : 'max',
-					name : '最大值'
-					}, {
-					type : 'min',
-					name : '最小值'
-					}
-					]
-					}, */
-					/* markLine : {
-					data : [{
-					type : 'average',
-					name : '平均值'
-					}
-					]
-					} */
 				}
 			]
 		});
@@ -123,7 +106,7 @@ Template.industryResult.onRendered(function(){
 		var option ={
 			title : {
 				text : '系统对比',
-				x : 'center',
+				x : 'left',
 				y : 'top',
 			},
 			tooltip : {
@@ -173,7 +156,7 @@ Template.industryResult.onRendered(function(){
 						interval : 0,
 					},
 					axisLabel : {
-						show : true,
+						show : false,
 						interval : 0,
 						textStyle : {
 							fontSize:'20px',
