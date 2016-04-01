@@ -38,7 +38,6 @@ cfs:gridfs
 cfs:ui
 aldeed:autoform
 yogiben:autoform-file
-standard-minifiers
 meteor-base
 mobile-experience
 blaze-html-templates
@@ -49,3 +48,5 @@ random
 ejson
 spacebars
 check
+standard-minifier-css
+standard-minifier-js
