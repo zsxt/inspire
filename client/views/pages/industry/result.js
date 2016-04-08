@@ -11,7 +11,7 @@ Template.industryResult.onRendered(function(){
 		/*加载对象数据  first*/
 		myBar.setOption({
 			title : {
-				text : '安防监控品牌Top 10',
+				text : '',
 				x : 'left',
 				y : 'top',
 			},
@@ -105,7 +105,7 @@ Template.industryResult.onRendered(function(){
 		//second
 		var option ={
 			title : {
-				text : '系统对比',
+				text : '',
 				x : 'left',
 				y : 'top',
 			},
