@@ -579,7 +579,7 @@ Template.industryMonitor.onRendered(function(){
 			backgroundColor : 'rgba(233, 233, 233, 0.8)',
 			color : ['red', ' 	#CD0000', '#B23AEE'],
 			title : {
-				text : '全国监测预警机制',
+				text : '',
 				x : 'center',
 				y : 'top'
 			},
