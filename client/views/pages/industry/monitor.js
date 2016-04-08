@@ -581,7 +581,7 @@ Template.industryMonitor.onRendered(function(){
 			title : {
 				text : '全国监测预警机制',
 				x : 'center',
-				y : 'bottom'
+				y : 'top'
 			},
 			tooltip : {
 				trigger : 'item',
