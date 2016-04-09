@@ -576,7 +576,7 @@ Template.industryMonitor.onRendered(function(){
 		];
 
 	var attack_option = {
-			backgroundColor : 'rgba(233, 233, 233, 0.8)',
+			// backgroundColor : 'rgba(233, 233, 233, 0.8)',
 			color : ['red', ' 	#CD0000', '#B23AEE'],
 			title : {
 				text : '',
