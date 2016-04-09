@@ -119,17 +119,17 @@ Template.industryChina.onRendered(function() {
 		title : {
 			text : '全国大规模搜索呈现',
 			x : 'center',
-			y : 'bottom'
+			y : 'top'
 		},
 		tooltip : {
 			trigger : 'item',
 			formatter : '{b}:{c}'
 		},
-		legend : {
+		/*legend : {
 			orient : 'vertical',
 			x : 'left',
 			data : ['全国搜索结果']
-		},
+		},*/
 		dataRange : {
 			x : 'left',
 			y : 'bottom',
