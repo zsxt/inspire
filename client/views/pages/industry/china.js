@@ -117,7 +117,7 @@ Template.industryChina.onRendered(function() {
 		//backgroundColor:'rgba(232, 232, 232, 1)',
 		color:['#da70d6','#cd5c5c'],
 		title : {
-			text : '全国大规模搜索呈现',
+			text : '',
 			x : 'center',
 			y : 'top'
 		},

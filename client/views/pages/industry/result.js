@@ -144,7 +144,7 @@ Template.industryResult.onRendered(function(){
 			grid : {
 				x : 5,
 				x2 : 5,
-				y2 : 33,
+				y2 : 20,
 			},
 			xAxis : [{
 					type : 'category',
