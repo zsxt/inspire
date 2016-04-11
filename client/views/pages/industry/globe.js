@@ -734,7 +734,7 @@ Template.industryGlobe.onRendered(function(){
 			title : {
 				text : '全球大规模搜索呈现',
 				x : 'center',
-				y : 'bottom',	
+				y : 'top',	
 			},
 			toolbox : {
 				show : true,
