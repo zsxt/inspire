@@ -732,7 +732,7 @@ Template.industryGlobe.onRendered(function(){
 				} 
 			},
 			title : {
-				text : '全球大规模搜索呈现',
+				text : '',
 				x : 'center',
 				y : 'top',	
 			},
