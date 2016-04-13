@@ -16,6 +16,7 @@
 	margin-left:5px;
 	margin-top:5px;
 	border:1px #CCC solid;
+  background-color: white;
 }
 #attack_img {
 	width: 570px;
@@ -24,7 +25,9 @@
 	margin-left:15px;
 	margin-top:5px;
 	text-align:center;
-	border:solid 1px #CCC
+	border:solid 1px #CCC;
+  background-color: white;
+
 }
 #load_text{
 	width:570px;
@@ -32,6 +35,8 @@
 	border:solid 1px #CCC;
 	margin-left:15px;
 	float:left;
+  background-color: white;
+
 }
 .list li{list-style-type:none;
            display:inline;

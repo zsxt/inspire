@@ -43,7 +43,7 @@ Template.industryResult.onRendered(function(){
 			grid : {
 				x : 5,
 				x2 : 5,
-				y2 : 20,
+				y2 : 65,
 			},
 			xAxis : [{
 					type : 'category',
@@ -55,11 +55,11 @@ Template.industryResult.onRendered(function(){
 						interval : 0,
 					},
 					axisLabel : {
-						show : false,
+						show : true,
 						interval : 0,
 						rotate : -60,
 						textStyle : {
-							fontWeight : 'bold',
+							fontWeight : 'lighter',
 							color : function (params) {
 								var colorList = [
 									'#C1232B', '#B5C334', '#FCCE10', '#E87C25', '#27727B',
@@ -144,7 +144,7 @@ Template.industryResult.onRendered(function(){
 			grid : {
 				x : 5,
 				x2 : 5,
-				y2 : 33,
+				y2 : 65,
 			},
 			xAxis : [{
 					type : 'category',
@@ -156,7 +156,7 @@ Template.industryResult.onRendered(function(){
 						interval : 0,
 					},
 					axisLabel : {
-						show : false,
+						show : true,
 						interval : 0,
 						textStyle : {
 							fontSize:'20px',
