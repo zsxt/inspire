@@ -72,6 +72,12 @@ Template.basicProfile.onCreated(function() {
         num = num >>> 0;
         return num;
     };
+    
+    if (Session.get('clientIp') === undefined) {
+        Meteor.call('clientIp', function(error, res) {
+            Session.set('clientIp', res);
+        });
+    }
 });
 
 Template.basicProfile.rendered = function(){
@@ -85,4 +91,14 @@ Template.basicProfile.rendered = function(){
     map.addLayer(makersForBasicProfile);
     this.map.set(map);
     map.setView([30, 160], 2);
+    
+    var instance = Template.instance();
+    instance.autorun(function() {
+        if (Session.get('clientIp') !== undefined) {
+            instance.find('input[id=searchIP]').value = Session.get('clientIp');
+            $('input[id=searchIP]').change();
+        }
+    });
+    
+    
 };
