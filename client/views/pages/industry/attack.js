@@ -1,5 +1,10 @@
 Template.industryAttack.onRendered(function(){
 
+var currentIp = location.hash;
+if (currentIp) {
+	$('input[name="ip"]').val(currentIp.substring(1));
+}
+
 //attack-right for the 3D
 var Kort = (function(){
 
