@@ -3,34 +3,35 @@ Template.register.events
     'submit form': function(e)
     {
         var username, password;
-        var role, name, avatar;
+        var name, avatar;
         e.preventDefault();
         username = $('input[name="username"]').val();
         password = $('input[name="password"]').val();
         
+        var roles = new Array();        
         var radioRole = $('input[name="roleOptions"]:checked').prop("id");
         switch (radioRole)
         {
             case "radioAdmin":
-                role = "admin";
+                roles[0] = "admin";
                 name = "超级用户";
                 avatar = "img/profile_small_admin.jpg";           
                 break;
             
             case "radioAnalyst":
-                role = "analyst";
+                roles[0] = "analyst";
                 name = "李逍遥";
                 avatar = "img/profile_small_lxy.jpg";
                 break;
                 
             case "radioGuest":
-                role = "guest";
+                roles[0] = "guest";
                 name = "游客";
                 avatar = "img/profile_small.jpg";
                 break;
                 
             default:
-                role = "normal";
+                roles[0] = "normal";
                 name = "一般用户";
                 avatar = "img/profile_small.jpg";            
         }
@@ -43,7 +44,8 @@ Template.register.events
                 profile : 
                 {
                     name : name,
-                    avatar : avatar
+                    avatar : avatar,
+                    roles : roles
                 }
             }, 
             function (error)
