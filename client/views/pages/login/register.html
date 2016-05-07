@@ -6,23 +6,29 @@
 
         <form class="m-t" role="form" action="#">
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="姓名" required="">
+                <input name="username" type="text" class="form-control" placeholder="用户名" required="">
             </div>
             <div class="form-group">
-                <input type="tel" class="form-control" placeholder="电话" required="">
+                <input name="password" type="password" class="form-control" placeholder="密码" required="">
             </div>
-            <div class="form-group">
-                <input type="password" class="form-control" placeholder="密码" required="">
+            
+            <div class="form-group" data-toggle="buttons">
+                <label class="btn btn-outline btn-default">
+                    <input type="radio" name="roleOptions" id="radioAdmin" autocomplete="off">系统管理
+                </label>
+                <label class="btn btn-outline btn-primary">
+                    <input type="radio" name="roleOptions" id="radioAnalyst" autocomplete="off">数据分析
+                </label>
+                <label class="btn btn-outline btn-danger active">
+                    <input type="radio" name="roleOptions" id="radioNormal" autocomplete="off" checked>一般用户
+                </label>
+                <label class="btn btn-outline btn-warning">
+                    <input type="radio" name="roleOptions" id="radioGuest" autocomplete="off">临时访客
+                </label>
             </div>
-            <div class="form-group">
-                <p>
-                    <button type="button" class="btn btn-outline btn-default">系统管理</button>
-                    <button type="button" class="btn btn-outline btn-primary">数据分析</button>
-                    <button type="button" class="btn btn-outline btn-danger">一般用户</button>
-                    <button type="button" class="btn btn-outline btn-warning">临时访客</button>
-                </p>
-            </div>
-
+            
+            <div class="" id="registerTip"></div>
+            
             <button type="submit" class="btn btn-primary block full-width m-b">注册</button>
 
             <p class="text-muted-reg text-center">
