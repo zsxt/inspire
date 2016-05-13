@@ -1,5 +1,5 @@
 var fs = Npm.require('fs');
-var base = '/home/ever/workspace/HikvisionPocCert/'
+var base = '/var/storage/ictrl/';
 Meteor.methods({
   traverse: function(ip, last) {
     var r = fs.readdirSync(base + ip);
