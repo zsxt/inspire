@@ -152,39 +152,38 @@ Template.industryAttack.onRendered(function() {
     index = 0;
   }
   
-  function callImages(ip, refresh) {
-    clear()
-    if (refresh || !Session['image']) {
-      Meteor.call('traverse', ip, function(error, result) {
-        if (error) {
-          return;
-        }
-        Session['image'] = result;
-          console.log(result);
-          interval = setInterval(function() {
-            if (index != Session['image'].length) {
-              $('#load_img').attr('src', '/industry/attackimg/' + ip + '/' + Session['image'][index]);
-              index++;
-              if (index == Session['iamge'].length - 1) {
-                callImages(ip);
-              }
-            }
-          }, 1000);
-      });
-    } else {
-      var length = Session['image'].length;
-      Meteor.call('traverse', ip, Session['image'][length - 1], function(error, result) {
-        if (error) {
-          return;
-        }
+  function fetchImages(ip) {
+    var last = null;
+    if (Session['image'].length > 0) {
+      last = Session['image'][Session['image'].length - 1];
+    }
+    Meteor.call('traverse', ip, last, function(error, result) {
+      if (error) {
+        
+      } else {
         result.forEach(function(r) {
           Session['image'].push(r);
-        })
-      })
-    }
+        });
+      }
+    });
+  }
+  
+  function start(ip) {
+    Session['image'] = [];
+    clear();
+    interval = setInterval(function() {
+      if (index == Session['image'].length || Session['image'].length == 0) {
+        fetchImages(ip);
+      }
+      if (index < Session['image'].length) {
+        $('#load_img').attr('src', '/industry/attackimg/' + ip + '/' + Session['image'][index]);
+        index++;
+      }
+    }, 1000);
   }
   
   startBtn.click(function(e) {
+    console.log('click start');
     clear()
     if (resultArea[0].scrollHeigth > 1000) {
       resultArea.val('............');
@@ -194,7 +193,7 @@ Template.industryAttack.onRendered(function() {
     resultArea.scrollTop(resultArea[0].scrollHeight);
     
     var ip = $('input[name="ip"]').val();
-    callImages(ip);
+    start(ip);
   });
   stopBtn.click(function(e) {
     clear();
