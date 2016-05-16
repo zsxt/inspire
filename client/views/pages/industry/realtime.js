@@ -18,7 +18,7 @@ Template.industryRealtime.onRendered(function(){
 });
 
 Template.industryRealtime.events({
-  'mouseover .content-nav>li'(event) {
+  'click .content-nav>li'(event) {
     const target = event.target;
     var id = $(target).data('id');
     var imgs = $('.my-thumb');
