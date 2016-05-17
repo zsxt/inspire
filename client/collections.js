@@ -10,7 +10,8 @@ Inspire.Collection.WebScanStatChinaStat = new Mongo.Collection('webscan_statchin
 
 IndustryControlChina = new  Mongo.Collection('industry_control_china')
 IndustryControlGlobe = new  Mongo.Collection('industry_control_globe')
-IndustryControlBrand = new  Mongo.Collection('industry_control_brand')
+//IndustryControlBrand = new  Mongo.Collection('industry_control_brand')
+//HotScatter = new Mongo.Collection('heatdata');
 
 PlcTotal = new Mongo.Collection('plcTotal');
 PlcStat = new Mongo.Collection('plcStat');
