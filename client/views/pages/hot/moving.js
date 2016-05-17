@@ -29,7 +29,7 @@ Template.hotMoving.onRendered(function()
         var geoCoord = function (toponym)
         {
             var coord = Inspire.Collection.ToponymGeoCoord.findOne
-                     ({'toponym' : toponym}, {'latitude' : 1, 'longitude' : 1});
+                     ({'toponym' : toponym}, {'longitude' : 1, 'latitude' : 1});
                      
             return [coord.longitude, coord.latitude];
         };
