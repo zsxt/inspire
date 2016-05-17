@@ -31,7 +31,7 @@ Template.hotMoving.onRendered(function()
             var coord = Inspire.Collection.ToponymGeoCoord.findOne
                      ({'toponym' : toponym}, {'latitude' : 1, 'longitude' : 1});
                      
-            return [coord.latitude, coord.longitude];
+            return [coord.longitude, coord.latitude];
         };
 
         var convertToCoords = function (records) 
