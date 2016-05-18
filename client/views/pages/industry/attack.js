@@ -193,7 +193,7 @@ Template.industryAttack.onRendered(function() {
       if (index < Session['image'].length) {
         var d = new Date() - 240000;
         var fname = new Date(d).format('yyyy-MM-dd HH_mm_ss');
-        fname = current + '.jpg';
+        fname = fname + '.jpg';
         if (fname >= Session['image'][index]) {
           if (index + 1 == Session['image'].length || fname < Session['image'][index + 1]) {
             $('#load_img').attr('src', '/industry/attackimg/' + ip + '/' + Session['image'][index]);
