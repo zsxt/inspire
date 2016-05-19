@@ -192,7 +192,7 @@ Template.industryAttack.onRendered(function() {
       }
       if (index < Session['image'].length) {
         var d = new Date() - 240000;
-        var fname = new Date(d).format('yyyy-MM-dd HH_mm_ss');
+        var fname = new Date(d).format('yyyy-MM-dd hh_mm_ss');
         fname = fname + '.jpg';
         if (fname >= Session['image'][index]) {
           if (index + 1 == Session['image'].length || fname < Session['image'][index + 1]) {
@@ -213,13 +213,14 @@ Template.industryAttack.onRendered(function() {
       resultArea.val('............');
     }
     resultArea.scrollTop(resultArea[0].scrollHeight);
-    resultArea.val('Start!');
+    resultArea.val('开始攻击');
     resultArea.scrollTop(resultArea[0].scrollHeight);
     
     var ip = $('input[name="ip"]').val();
     start(ip);
   });
   stopBtn.click(function(e) {
+    resultArea.val('停止攻击');
     clear();
   });
 });
