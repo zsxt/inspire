@@ -190,18 +190,28 @@ Template.industryAttack.onRendered(function() {
       if (index == Session['image'].length || Session['image'].length == 0) {
         fetchImages(ip);
       }
+<<<<<<< HEAD
       if (index < Session['image'].length) {
         var d = new Date() - 240000;
         var fname = new Date(d).format('yyyy-MM-dd hh_mm_ss');
+=======
+      while (index < Session['image'].length) {
+        var d = new Date() - 60000;
+        var fname = new Date(d).format('yyyy-MM-dd hh_mm_ss');
+	console.log(fname);
+>>>>>>> 60c574f0fa6b5a7a749cf44bb00762411c227d90
         fname = fname + '.jpg';
         if (fname >= Session['image'][index]) {
           if (index + 1 == Session['image'].length || fname < Session['image'][index + 1]) {
             $('#load_img').attr('src', '/industry/attackimg/' + ip + '/' + Session['image'][index]);
             index++;
+	    break;
           } else {
             index++;
           }
-        }
+        } else {
+	  break;
+	}
       }
     }, 1000);
   }
