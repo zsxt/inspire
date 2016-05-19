@@ -34,12 +34,6 @@ Template.industryRealtime.events({
     if (ip.indexOf('(') > 0) {
       ip = ip.substring(0, ip.indexOf('('));
     }
-    
-    var imgs = $('.my-thumb');
-    for (var i = 0; i < imgs.length; i++) {
-      $('.load_img').attr('src','/industry/att/attack/thumb' + Session['monitor'][0][i] + '.jpg');
-    }
-    
     Router.go('industry.attack', {}, {hash: ip});
   }
 })
