@@ -40,3 +40,9 @@ Meteor.publish('industry_control_brand',function(){
   })
   this.ready()
 })
+
+Meteor.publish('heatdata',function(){
+  var pipe_hot = [
+  ];
+  
+})
