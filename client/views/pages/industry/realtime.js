@@ -19,8 +19,9 @@ Template.industryRealtime.onRendered(function(){
 
 Template.industryRealtime.events({
   'click .content-nav>li'(event) {
-    
     const target = event.target;
+    $('.content-nav>li').removeClass('active');
+    $(target).addClass('active');
     var id = $(target).data('id');
     var imgs = $('.my-thumb');
     for (var i = 0; i < imgs.length; ++i) {
