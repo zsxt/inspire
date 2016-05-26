@@ -34,6 +34,7 @@ Template.industryRealtime.events({
     if (ip.indexOf('(') > 0) {
       ip = ip.substring(0, ip.indexOf('('));
     }
+
     Router.go('industry.attack', {}, {hash: ip});
   }
 })

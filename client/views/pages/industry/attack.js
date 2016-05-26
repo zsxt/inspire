@@ -220,16 +220,16 @@ Template.industryAttack.onRendered(function () {
       resultArea.val('............');
     }
     resultArea.scrollTop(resultArea[0].scrollHeight);
-    resultArea.val('开始攻击');
+    resultArea.val('开始攻击\n正在执行漏洞攻击......');
     resultArea.scrollTop(resultArea[0].scrollHeight);
-    resultArea.append("\n正在执行漏洞攻击......");
+    //resultArea.val("\n正在执行漏洞攻击......");
     //console.log(resultArea.value);
     var ip = $('input[name="ip"]').val();
     start(ip);
   });
   stopBtn.click(function (e) {
-    resultArea.val('停止攻击');
-    resultArea.append('\n over');
+    resultArea.val('停止攻击\n结束......');
+    //resultArea.val('\n over');
     clear();
   });
 });
