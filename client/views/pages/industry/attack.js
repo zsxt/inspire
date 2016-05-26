@@ -221,12 +221,9 @@ Template.industryAttack.onRendered(function () {
     }
     resultArea.scrollTop(resultArea[0].scrollHeight);
     resultArea.val('开始攻击');
-    resultArea.append("\n攻击成功");
     resultArea.scrollTop(resultArea[0].scrollHeight);
-    resultArea.append("\n正在获取视频画面......");
-    resultArea.scrollTop(resultArea[0].scrollHeight);
-    resultArea.append("\n获取成功");
-
+    resultArea.append("\n正在执行漏洞攻击......");
+    //console.log(resultArea.value);
     var ip = $('input[name="ip"]').val();
     start(ip);
   });
