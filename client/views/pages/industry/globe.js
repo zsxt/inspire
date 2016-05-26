@@ -832,14 +832,17 @@ Template.industryGlobe.onRendered(function(){
 			]
 		};
 this.autorun(function(){
-	var resultGlobe = IndustryControlGlobe.find({});
+	/*var resultGlobe = IndustryControlGlobe.find({});
 	var dataGlobe = resultGlobe.fetch();
 	//console.log(dataGlobe);
 	var countrys = _.pluck(dataGlobe,'country');
 	globeData = _.reject(globeData,function(d){
 		return  _.contains(countrys,d.name);
 	})
-	globeData = _.union(globeData,dataGlobe);
+	globeData = _.union(globeData,dataGlobe);*/
+	for(var i = 0; i < globeData.length; ++i){
+		globeData[i].value = parseInt(Math.random()*1000 + 1);
+	}
 	globeOption.series[0].data = globeData;
 	globeOption.series[0].nameMap = nameMap;
 
