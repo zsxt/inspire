@@ -46,20 +46,20 @@
                 </li>
                 
                 <li class="{{isActiveRoute regex='industry'}}">
-                    <a href="#"><i class="fa fa-image"></i> <span class="nav-label">工业控制</span> <span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-image"></i> <span class="nav-label">安防设备态势感知</span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level {{isActiveRoute regex='industry' className='in'}}">
                        <li class="{{isActiveRoute regex='introduction'}}">
                         <a href="{{pathFor route='industry.introduction'}}"><i class="fa fa-industry"></i> <span class="nav-label">系统介绍</span></a>  
                       </li>
 
+                      <li class="{{isActiveRoute regex='result'}}">
+                        <a href="{{pathFor route='industry.result'}}"><i class="fa fa-bar-chart"></i> <span class="nav-label">结果统计</span> </a>  
+                      </li>
                       <li class="{{isActiveRoute regex='globe'}}">
                         <a href="{{pathFor route='industry.globe'}}"><i class="fa fa-globe"></i> <span class="nav-label">全球态势</span> </a>
                       </li>
                       <li class="{{isActiveRoute regex='china'}}">
                         <a href="{{pathFor route='industry.china'}}"><i class="fa fa-map"></i> <span class="nav-label">全国态势</span> </a>
-                      </li>
-                      <li class="{{isActiveRoute regex='result'}}">
-                        <a href="{{pathFor route='industry.result'}}"><i class="fa fa-bar-chart"></i> <span class="nav-label">结果统计</span> </a>  
                       </li>
                       <li class="{{isActiveRoute regex='realtime'}}">
                         <a href="{{pathFor route='industry.realtime'}}"><i class="fa fa-photo"></i> <span class="nav-label">实时画面</span> </a> 

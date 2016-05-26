@@ -9,3 +9,4 @@
 #packages/npm-container/*
 lib/*.js.cached
 lib/*.js.map
+public/industry/attack
