@@ -4,12 +4,14 @@ Meteor.methods({
   traverse: function(ip, last) {
     var r = fs.readdirSync(base + ip);
     if (last) {
-      return r.filter(function(f) {
+      r = r.filter(function(f) {
         return f > last;
       });
-    } else {
-      return r;
-    }    
+    }
+    r = r.filter(function(f) {
+        return f.indexOf('bak') == -1;
+    });
+    return r;
   },
   ipImage: function(ip, name) {
     console.log(ip, name, 'hello');

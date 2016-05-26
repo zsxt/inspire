@@ -138,17 +138,18 @@ Template.industryAttack.onRendered(function () {
 
   })();
 
-  var interval;
+  //var window.interval;
   var index = 0;
   var resultArea = $('textarea[name="result"]');
   var startBtn = $('input[name="start"]');
   var stopBtn = $('input[name="stop"]');
 
   function clear() {
-    if (interval) {
-      clearInterval(interval);
-      inerval = null;
-    }
+    if (window.interval) {
+      console.log('clear', window.interval);
+      clearInterval(window.interval);
+      window.interval = null;
+    } else console.log('clear', 'asdfsdf');
     index = 0;
   }
 
@@ -186,7 +187,9 @@ Template.industryAttack.onRendered(function () {
   function start(ip) {
     Session['image'] = [];
     clear();
-    interval = setInterval(function () {
+    console.log(Session['image']);
+    window.interval = setInterval(function () {
+      console.log('in window.interval', index, Session['image'].length, ip);
       if (index == Session['image'].length || Session['image'].length == 0) {
         fetchImages(ip);
       }
@@ -208,11 +211,11 @@ Template.industryAttack.onRendered(function () {
         }
       }
     }, 1000);
+    console.log('window.interval = ', window.interval);
   }
 
   startBtn.click(function (e) {
     console.log('click start');
-    clear()
     if (resultArea[0].scrollHeigth > 1000) {
       resultArea.val('............');
     }
