@@ -1,4 +1,5 @@
 Template.industryAttack.onRendered(function () {
+  clear();
   var currentIp = location.hash;
   if (currentIp) {
     $('input[name="ip"]').val(currentIp.substring(1));
