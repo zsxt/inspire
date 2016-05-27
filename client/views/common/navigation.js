@@ -26,7 +26,11 @@ Template.navigation.helpers({
 
     userRole: function() {
         if (Meteor.userId() && Meteor.user()){
-            var roles =  Meteor.user().roles;
+            if(!Meteor.user().roles || !Meteor.user().roles[0]){
+		return;
+	    }
+
+	    var roles =  Meteor.user().roles;
             if(roles[0] == 'admin'){
                 return '系统管理员'
             }
@@ -52,6 +56,10 @@ Template.navigation.helpers({
 
     isAdmin: function() {
         if (Meteor.userId() && Meteor.user()){
+	    if(!Meteor.user().roles || !Meteor.user().roles[0]){
+                return false;
+            }
+
             return Meteor.user().roles[0] == 'admin'
         }
         else{

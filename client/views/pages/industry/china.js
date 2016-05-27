@@ -115,7 +115,7 @@ Template.industryChina.onRendered(function() {
 
   var mapOption = {
 		//backgroundColor:'rgba(232, 232, 232, 1)',
-		color:['#da70d6','#cd5c5c'],
+		//color:['#da70d6','#cd5c5c'],
 		title : {
 			text : '',
 			x : 'center',
@@ -133,6 +133,7 @@ Template.industryChina.onRendered(function() {
 		dataRange : {
 			x : 'left',
 			y : 'bottom',
+			color: ['orangered','yellow','lightskyblue'],
 			splitList : [{
 					start : 15001,
 					//color:'red'
@@ -244,16 +245,17 @@ Template.industryChina.onRendered(function() {
       }
     }
 
-    var size = m / 6;
+    var segCount = 10;
+    var size = m / segCount;
     var segs = [];
-    for (var j = 1; j < 6; ++j) {
-      segs[6 - j] = {
+    for (var j = 1; j < segCount; ++j) {
+      segs[segCount - j] = {
         start: size * j,
         end: size * (j + 1) - 1
       }
     }
-    segs[6] = {end: size};
-    segs[0] = {start: size * 6 - 1};
+    segs[segCount] = {end: size};
+    segs[0] = {start: size * segCount - 1};
     mapOption.dataRange.splitList = segs;
 
     map.setOption(mapOption);
