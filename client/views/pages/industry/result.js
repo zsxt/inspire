@@ -5,6 +5,25 @@
 	})
 })*/
 Template.industryResult.onRendered(function(){
+	function GetRandomNum(Min,Max){   
+		var Range = Max - Min;   
+		var Rand = Math.random();   
+		return(Min + Math.round(Rand * Range));   
+	}
+	var global = GetRandomNum(1400000,1500000);
+    var country = GetRandomNum(190000,200000);
+	var i = GetRandomNum(3,5);
+    var j = GetRandomNum(1,3);
+    setInterval(function(){
+        global = global+i;
+        country = country+j;
+      $('.odometer').each(function(index,element){
+          if(index == 0)
+              $(this).html(global)
+          if(index == 1)
+              $(this).html(country)
+          });	
+    }, 5000);
 	var dom = document.getElementById('compBar');
 	var bar = echarts.init(dom);
 	var myBar = echarts.init(document.getElementById('mybar'));
