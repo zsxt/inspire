@@ -4,7 +4,7 @@ Template.industryAttack.onRendered(function () {
     $('input[name="ip"]').val(currentIp.substring(1));
   }
 
-  var Kort = (function () {
+  /*var Kort = (function () {
 
     var OFFSET_MARGIN = 2;
 
@@ -137,6 +137,7 @@ Template.industryAttack.onRendered(function () {
     };
 
   })();
+  */
 
   //var window.interval;
   var index = 0;
