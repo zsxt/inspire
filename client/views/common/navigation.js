@@ -48,7 +48,7 @@ Template.navigation.helpers({
 
     userAvatar: function() {
         if (Meteor.userId() && Meteor.user()){
-            if(Meteor.user().profile != undefined){
+            if(Meteor.user().profile){	
                 return Meteor.user().profile.avatar;
             }
         }
