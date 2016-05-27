@@ -206,6 +206,9 @@ Template.industryAttack.onRendered(function () {
         if (fname >= Session['image'][index]) {
           if (index + 1 == Session['image'].length || fname < Session['image'][index + 1]) {
             $('#load_img').attr('src', '/industry/attackimg/' + ip + '/' + Session['image'][index]);
+            var resultValue = resultArea.val();
+            resultValue += "\n获取视频画面成功";
+            resultArea.val(resultValue);
             index++;
             break;
           } else {
@@ -228,10 +231,8 @@ Template.industryAttack.onRendered(function () {
     resultArea.val('开始攻击\n正在执行漏洞攻击......');
     resultArea.scrollTop(resultArea[0].scrollHeight);
     //resultArea.val("\n正在执行漏洞攻击......");
-    console.log(resultArea.val());
-    var resultValue = resultArea.val();
-    resultValue += "\n获取视频画面成功";
-    resultArea.val(resultValue);
+    //console.log(resultArea.val());
+
     var ip = $('input[name="ip"]').val();
     start(ip);
   });
