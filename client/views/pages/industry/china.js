@@ -238,15 +238,23 @@ Template.industryChina.onRendered(function() {
     data = _.union(data, newData);
     mapOption.series[0].data = data;
 
-    var m = 0;
+    var max = 0;
+    var sMax = 0;
     for (var i = 0; i < data.length; ++i) {
-      if (data[i].value > m) {
-        m = data[i].value;
+      if (data[i].value > max) {
+        max = data[i].value;
       }
+      if(data[i].value < max && data[i].value > sMax){
+	sMax = data[i].value;
+      }//倒数第二大的数
     }
 
+    if(max - sMax > 20000){
+	max = sMax;
+    }//防止差距过大
+
     var segCount = 10;
-    var size = m / segCount;
+    var size = max / segCount;
     var segs = [];
     for (var j = 1; j < segCount; ++j) {
       segs[segCount - j] = {
