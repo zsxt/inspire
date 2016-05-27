@@ -10,184 +10,184 @@ Template.industryGlobe.onRendered(function(){
 
 	var globeData =[{
 				name : 'Afghanistan',
-				value : 0
+				value : 3
 			}, {
 				name : 'Angola',
-				value : 0
+				value : 21
 			}, {
 				name : 'Albania',
-				value : 0
+				value : 57
 			}, {
 				name : 'United Arab Emirates',
-				value : 0
+				value : 365
 			}, {
 				name : 'Argentina',
-				value : 0
+				value : 4870
 			}, {
 				name : 'Armenia',
-				value : 0
+				value : 137
 			}, {
 				name : 'French Southern and Antarctic Lands',
 				value : 0
 			}, {
 				name : 'Australia',
-				value : 0
+				value : 28866
 			}, {
 				name : 'Austria',
-				value : 0
+				value : 653
 			}, {
 				name : 'Azerbaijan',
-				value : 0
+				value : 156
 			}, {
 				name : 'Burundi',
 				value : 0
 			}, {
 				name : 'Belgium',
-				value : 0
+				value : 519
 			}, {
 				name : 'Benin',
-				value : 0
+				value : 2
 			}, {
 				name : 'Burkina Faso',
-				value : 0
+				value : 4
 			}, {
 				name : 'Bangladesh',
-				value : 0
+				value : 1125
 			}, {
 				name : 'Bulgaria',
-				value : 0
+				value : 1417
 			}, {
 				name : 'The Bahamas',
-				value : 0
+				value : 47
 			}, {
 				name : 'Bosnia and Herzegovina',
-				value : 0
+				value : 375
 			}, {
 				name : 'Belarus',
-				value : 0
+				value : 133
 			}, {
 				name : 'Belize',
-				value : 0
+				value : 1350
 			}, {
 				name : 'Bermuda',
-				value : 0
+				value : 1
 			}, {
 				name : 'Bolivia',
-				value : 0
+				value : 1057
 			}, {
 				name : 'Brazil',
-				value : 0
+				value : 4916
 			}, {
 				name : 'Brunei',
-				value : 0
+				value : 69
 			}, {
 				name : 'Bhutan',
-				value : 0
+				value : 25
 			}, {
 				name : 'Botswana',
-				value : 0
+				value : 1
 			}, {
 				name : 'Central African Republic',
 				value : 0
 			}, {
 				name : 'Canada',
-				value : 0
+				value : 3412
 			}, {
 				name : 'Switzerland',
-				value : 0
+				value : 515
 			}, {
 				name : 'Chile',
-				value : 0
+				value : 1390
 			}, {
 				name : 'China',
-				value : 0
+				value : 198393
 			}, {
 				name : 'Ivory Coast',
 				value : 0
 			}, {
 				name : 'Cameroon',
-				value : 0
+				value : 62
 			}, {
 				name : 'Democratic Republic of the Congo',
-				value : 0
+				value : 7
 			}, {
 				name : 'Republic of the Congo',
-				value : 0
+				value : 7
 			}, {
 				name : 'Colombia',
-				value : 0
+				value : 5103
 			}, {
 				name : 'Costa Rica',
-				value : 0
+				value : 804
 			}, {
 				name : 'Cuba',
-				value : 0
+				value : 2
 			}, {
 				name : 'Northern Cyprus',
-				value : 0
+				value : 1
 			}, {
 				name : 'Cyprus',
-				value : 0
+				value : 76
 			}, {
 				name : 'Czech Republic',
-				value : 0
+				value : 856
 			}, {
 				name : 'Germany',
-				value : 0
+				value : 30506
 			}, {
 				name : 'Djibouti',
-				value : 0
+				value : 12
 			}, {
 				name : 'Denmark',
-				value : 0
+				value : 1379
 			}, {
 				name : 'Dominican Republic',
 				value : 0
 			}, {
 				name : 'Algeria',
-				value : 0
+				value : 2959
 			}, {
 				name : 'Ecuador',
-				value : 0
+				value : 762
 			}, {
 				name : 'Egypt',
-				value : 0
+				value : 139
 			}, {
 				name : 'Eritrea',
 				value : 0
 			}, {
 				name : 'Spain',
-				value : 0
+				value : 6386
 			}, {
 				name : 'Estonia',
-				value : 0
+				value : 144
 			}, {
 				name : 'Ethiopia',
-				value : 0
+				value : 1
 			}, {
 				name : 'Finland',
-				value : 0
+				value : 213
 			}, {
 				name : 'Fiji',
-				value : 0
+				value : 16
 			}, {
 				name : 'Falkland Islands',
-				value : 0
+				value : 2
 			}, {
 				name : 'France',
-				value : 0
+				value : 47682
 			}, {
 				name : 'Gabon',
-				value : 0
+				value : 6
 			}, {
 				name : 'United Kingdom',
-				value : 0
+				value : 47682
 			}, {
 				name : 'Georgia',
-				value : 0
+				value : 181
 			}, {
 				name : 'Ghana',
-				value : 0
+				value : 340
 			}, {
 				name : 'Guinea',
 				value : 0
@@ -202,220 +202,220 @@ Template.industryGlobe.onRendered(function(){
 				value : 0
 			}, {
 				name : 'Greece',
-				value : 0
+				value : 964
 			}, {
 				name : 'Greenland',
-				value : 0
+				value : 2
 			}, {
 				name : 'Guatemala',
-				value : 0
+				value : 214
 			}, {
 				name : 'French Guiana',
-				value : 0
+				value : 10
 			}, {
 				name : 'Guyana',
-				value : 0
+				value : 18
 			}, {
 				name : 'Honduras',
-				value : 0
+				value : 62
 			}, {
 				name : 'Croatia',
-				value : 0
+				value : 237
 			}, {
 				name : 'Haiti',
-				value : 0
+				value : 5
 			}, {
 				name : 'Hungary',
-				value : 0
+				value : 1243
 			}, {
 				name : 'Indonesia',
-				value : 0
+				value : 39316
 			}, {
 				name : 'India',
-				value : 0
+				value : 113864
 			}, {
 				name : 'Ireland',
-				value : 0
+				value : 698
 			}, {
 				name : 'Iran',
-				value : 0
+				value : 74916
 			}, {
 				name : 'Iraq',
-				value : 0
+				value : 283
 			}, {
 				name : 'Iceland',
-				value : 0
+				value : 69
 			}, {
 				name : 'Israel',
-				value : 0
+				value : 1296
 			}, {
 				name : 'Italy',
-				value : 0
+				value : 16737
 			}, {
 				name : 'Jamaica',
-				value : 0
+				value : 60
 			}, {
 				name : 'Jordan',
-				value : 0
+				value : 65
 			}, {
 				name : 'Japan',
-				value : 0
+				value : 30506
 			}, {
 				name : 'Kazakhstan',
-				value : 0
+				value : 6084
 			}, {
 				name : 'Kenya',
-				value : 0
+				value : 60
 			}, {
 				name : 'Kyrgyzstan',
-				value : 0
+				value : 89
 			}, {
 				name : 'Cambodia',
-				value : 0
+				value : 942
 			}, {
 				name : 'South Korea',
-				value : 0
+				value : 72165
 			}, {
 				name : 'Kosovo',
-				value : 0
+				value : 55
 			}, {
 				name : 'Kuwait',
-				value : 0
+				value : 394
 			}, {
 				name : 'Laos',
-				value : 0
+				value : 102
 			}, {
 				name : 'Lebanon',
-				value : 0
+				value : 208
 			}, {
 				name : 'Liberia',
 				value : 0
 			}, {
 				name : 'Libya',
-				value : 0
+				value : 28
 			}, {
 				name : 'Sri Lanka',
-				value : 0
+				value : 1294
 			}, {
 				name : 'Lesotho',
 				value : 0
 			}, {
 				name : 'Lithuania',
-				value : 0
+				value : 258
 			}, {
 				name : 'Luxembourg',
-				value : 0
+				value : 62
 			}, {
 				name : 'Latvia',
-				value : 0
+				value : 202
 			}, {
 				name : 'Morocco',
-				value : 0
+				value : 350
 			}, {
 				name : 'Moldova',
-				value : 0
+				value : 214
 			}, {
 				name : 'Madagascar',
-				value : 0
+				value : 7
 			}, {
 				name : 'Mexico',
-				value : 0
+				value : 58503
 			}, {
 				name : 'Macedonia',
-				value : 0
+				value : 165
 			}, {
 				name : 'Mali',
-				value : 0
+				value : 3
 			}, {
 				name : 'Myanmar',
-				value : 0
+				value : 1
 			}, {
 				name : 'Montenegro',
-				value : 0
+				value : 134
 			}, {
 				name : 'Mongolia',
-				value : 0
+				value : 63
 			}, {
 				name : 'Mozambique',
-				value : 0
+				value : 26
 			}, {
 				name : 'Mauritania',
-				value : 0
+				value : 136
 			}, {
 				name : 'Malawi',
-				value : 0
+				value : 2
 			}, {
 				name : 'Malaysia',
-				value : 0
+				value : 28296
 			}, {
 				name : 'Namibia',
-				value : 0
+				value : 58
 			}, {
 				name : 'New Caledonia',
-				value : 0
+				value : 24
 			}, {
 				name : 'Niger',
-				value : 0
+				value : 2
 			}, {
 				name : 'Nigeria',
-				value : 0
+				value : 23
 			}, {
 				name : 'Nicaragua',
-				value : 0
+				value : 151
 			}, {
 				name : 'Netherlands',
-				value : 0
+				value : 2578
 			}, {
 				name : 'Norway',
-				value : 0
+				value : 172
 			}, {
 				name : 'Nepal',
-				value : 0
+				value : 47
 			}, {
 				name : 'New Zealand',
-				value : 0
+				value : 501
 			}, {
 				name : 'Oman',
-				value : 0
+				value : 548
 			}, {
 				name : 'Pakistan',
-				value : 0
+				value : 921
 			}, {
 				name : 'Panama',
-				value : 0
+				value : 294
 			}, {
 				name : 'Peru',
-				value : 0
+				value : 527
 			}, {
 				name : 'Philippines',
-				value : 0
+				value : 1816
 			}, {
 				name : 'Papua New Guinea',
 				value : 0
 			}, {
 				name : 'Poland',
-				value : 0
+				value : 150769
 			}, {
 				name : 'Puerto Rico',
-				value : 0
+				value : 1023
 			}, {
 				name : 'North Korea',
-				value : 0
+				value : 2
 			}, {
 				name : 'Portugal',
-				value : 0
+				value : 2053
 			}, {
 				name : 'Paraguay',
-				value : 0
+				value : 102
 			}, {
 				name : 'Qatar',
-				value : 0
+				value : 188
 			}, {
 				name : 'Romania',
-				value : 0
+				value : 2399
 			}, {
 				name : 'Russia',
-				value : 0
+				value : 19048
 			}, {
 				name : 'Rwanda',
 				value : 0
@@ -424,16 +424,16 @@ Template.industryGlobe.onRendered(function(){
 				value : 0
 			}, {
 				name : 'Saudi Arabia',
-				value : 0
+				value : 521
 			}, {
 				name : 'Sudan',
-				value : 0
+				value : 52
 			}, {
 				name : 'South Sudan',
-				value : 0
+				value : 52
 			}, {
 				name : 'Senegal',
-				value : 0
+				value : 29
 			}, {
 				name : 'Solomon Islands',
 				value : 0
@@ -442,103 +442,103 @@ Template.industryGlobe.onRendered(function(){
 				value : 0
 			}, {
 				name : 'El Salvador',
-				value : 0
+				value : 651
 			}, {
 				name : 'Somaliland',
 				value : 0
 			}, {
 				name : 'Somalia',
-				value : 0
+				value : 1
 			}, {
 				name : 'Republic of Serbia',
-				value : 0
+				value : 882
 			}, {
 				name : 'Suriname',
-				value : 0
+				value : 26
 			}, {
 				name : 'Slovakia',
-				value : 0
+				value : 606
 			}, {
 				name : 'Slovenia',
-				value : 0
+				value : 167
 			}, {
 				name : 'Sweden',
-				value : 0
+				value : 678
 			}, {
 				name : 'Swaziland',
-				value : 0
+				value : 4
 			}, {
 				name : 'Syria',
-				value : 0
+				value : 3001
 			}, {
 				name : 'Chad',
 				value : 0
 			}, {
 				name : 'Togo',
-				value : 0
+				value : 5
 			}, {
 				name : 'Thailand',
-				value : 0
+				value : 39922
 			}, {
 				name : 'Tajikistan',
-				value : 0
+				value : 64
 			}, {
 				name : 'Turkmenistan',
 				value : 0
 			}, {
 				name : 'East Timor',
-				value : 0
+				value : 1016
 			}, {
 				name : 'Trinidad and Tobago',
-				value : 0
+				value : 5
 			}, {
 				name : 'Tunisia',
-				value : 0
+				value : 433
 			}, {
 				name : 'Turkey',
-				value : 0
+				value : 2075
 			}, {
 				name : 'United Republic of Tanzania',
-				value : 0
+				value : 68
 			}, {
 				name : 'Uganda',
-				value : 0
+				value : 19
 			}, {
 				name : 'Ukraine',
-				value : 0
+				value : 1359
 			}, {
 				name : 'Uruguay',
-				value : 0
+				value : 443
 			}, {
 				name : 'United States of America',
-				value : 0
+				value : 392541
 			}, {
 				name : 'Uzbekistan',
-				value : 0
+				value : 39
 			}, {
 				name : 'Venezuela',
-				value : 0
+				value : 122
 			}, {
 				name : 'Vietnam',
-				value : 0
+				value : 27146
 			}, {
 				name : 'Vanuatu',
-				value : 0
+				value : 2
 			}, {
 				name : 'West Bank',
 				value : 0
 			}, {
 				name : 'Yemen',
-				value : 0
+				value : 6
 			}, {
 				name : 'South Africa',
-				value : 0
+				value : 1046
 			}, {
 				name : 'Zambia',
-				value : 0
+				value : 2
 			}, {
 				name : 'Zimbabwe',
-				value : 0
+				value : 10
 			}
 		];
 		
@@ -840,15 +840,15 @@ this.autorun(function(){
 		return  _.contains(countrys,d.name);
 	})
 	globeData = _.union(globeData,dataGlobe);*/
-	for(var i = 0; i < globeData.length; ++i){
+	/*for(var i = 0; i < globeData.length; ++i){
 		globeData[i].value = parseInt(Math.random()*1000 + 1);
-	}
+	}*/
 	globeOption.series[0].data = globeData;
 	globeOption.series[0].nameMap = nameMap;
 
 	//console.log(globeData);
 
-	var m = 0;
+	/*var m = 0;
     	for (var i = 0; i < globeData.length; ++i) {
       	if (globeData[i].value > m) {
         	m = globeData[i].value;
@@ -865,7 +865,7 @@ this.autorun(function(){
     	segs[6] = {end: size};
     	segs[0] = {start: size * 6 - 1};
 
-    	globeOption.dataRange.splitList = segs;
+    	globeOption.dataRange.splitList = segs;*/
     	map.setOption(globeOption);
 })
 

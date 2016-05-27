@@ -195,7 +195,7 @@ Template.industryAttack.onRendered(function () {
     console.log(Session['image']);
     window.interval = setInterval(function () {
       var rValue = resultArea.val();
-      rValue += "..";
+      rValue += "...";
       resultArea.val(rValue);
       
       console.log('in window.interval', index, Session['image'].length, ip);
@@ -211,7 +211,7 @@ Template.industryAttack.onRendered(function () {
           if (index + 1 == Session['image'].length || fname < Session['image'][index + 1]) {
             $('#load_img').attr('src', '/industry/attackimg/' + ip + '/' + Session['image'][index]);
             var resultValue = resultArea.val();
-            resultValue += "\n获取视频画面成功\n";
+            resultValue += "\n获取视频画面成功!\n";
             resultArea.val(resultValue);
             resultArea.scrollTop(resultArea[0].scrollHeight);
             index++;
@@ -242,7 +242,7 @@ Template.industryAttack.onRendered(function () {
     start(ip);
   });
   stopBtn.click(function (e) {
-    resultArea.val('停止攻击\n结束......');
+    resultArea.val('停止攻击!\n');
     //resultArea.val('\n over');
     clear();
   });

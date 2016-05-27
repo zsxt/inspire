@@ -115,7 +115,7 @@ Template.industryChina.onRendered(function() {
 
   var mapOption = {
 		//backgroundColor:'rgba(232, 232, 232, 1)',
-		//color:['#da70d6','#cd5c5c'],
+		color:['#da70d6','#cd5c5c'],
 		title : {
 			text : '',
 			x : 'center',
@@ -133,7 +133,7 @@ Template.industryChina.onRendered(function() {
 		dataRange : {
 			x : 'left',
 			y : 'bottom',
-			color: ['orangered','yellow','lightskyblue'],
+			//color: ['orangered','yellow','lightskyblue'],
 			splitList : [{
 					start : 15001,
 					//color:'red'
