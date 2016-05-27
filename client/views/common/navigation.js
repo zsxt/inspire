@@ -18,8 +18,9 @@ Template.navigation.helpers({
 
     userName: function() {
         if (Meteor.userId()){
-            if(Meteor.user().profile != undefined){
-                return Meteor.user().profile.name;
+            var pro = Meteor.user().profile;
+            if(pro){
+                return pro.name;
             }
         }
     },
