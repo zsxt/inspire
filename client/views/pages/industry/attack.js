@@ -194,6 +194,10 @@ Template.industryAttack.onRendered(function () {
     clear();
     console.log(Session['image']);
     window.interval = setInterval(function () {
+      var rValue = resultArea.val();
+      rValue += "..";
+      resultArea.val(rValue);
+      
       console.log('in window.interval', index, Session['image'].length, ip);
       if (index == Session['image'].length || Session['image'].length == 0) {
         fetchImages(ip);
@@ -207,7 +211,7 @@ Template.industryAttack.onRendered(function () {
           if (index + 1 == Session['image'].length || fname < Session['image'][index + 1]) {
             $('#load_img').attr('src', '/industry/attackimg/' + ip + '/' + Session['image'][index]);
             var resultValue = resultArea.val();
-            resultValue += "\n获取视频画面成功";
+            resultValue += "\n获取视频画面成功\n";
             resultArea.val(resultValue);
             resultArea.scrollTop(resultArea[0].scrollHeight);
             index++;
