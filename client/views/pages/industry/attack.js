@@ -209,6 +209,7 @@ Template.industryAttack.onRendered(function () {
             var resultValue = resultArea.val();
             resultValue += "\n获取视频画面成功";
             resultArea.val(resultValue);
+            resultArea.scrollTop(resultArea[0].scrollHeight);
             index++;
             break;
           } else {
