@@ -17,17 +17,15 @@ Template.navigation.events({
 Template.navigation.helpers({
 
     userName: function() {
-        if (Meteor.userId()){
-            var pro = Meteor.user().profile;
-            console.log(pro);
-            if(pro){
-                return pro.name;
+        if (Meteor.userId() && Meteor.user()){          
+            if(Meteor.user().profile){
+                return Meteor.user().profile.name;
             }
         }
     },
 
     userRole: function() {
-        if (Meteor.userId()){
+        if (Meteor.userId() && Meteor.user()){
             var roles =  Meteor.user().roles;
             if(roles[0] == 'admin'){
                 return '系统管理员'
@@ -45,7 +43,7 @@ Template.navigation.helpers({
     },
 
     userAvatar: function() {
-        if (Meteor.userId()){
+        if (Meteor.userId() && Meteor.user()){
             if(Meteor.user().profile != undefined){
                 return Meteor.user().profile.avatar;
             }
@@ -53,7 +51,7 @@ Template.navigation.helpers({
     },
 
     isAdmin: function() {
-        if (Meteor.userId()){
+        if (Meteor.userId() && Meteor.user()){
             return Meteor.user().roles[0] == 'admin'
         }
         else{
