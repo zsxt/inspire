@@ -19,6 +19,7 @@ Template.navigation.helpers({
     userName: function() {
         if (Meteor.userId()){
             var pro = Meteor.user().profile;
+            console.log(pro);
             if(pro){
                 return pro.name;
             }
