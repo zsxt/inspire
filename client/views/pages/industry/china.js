@@ -236,9 +236,13 @@ Template.industryChina.onRendered(function() {
       return _.contains(cities, d.name);
     })
     data = _.union(data, newData);
+    data.push({name:'香港',value:11740});
+    data.push({name:'澳门',value:1209});
+    data.push({name:'台湾',value:77340});
+
     mapOption.series[0].data = data;
 
-    var max = 0;
+    /*var max = 0;
     var sMax = 0;
     for (var i = 0; i < data.length; ++i) {
       if (data[i].value > max) {
@@ -264,7 +268,7 @@ Template.industryChina.onRendered(function() {
     }
     segs[segCount] = {end: size};
     segs[0] = {start: size * segCount - 1};
-    mapOption.dataRange.splitList = segs;
+    mapOption.dataRange.splitList = segs;*/
 
     map.setOption(mapOption);
   })
