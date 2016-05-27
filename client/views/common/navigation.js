@@ -18,7 +18,7 @@ Template.navigation.helpers({
 
     userName: function() {
         if (Meteor.userId()){
-            if(Meteor.user().profile){
+            if(Meteor.user().profile != undefined){
                 return Meteor.user().profile.name;
             }
         }
@@ -44,7 +44,9 @@ Template.navigation.helpers({
 
     userAvatar: function() {
         if (Meteor.userId()){
-            return Meteor.user().profile.avatar;
+            if(Meteor.user().profile != undefined){
+                return Meteor.user().profile.avatar;
+            }
         }
     },
 
