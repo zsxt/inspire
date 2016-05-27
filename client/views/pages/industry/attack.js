@@ -2,7 +2,9 @@ Template.industryAttack.onRendered(function () {
   var currentIp = location.hash;
   if (currentIp) {
     $('input[name="ip"]').val(currentIp.substring(1));
-    $('#load_img').attr('src','/industry/attack/' + '#' + 'currentIp.substring(1)');
+    var fpath = '/industry/attack/thumb/'  + currentIp.substring(1) + '.jpg';
+    console.log(fpath);
+    $('#load_img').attr('src', fpath);
   }
 
   /*var Kort = (function () {
