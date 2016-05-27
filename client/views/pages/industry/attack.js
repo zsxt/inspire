@@ -229,6 +229,7 @@ Template.industryAttack.onRendered(function () {
     resultArea.scrollTop(resultArea[0].scrollHeight);
     //resultArea.val("\n正在执行漏洞攻击......");
     //console.log(resultArea.value);
+    resultArea.append("\n获取画面成功");
     var ip = $('input[name="ip"]').val();
     start(ip);
   });
