@@ -43,6 +43,7 @@ cfs:worker@0.1.4
 check@1.2.1
 chuangbo:cookie@1.1.0
 coffeescript@1.0.17
+d4nyll:odometeor@0.2.1
 dbarrett:dropzonejs@4.2.1
 ddp@1.2.5
 ddp-client@1.2.7

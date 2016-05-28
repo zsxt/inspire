@@ -17,6 +17,9 @@ Template.industryResult.onRendered(function(){
     setInterval(function(){
         global = global+i;
         country = country+j;
+     /*   $('.num-global').html(global);
+        $('.num-china').html(country);*/
+
       $('.odometer').each(function(index,element){
           if(index == 0)
               $(this).html(global)
@@ -250,4 +253,13 @@ Template.industryResult.onRendered(function(){
 		bar.setOption(option);
 		
 		
-})
+});
+
+Template.industryResult.helpers({
+	opts: function () {
+		return {
+			value: 1430962,
+			theme: 'car'
+		};
+	}
+});

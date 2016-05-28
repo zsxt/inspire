@@ -1,13 +1,41 @@
 <template name="industryResult">
     <div class="wrapper wrapper-content">
-        <div >
-        <p>当前全球统计结果量：
-            <div class="odometer">1400734</div>
-           当前全国统计结果量：
-            <div class="odometer">194207</div>
-        </p>
-        </div>
+        
+        <!-- <div class="row">
+            <div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-success pull-right">World</span>
+                        <h5>当前全球统计结果量：</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins num-global">0000</h1>
+
+                        <div class="stat-percent font-bold text-success">单位：个</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-success pull-right">China</span>
+                        <h5>当前全国统计结果量：</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins num-china">0000</h1>
+
+                        <div class="stat-percent font-bold text-success">单位：个</div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <span style="line-height:40px ; font-size:18px;">当前全球统计结果量：{{> odometeor opts}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span style="line-height:40px ; font-size:18px;">当前全国统计结果量：{{> odometeor opts}}</span>
+
         <div id="content" class="row">
+
+      
             <div class="col-lg-6">
                 <div class="ibox">
                     <div class="ibox-title">
