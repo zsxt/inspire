@@ -1,9 +1,9 @@
 Template.industryChina.onCreated(function() {
-  var instance = Template.instance()
+  var instance = Template.instance();
   instance.autorun(function() {
       var subscription = instance.subscribe('industry_control_china');
   })
-})
+});
 
 Template.industryChina.onRendered(function() {
   var dom = document.getElementById('chart');
@@ -135,7 +135,7 @@ Template.industryChina.onRendered(function() {
 			y : 'bottom',
 			//color: ['orangered','yellow','lightskyblue'],
 			splitList : [{
-					start : 15001,
+					start : 15001
 					//color:'red'
 				},{
 					start :10001,
@@ -164,12 +164,12 @@ Template.industryChina.onRendered(function() {
 					end : 1000
 				}, {
 					start : 101,
-					end : 500,
+					end : 500
 				}, {
-					end : 100,
+					end : 100
 					//color : 'white'
 				}
-			],
+			]
 		},
 		toolbox : {
 			show : true,
@@ -208,17 +208,17 @@ Template.industryChina.onRendered(function() {
 				itemStyle : {
 					normal : {
 						borderColor : 'rgba(100,149,237,1)',
-						borderWidth : 0.5,
+						borderWidth : 1,
 						areaStyle : {
 							color : '#1b1b1b'
 						},
 						label : {
-							show : true,
+							show : true
 						}
 					},
 					emphasis : {
 						label : {
-							show : true,
+							show : true
 						}
 					}
 				},
@@ -234,7 +234,7 @@ Template.industryChina.onRendered(function() {
     var cities = _.pluck(newData, 'name');
     data = _.reject(data, function (d) {
       return _.contains(cities, d.name);
-    })
+    });
     data = _.union(data, newData);
     data.push({name:'香港',value:11740});
     data.push({name:'澳门',value:1209});
