@@ -1,8 +1,12 @@
 <template name="industryResult">
     <div class="row  border-bottom white-bg dashboard-header">
         <div class="col-lg-12">
-            <span style="line-height:40px ; font-size:18px;">当前全球统计结果量：{{> odometeor globalOpts}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span style="line-height:40px ; font-size:18px;">当前全国统计结果量：{{> odometeor countryOpts}}</span>
+            <div class="col-lg-6">
+                <span style="line-height:40px ; font-size:18px;">当前全球统计结果量：{{> odometeor globalOpts}}</span>
+            </div>
+            <div class="col-lg-6">
+                <span style="line-height:40px ; font-size:18px;">当前全国统计结果量：{{> odometeor countryOpts}}</span>
+            </div>
         </div>
     </div>
 
