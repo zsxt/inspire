@@ -23,60 +23,70 @@
                         IN+
                     </div>
                 </li>
-                                
-                <li class="{{isActiveRoute regex='basicProfile|staticShow'}}">
-                  <a href="#"><i class="fa fa-compass"></i> <span class="nav-label">全球IP定位库</span> <span class="fa arrow"></span></a>
-                  <ul class="nav nav-second-level {{isActiveRoute regex='basicProfile|staticShow' className='in'}}">
-                    <li class="{{isActiveRoute regex='basicProfile'}}"><a href="{{pathFor route='basicProfile'}}"><i class="fa fa-image"></i> <span class="nav-label">IP画像</span> </a></li>
-                    <li class="{{isActiveRoute regex='staticShow'}}"><a href="{{pathFor route='staticShow'}}"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">统计分析</span> </a></li>
-                  </ul>
+
+                <li class="{{isActiveRoute regex='home'}}">
+                    <a href="{{pathFor route='homePage'}}"><i class="fa fa-home"></i> <span class="nav-label">全网探测系统介绍</span> </a>
+                </li>
+
+                <li class="{{isActiveRoute regex='industry'}}">
+                    <a href="#"><i class="fa fa-image"></i> <span class="nav-label">全球安防设备态势感知</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level {{isActiveRoute regex='industry' className='in'}}">
+                        <li class="{{isActiveRoute regex='introduction'}}">
+                            <a href="{{pathFor route='industry.introduction'}}"><i class="fa fa-industry"></i> <span class="nav-label">系统介绍</span></a>
+                        </li>
+
+                        <li class="{{isActiveRoute regex='result'}}">
+                            <a href="{{pathFor route='industry.result'}}"><i class="fa fa-bar-chart"></i> <span class="nav-label">结果统计</span> </a>
+                        </li>
+                        <li class="{{isActiveRoute regex='globe'}}">
+                            <a href="{{pathFor route='industry.globe'}}"><i class="fa fa-globe"></i> <span class="nav-label">全球态势</span> </a>
+                        </li>
+                        <li class="{{isActiveRoute regex='china'}}">
+                            <a href="{{pathFor route='industry.china'}}"><i class="fa fa-map"></i> <span class="nav-label">全国态势</span> </a>
+                        </li>
+                        <li class="{{isActiveRoute regex='realtime'}}">
+                            <a href="{{pathFor route='industry.realtime'}}"><i class="fa fa-photo"></i> <span class="nav-label">实时画面</span> </a>
+                        </li>
+                        <li class="{{isActiveRoute regex='attack'}}">
+                            <a href="{{pathFor route='industry.attack'}}"><i class="fa fa-bug"></i> <span class="nav-label">漏洞渗透</span> </a>
+                        </li>
+
+                        <!--<li class="{{isActiveRoute regex='monitor'}}">
+                        <a href="{{pathFor route='industry.monitor'}}"><i class="fa fa-anchor"></i> <span class="nav-label">监控预警 </span> </a>
+                      </li> -->
+
+                    </ul>
+                </li>
+
+                <li class="{{isActiveRoute regex='plc'}}">
+                    <a href="{{pathFor route='plc'}}"><i class="fa fa-gears"></i> <span class="nav-label">联网工业PLC</span> </a>
+                </li>
+
+                <li class="{{isActiveRoute regex='webScanShow'}}">
+                    <a href="{{pathFor route='webScanShow'}}"><i class="fa fa-desktop"></i> <span class="nav-label">联网WEB服务器</span> </a>
                 </li>
 
                 <li class="{{isActiveRoute regex='icpAnalysis'}}">
                     <a href="{{pathFor route='icpAnalysis'}}"><i class="fa fa-th-large"></i> <span class="nav-label">全国ICP备案库</span> </a>
                 </li>
-                <li class="{{isActiveRoute regex='webScanShow'}}">
-                    <a href="{{pathFor route='webScanShow'}}"><i class="fa fa-desktop"></i> <span class="nav-label">联网WEB服务器</span> </a>
+
+                <li class="{{isActiveRoute regex='basicProfile|staticShow'}}">
+                    <a href="#"><i class="fa fa-compass"></i> <span class="nav-label">全球IP定位库</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level {{isActiveRoute regex='basicProfile|staticShow' className='in'}}">
+                        <li class="{{isActiveRoute regex='basicProfile'}}"><a href="{{pathFor route='basicProfile'}}"><i class="fa fa-image"></i> <span class="nav-label">IP画像</span> </a></li>
+                        <li class="{{isActiveRoute regex='staticShow'}}"><a href="{{pathFor route='staticShow'}}"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">统计分析</span> </a></li>
+                    </ul>
                 </li>
-                <li class="{{isActiveRoute regex='plc'}}">
-                    <a href="{{pathFor route='plc'}}"><i class="fa fa-gears"></i> <span class="nav-label">联网工业PLC</span> </a>
-                </li>
+
                 <li class="{{isActiveRoute regex='dynamicShow'}}">
                     <a href="{{pathFor route='dynamicShow'}}"><i class="fa fa-globe"></i> <span class="nav-label">网络安全事件</span> </a>
                 </li>
                 
-                <li class="{{isActiveRoute regex='industry'}}">
-                    <a href="#"><i class="fa fa-image"></i> <span class="nav-label">全球安防设备态势感知</span> <span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level {{isActiveRoute regex='industry' className='in'}}">
-                       <li class="{{isActiveRoute regex='introduction'}}">
-                        <a href="{{pathFor route='industry.introduction'}}"><i class="fa fa-industry"></i> <span class="nav-label">系统介绍</span></a>  
-                      </li>
 
-                      <li class="{{isActiveRoute regex='result'}}">
-                        <a href="{{pathFor route='industry.result'}}"><i class="fa fa-bar-chart"></i> <span class="nav-label">结果统计</span> </a>  
-                      </li>
-                      <li class="{{isActiveRoute regex='globe'}}">
-                        <a href="{{pathFor route='industry.globe'}}"><i class="fa fa-globe"></i> <span class="nav-label">全球态势</span> </a>
-                      </li>
-                      <li class="{{isActiveRoute regex='china'}}">
-                        <a href="{{pathFor route='industry.china'}}"><i class="fa fa-map"></i> <span class="nav-label">全国态势</span> </a>
-                      </li>
-                      <li class="{{isActiveRoute regex='realtime'}}">
-                        <a href="{{pathFor route='industry.realtime'}}"><i class="fa fa-photo"></i> <span class="nav-label">实时画面</span> </a> 
-                        </li>
-                       <li class="{{isActiveRoute regex='attack'}}">
-                        <a href="{{pathFor route='industry.attack'}}"><i class="fa fa-bug"></i> <span class="nav-label">漏洞渗透</span> </a>  
-                      </li>
-                       
-                        <!--<li class="{{isActiveRoute regex='monitor'}}">
-                        <a href="{{pathFor route='industry.monitor'}}"><i class="fa fa-anchor"></i> <span class="nav-label">监控预警 </span> </a>  
-                      </li> -->
-    
-                    </ul>
-                </li>
                 <!--<li class="{{isActiveRoute regex='topologyShow'}}">
                     <a href="{{pathFor route='topologyShow'}}"><i class="fa fa-sitemap"></i> <span class="nav-label">拓扑展示</span> </a>
                 </li>-->
+
                 <li class="{{isActiveRoute regex='reportShow'}}">
                     <a href="{{pathFor route='reportShow'}}"><i class="fa fa-files-o"></i> <span class="nav-label">分析报告</span> </a>
                 </li>
