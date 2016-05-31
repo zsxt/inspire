@@ -14,7 +14,15 @@ Template.login.events({
                 return $("#logintip")[0].innerHTML = "用户名或者密码不正确";
             } else {
                 Session.set('username', username);
-                return Router.go('/');
+                
+                if ("admin" == username)
+                {
+                    return Router.go('/accounts');
+                }
+                else
+                {
+                    return Router.go('/');                      
+                }
             }
         });
     }

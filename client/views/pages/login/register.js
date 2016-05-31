@@ -27,13 +27,13 @@ Template.register.events
             case "radioGuest":
                 roles[0] = "guest";
                 name = "游客";
-                avatar = "img/profile_small.jpg";
+                avatar = "img/profile.jpg";
                 break;
                 
             default:
                 roles[0] = "normal";
                 name = "一般用户";
-                avatar = "img/profile_small.jpg";            
+                avatar = "img/profile_small.jpg";
         }
         
         return Accounts.createUser
@@ -52,15 +52,12 @@ Template.register.events
             {
                 if (error)
                 {
-                    $("#registerTip")[0].setAttribute("class", "alert alert-danger");
-                    
+                    $("#registerTip")[0].setAttribute("class", "alert alert-danger");                    
                     return $("#registerTip")[0].innerHTML = "注册失败，请检查输入格式是否正确";
                 }
                 else
-                {
-                    Session.set('username', username);
-                    
-                    return Router.go('/');
+                {                                    
+                    return Router.go('/accounts');
                 }
             }
         );
