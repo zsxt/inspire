@@ -27,7 +27,7 @@ Template.register.events
             case "radioGuest":
                 roles[0] = "guest";
                 name = "游客";
-                avatar = "img/profile.jpg";
+                avatar = "img/profile_small_guest.jpg";
                 break;
                 
             default:

@@ -12,13 +12,15 @@ Template.accounts.helpers
 ({
     listUser: function()
     {
-        return Meteor.users.find({username:{$ne:"admin"}},{sort:{'username': 1}});
+        return Meteor.users.find({username:{$ne:'admin'}},{sort:{username: 1}});
     }
 });
 
 
-Template.accounts.onRendered(function() {
-    this.$('.full-height-scroll').slimscroll({
+Template.accounts.onRendered(function() 
+{
+    this.$('.full-height-scroll').slimscroll
+    ({
         height: '500px',
         railOpacity: 1,
         color: '#cccccc',
@@ -26,4 +28,18 @@ Template.accounts.onRendered(function() {
         alwaysVisible: true,
         allowPageScroll: false
     });
+});
+
+
+Template.accounts.events
+({
+    'click .deleteAccount'()
+    {
+        Meteor.users.remove(this._id);
+    },
+    
+    'click .editAccountInfo'()
+    {
+        Meteor.users.update(this._id, {$set: {}});
+    }    
 });
