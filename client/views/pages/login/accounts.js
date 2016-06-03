@@ -36,10 +36,5 @@ Template.accounts.events
     'click .deleteAccount'()
     {
         Meteor.users.remove(this._id);
-    },
-    
-    'click .editAccountInfo'()
-    {
-        Meteor.users.update(this._id, {$set: {}});
-    }    
+    },  
 });

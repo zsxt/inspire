@@ -53,7 +53,7 @@ Template.register.events
                 if (error)
                 {
                     $("#registerTip")[0].setAttribute("class", "alert alert-danger");                    
-                    return $("#registerTip")[0].innerHTML = "注册失败，请检查输入格式是否正确";
+                    return $("#registerTip")[0].innerHTML = error.reason;
                 }
                 else
                 {                                    
