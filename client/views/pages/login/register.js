@@ -15,25 +15,25 @@ Template.register.events
             case "radioAdmin":
                 roles[0] = "admin";
                 name = "超级用户";
-                avatar = "img/profile_small_admin.jpg";           
+                avatar = "/img/profile_small_admin.jpg";           
                 break;
             
             case "radioAnalyst":
                 roles[0] = "analyst";
-                name = "李逍遥";
-                avatar = "img/profile_small_lxy.jpg";
+                name = "分析师";
+                avatar = "/img/profile_small_lxy.jpg";
                 break;
                 
             case "radioGuest":
                 roles[0] = "guest";
                 name = "游客";
-                avatar = "img/profile_small_guest.jpg";
+                avatar = "/img/profile_small_guest.jpg";
                 break;
                 
             default:
                 roles[0] = "normal";
                 name = "一般用户";
-                avatar = "img/profile_small.jpg";
+                avatar = "/img/profile_small.jpg";
         }
         
         return Accounts.createUser
@@ -57,7 +57,7 @@ Template.register.events
                 }
                 else
                 {                                    
-                    return Router.go('/accounts');
+                    return Router.go('/');
                 }
             }
         );
