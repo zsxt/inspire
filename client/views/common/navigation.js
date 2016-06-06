@@ -55,12 +55,8 @@ Template.navigation.helpers({
     },
 
     isAdmin: function() {
-        if (Meteor.userId() && Meteor.user()){
-	    if(!Meteor.user().roles || !Meteor.user().roles[0]){
-                return false;
-            }
-
-            return Meteor.user().roles[0] == 'admin'
+        if (Meteor.userId()){
+            return Meteor.user().username == 'admin'
         }
         else{
             return false;

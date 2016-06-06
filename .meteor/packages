@@ -29,7 +29,6 @@ meteorhacks:aggregate
 reactive-var
 rajit:bootstrap3-datepicker
 aldeed:simple-schema
-ieverx:echarts
 reywood:publish-composite
 
 cfs:filesystem
@@ -51,3 +50,5 @@ check
 standard-minifier-css
 standard-minifier-js
 d4nyll:odometeor
+ieverx:echarts
+ieverx:echarts3
