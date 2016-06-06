@@ -21,7 +21,7 @@ Template.register.events
             case "radioAnalyst":
                 roles[0] = "analyst";
                 name = "分析师";
-                avatar = "/img/profile_small_lxy.jpg";
+                avatar = "/img/profile_small_analyst.jpg";
                 break;
                 
             case "radioGuest":
@@ -33,7 +33,7 @@ Template.register.events
             default:
                 roles[0] = "normal";
                 name = "一般用户";
-                avatar = "/img/profile_small.jpg";
+                avatar = "/img/profile_small_normal.jpg";
         }
         
         return Accounts.createUser
