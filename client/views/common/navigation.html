@@ -56,13 +56,15 @@
         	        </li>
 				{{/if}}
 				
-                <li class="{{isActiveRoute regex='webScanShow'}}">
-                    <a href="{{pathFor route='webScanShow'}}"><i class="fa fa-desktop"></i> <span class="nav-label">全球WEB服务器</span> </a>
-                </li>
+				{{#unless isAdmin}}
+					<li class="{{isActiveRoute regex='webScanShow'}}">
+						<a href="{{pathFor route='webScanShow'}}"><i class="fa fa-desktop"></i> <span class="nav-label">全球WEB服务器</span> </a>
+					</li>						
 
-                <li class="{{isActiveRoute regex='icpAnalysis'}}">
-                    <a href="{{pathFor route='icpAnalysis'}}"><i class="fa fa-th-large"></i> <span class="nav-label">全国网站备案库</span> </a>
-                </li>
+					<li class="{{isActiveRoute regex='icpAnalysis'}}">
+						<a href="{{pathFor route='icpAnalysis'}}"><i class="fa fa-th-large"></i> <span class="nav-label">全国网站备案库</span> </a>
+					</li>
+				{{/unless}}	
 
 				{{#if isIndustry}}
 					<li class="{{isActiveRoute regex='plc'}}">
@@ -74,13 +76,15 @@
 					</li>
 				{{/if}}
 
-                <li class="{{isActiveRoute regex='basicProfile|staticShow'}}">
-                    <a href="#"><i class="fa fa-compass"></i> <span class="nav-label">全球IP定位库</span> <span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level {{isActiveRoute regex='basicProfile|staticShow' className='in'}}">
-                        <li class="{{isActiveRoute regex='basicProfile'}}"><a href="{{pathFor route='basicProfile'}}"><i class="fa fa-image"></i> <span class="nav-label">IP画像</span> </a></li>
-                        <li class="{{isActiveRoute regex='staticShow'}}"><a href="{{pathFor route='staticShow'}}"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">统计分析</span> </a></li>
-                    </ul>
-                </li>
+				{{#unless isAdmin}}
+					<li class="{{isActiveRoute regex='basicProfile|staticShow'}}">
+						<a href="#"><i class="fa fa-compass"></i> <span class="nav-label">全球IP定位库</span> <span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level {{isActiveRoute regex='basicProfile|staticShow' className='in'}}">
+							<li class="{{isActiveRoute regex='basicProfile'}}"><a href="{{pathFor route='basicProfile'}}"><i class="fa fa-image"></i> <span class="nav-label">IP画像</span> </a></li>
+							<li class="{{isActiveRoute regex='staticShow'}}"><a href="{{pathFor route='staticShow'}}"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">统计分析</span> </a></li>
+						</ul>
+					</li>
+				{{/unless}}	
 
                 {{#if isAnalyst}}
 					<li class="{{isActiveRoute regex='hot'}}">
@@ -97,36 +101,38 @@
 					</li>
 				{{/if}}
                 
-                <!--<li class="{{isActiveRoute regex='topologyShow'}}">
-                    <a href="{{pathFor route='topologyShow'}}"><i class="fa fa-sitemap"></i> <span class="nav-label">拓扑展示</span> </a>
-                </li>-->
+				{{#unless isAdmin}}
+					<!--<li class="{{isActiveRoute regex='topologyShow'}}">
+						<a href="{{pathFor route='topologyShow'}}"><i class="fa fa-sitemap"></i> <span class="nav-label">拓扑展示</span> </a>
+					</li>-->				
+				
+					<li class="{{isActiveRoute regex='reportShow'}}">
+						<a href="{{pathFor route='reportShow'}}"><i class="fa fa-files-o"></i> <span class="nav-label">分析报告</span> </a>
+					</li>
 
-                <li class="{{isActiveRoute regex='reportShow'}}">
-                    <a href="{{pathFor route='reportShow'}}"><i class="fa fa-files-o"></i> <span class="nav-label">分析报告</span> </a>
-                </li>
+					<!--
+					<li class="{{isActiveRoute regex='homePage'}}">
+						<a href="{{pathFor route='homePage'}}"><i class="fa fa-home"></i> <span class="nav-label">系统介绍</span> </a>
+					</li>
+					-->
 
-				<!--
-				<li class="{{isActiveRoute regex='homePage'}}">
-                    <a href="{{pathFor route='homePage'}}"><i class="fa fa-home"></i> <span class="nav-label">系统介绍</span> </a>
-                </li>
-				-->
-
-                <!--
-                <li class="{{isActiveRoute regex='searchResult|invoice|emptyPage'}}">
-                    <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Other Pages</span><span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level {{isActiveRoute regex='searchResult|invoice|emptyPage' className='in'}}">
-                        <li class="{{isActiveRoute regex='searchResult'}}"><a href="{{pathFor route='searchResult'}}">Search results</a></li>
-                        <li><a href="{{pathFor route='lockScreen'}}">Lockscreen</a></li>
-                        <li class="{{isActiveRoute regex='invoice'}}"><a href="{{pathFor route='invoice'}}">Invoice</a></li>
-                        <li><a href="{{pathFor route='login'}}">Login v.2</a></li>
-                        <li><a href="{{pathFor route='forgotPassword'}}">Forgot password</a></li>
-                        <li><a href="{{pathFor route='register'}}">Register</a></li>
-                        <li><a href="{{pathFor route='errorOne'}}">404 Page</a></li>
-                        <li><a href="{{pathFor route='errorTwo'}}">500 Page</a></li>
-                        <li class="{{isActiveRoute regex='emptyPage'}}"><a href="{{pathFor route='emptyPage'}}">Empty page</a></li>
-                    </ul>
-                </li>
-                -->
+					<!--
+					<li class="{{isActiveRoute regex='searchResult|invoice|emptyPage'}}">
+						<a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Other Pages</span><span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level {{isActiveRoute regex='searchResult|invoice|emptyPage' className='in'}}">
+							<li class="{{isActiveRoute regex='searchResult'}}"><a href="{{pathFor route='searchResult'}}">Search results</a></li>
+							<li><a href="{{pathFor route='lockScreen'}}">Lockscreen</a></li>
+							<li class="{{isActiveRoute regex='invoice'}}"><a href="{{pathFor route='invoice'}}">Invoice</a></li>
+							<li><a href="{{pathFor route='login'}}">Login v.2</a></li>
+							<li><a href="{{pathFor route='forgotPassword'}}">Forgot password</a></li>
+							<li><a href="{{pathFor route='register'}}">Register</a></li>
+							<li><a href="{{pathFor route='errorOne'}}">404 Page</a></li>
+							<li><a href="{{pathFor route='errorTwo'}}">500 Page</a></li>
+							<li class="{{isActiveRoute regex='emptyPage'}}"><a href="{{pathFor route='emptyPage'}}">Empty page</a></li>
+						</ul>
+					</li>
+					-->					
+				{{/unless}}
 
                 {{#if isAdmin}}
                     <li class="special_link">
