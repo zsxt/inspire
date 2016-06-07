@@ -27,7 +27,7 @@ Template.register.events
 	    case "radioIndustry":
 		roles[0] = "industry";
                 name = "工控用户";
-                avatar = "/img/profile_small_normal.jpg";
+                avatar = "/img/profile_small_industry.jpg";
 		break;
                 
             default:
