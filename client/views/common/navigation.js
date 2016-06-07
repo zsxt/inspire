@@ -15,7 +15,7 @@ Template.navigation.events({
 });
 
 Template.navigation.helpers({
-
+   
     userName: function() {
         if (Meteor.userId() && Meteor.user()){          
             if(Meteor.user().profile){
@@ -55,12 +55,41 @@ Template.navigation.helpers({
     },
 
     isAdmin: function() {
-        if (Meteor.userId()){
-            return Meteor.user().username == 'admin'
+	if (Meteor.userId() && Meteor.user()){
+            if(!Meteor.user().roles || !Meteor.user().roles[0]){
+                return false;
+            }
+            
+            return Meteor.user().roles[0] == 'admin'
+        }
+        else{
+            return false;
+        }
+    },
+
+    isAnalyst: function() {
+        if (Meteor.userId() && Meteor.user()){
+            if(!Meteor.user().roles || !Meteor.user().roles[0]){
+                return false;
+            }
+
+	    return Meteor.user().roles[0] == 'analyst'
+        }
+	else{
+            return false;
+        }
+    },
+
+    isIndustry: function() {
+        if (Meteor.userId() && Meteor.user()){
+            if(!Meteor.user().roles || !Meteor.user().roles[0]){
+                return false;
+            }
+            
+            return Meteor.user().roles[0] == 'industry'
         }
         else{
             return false;
         }
     }
-
 });
