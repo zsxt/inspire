@@ -37,11 +37,11 @@ Template.navigation.helpers({
             else if(roles[0] == 'analyst'){
                 return '数据分析师'
             }
-            else if(roles[0] == 'normal'){
-                return '一般用户'
+            else if(roles[0] == 'industry'){
+                return '工控分析师'
             }
             else{
-                return '匿名游客'
+                return '临时游客'
             }
         }
     },
