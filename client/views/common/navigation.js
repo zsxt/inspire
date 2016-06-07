@@ -75,9 +75,9 @@ Template.navigation.helpers({
 
 	    return Meteor.user().roles[0] == 'analyst'
         }
-	else{
-            return false;
-        }
+		else{
+			return false;
+		}
     },
 
     isIndustry: function() {
