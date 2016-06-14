@@ -12,23 +12,17 @@ Template.register.events
         var radioRole = $('input[name="roleOptions"]:checked').prop("id");
         switch (radioRole)
         {
-            case "radioAdmin":
-                roles[0] = "admin";
-                name = "超级用户";
-                avatar = "/img/profile_small_admin.jpg";           
-                break;
-            
             case "radioAnalyst":
                 roles[0] = "analyst";
                 name = "分析用户";
                 avatar = "/img/profile_small_analyst.jpg";
                 break;
 
-	    case "radioIndustry":
-		roles[0] = "industry";
+            case "radioIndustry":
+                roles[0] = "industry";
                 name = "工控用户";
                 avatar = "/img/profile_small_industry.jpg";
-		break;
+                break;
                 
             default:
                 roles[0] = "guest";
