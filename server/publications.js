@@ -40,6 +40,8 @@ Meteor.publish('baxx_stat', function(option) {
 Meteor.publish('baxx_time_stat', function(option) {
   var sub = this
   var collection = collections[option.context]
+  // 规避“Meteor v1.3.2.4自带Mongo版本不支持$dateToString操作符”问题
+  if (undefined === collection.findOne())  {	return; }
 
   var attr = 'SCBBSJ'
   if (option.context === 'ip') {
