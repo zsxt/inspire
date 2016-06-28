@@ -40,7 +40,9 @@ Meteor.publish('baxx_stat', function(option) {
 Meteor.publish('baxx_time_stat', function(option) {
   var sub = this
   var collection = collections[option.context]
-  // 规避“Meteor v1.3.2.4自带Mongo版本不支持$dateToString操作符”问题
+  // Mongo版本低于3.0时，不支持$dateToString操作符。Jan 4,2016的提交引入$dateToString。
+  // 外部Mongo版本>=3.0，没问题；自带Mongo版本低（当前1.1.7），运行时会报错。
+  // 自带Mongo该collection记录为空；判断为空，函数就返回，规避此问题。
   if (undefined === collection.findOne())  {	return; }
 
   var attr = 'SCBBSJ'
