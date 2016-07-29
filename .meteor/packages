@@ -52,3 +52,4 @@ standard-minifier-js
 d4nyll:odometeor
 ieverx:echarts
 ieverx:echarts3
+iron:middleware-stack@1.1.0
