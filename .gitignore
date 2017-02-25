@@ -10,3 +10,4 @@
 lib/*.js.cached
 lib/*.js.map
 public/industry/attack
+node_modules/

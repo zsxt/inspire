@@ -149,5 +149,33 @@ Meteor.methods({
         delete selector.text;
 
         return Inspire.Collection.IPEvent.find(selector).count();
+    },
+
+    geolocate: function(ip) {
+        function generateToken(ip) {
+            var timestamp = Date.now() / 1000 | 0
+            var echo = Math.random().toString(36).substr(2, 8);
+            var s = '' + timestamp + '#' + echo + '#path=/location/' + ip
+            console.log(s)
+            var token = CryptoJS.SHA1(s).toString()
+            return {
+                token: token,
+                echo: echo,
+                timestamp: timestamp
+            }
+        }
+        var params = generateToken(ip)
+        var res = Meteor.http.call('GET', 'http://192.168.197.1:8000/location/' + ip, {params: params})
+        console.log(res)
+        var addr = res.data.result;
+        addr.country = addr.country || ''
+        addr.province = addr.province || ''
+        addr.city = addr.city || ''
+        addr.district = addr.district || ''
+        var ret = {
+            addr: addr
+        }
+        console.log(ret)
+        return ret
     }
 });

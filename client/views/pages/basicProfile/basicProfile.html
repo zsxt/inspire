@@ -3,16 +3,15 @@
     <div class="row  border-bottom white-bg dashboard-header">
         <div class="col-lg-12">
             <h2>
-                IP基础数据: <span class="text-navy">“目前拥有 {{updateIPAddrCount}}+ 地址段”</span>
+                IP地址地理定位
             </h2>
-            <small>基于网络大数据分析的IP属性库</small>
 
             <div class="search-form">
                 <div class="input-group">
                     <input type="text" id="searchIP" placeholder="请输入IP地址，如：8.8.8.8" class="form-control input-lg">
                     <div class="input-group-btn">
                         <button class="btn btn-lg btn-primary" type="submit">
-                            搜索
+                            IP定位
                         </button>
                     </div>
                 </div>
@@ -22,7 +21,33 @@
 
     <div class="wrapper wrapper-content">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-12">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h4>定位结果</h4>
+                    </div>
+                    <div class="panel-body">
+                        
+                        {{ipAddr.addr.country}} 
+                        {{ipAddr.addr.province}} 
+                        {{ipAddr.addr.city}} 
+                        {{ipAddr.addr.district}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h4>定位结果地图</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div id="dmap" class="leaflet-map"></div>
+                    </div>
+                </div>
+                 
+            </div>
+            <!--   
+            <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <h5>地理位置定位</h5>
@@ -35,6 +60,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="col-lg-4">
                 <div class="panel panel-success">
                     <div class="panel-heading">
@@ -48,7 +74,7 @@
                         <p>街道：{{ipAddr.addr.street}}</p>
                     </div>
                 </div>
-
+                     
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         网络接入
@@ -79,7 +105,9 @@
                         <p>攻击事件：</p>
                     </div>
                 </div>
+               
             </div>
+             -->
         </div>
     </div>
 </template>
