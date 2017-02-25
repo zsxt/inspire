@@ -10,7 +10,7 @@ Meteor.publish('ipAddrStat', function(options) {
     }
 
     if(!options.limit){
-        options.limit = 10;
+        options.limit = 300;
     }
 
     var sub = this;
@@ -24,6 +24,7 @@ Meteor.publish('ipAddrStat', function(options) {
 
     var group = {
         _id: '$' + options.attr,
+        ipcount: {$sum: {$add: [1, {$subtract: ['$ipto', '$ipfrom']}]}},
         ipfrom: {$sum: '$ipfrom'},
         ipto: {$sum: '$ipto'},
         ipseg: {$sum: 1}
@@ -52,21 +53,22 @@ Meteor.publish('ipAddrStat', function(options) {
         group['code'] = {$first: '$addr.adcode'};
         projection1['code'] = 1;
     }
+    projection1['ipcount'] = {'$divide': ['$ipcount', 10000]}
 
     var pipeline = [
         {$project: projection},
         {$match: options.match},
         {$group: group},
-        {$sort: {ipseg: -1}},
+        {$sort: {ipcount: -1}},
         {$limit: options.limit},
         {$project: projection1}
     ];
 
     var results = collection.aggregate(pipeline);
     _(results).each(function(r) {
-        r.ipcount = (r.ipto - r.ipfrom + r.ipseg)/10000;
-        delete r.ipto;
-        delete r.ipfrom;
+        // r.ipcount = (r.ipto - r.ipfrom + r.ipseg)/10000;
+        // delete r.ipto;
+        // delete r.ipfrom;
 
         if(options.attr == 'addr.province'){
             r.label = r.label.replace(/省|市|特别行政区|壮族|维吾尔|回族|自治区/g, '');

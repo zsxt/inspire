@@ -222,7 +222,7 @@ Template.dynamicEvents.onRendered(function() {
     var instance = this;
     instance.autorun(function() {
         var selector = {};
-        var options = {limit: 20, sort: {eventAt: -1}};
+        var options = {limit: 50, sort: {eventAt: -1}};
 
         Meteor.call('formatDynamicEventsFromMemory', selector, options, function (err, ipevents) {
             if(!err){

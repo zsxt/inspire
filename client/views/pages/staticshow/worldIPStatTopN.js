@@ -1,6 +1,6 @@
 Template.worldIPStatTopN.helpers({
     worldIPDetail: function(){
-        return Inspire.Collection.IPAddrStat.find({attr: "addr.country"},{$sort: {ipseg: -1}}).fetch();
+        return Inspire.Collection.IPAddrStat.find({attr: "addr.country"},{$sort: {ipcount: -1}}).fetch();
     },
 
     fixNumber: function(num){
