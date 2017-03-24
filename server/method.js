@@ -167,15 +167,24 @@ Meteor.methods({
         var params = generateToken(ip)
         var res = Meteor.http.call('GET', 'http://192.168.197.1:8000/location/' + ip, {params: params})
         console.log(res)
-        var addr = res.data.result;
-        addr.country = addr.country || ''
-        addr.province = addr.province || ''
-        addr.city = addr.city || ''
-        addr.district = addr.district || ''
-        var ret = {
-            addr: addr
+        if (res.data.code == 0) {
+            var addr = res.data.result;
+            addr.country = addr.country || ''
+            addr.province = addr.province || ''
+            addr.city = addr.city || ''
+            addr.district = addr.district || ''
+            var ret = {
+                addr: addr,
+                code: 0,
+            }
+            console.log(ret)
+            return ret
+        } else {
+            return {
+                code: res.data.code,
+                msg: res.data.msg
+            }
         }
-        console.log(ret)
-        return ret
+        
     }
 });

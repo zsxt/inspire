@@ -18,8 +18,8 @@ Template.basicProfile.events({
     'change input[id=searchIP]': function(event, instance) {
         event.preventDefault();
         var inputIP = instance.find("#searchIP").value;
-        var ip_bigint = instance.IPCovertToInt(inputIP);
-        return instance.searchIP.set(ip_bigint);
+        // var ip_bigint = instance.IPCovertToInt(inputIP);
+        return instance.searchIP.set(inputIP);
     }
 });
 
@@ -40,25 +40,29 @@ Template.basicProfile.onCreated(function() {
             if (searchIP != -1) {
                 var ip = Meteor.call('geolocate', instance.searchIP.get(), function(error, ip) {
                     console.log(ip);
-                    instance.ipAddr.set(ip);
-                    if(ip.addr.lat && ip.addr.lng){
-                        if(ip.addr.lat != '*' && ip.addr.lat !='' && ip.addr.lng != '*' && ip.addr.lng != ''){
-                            lat = ip.addr.lat;
-                            lng = ip.addr.lng;
-                            viewZoom = 12;
+                    if (ip.code == 0) {
+                        instance.ipAddr.set(ip);
+                        if(ip.addr.lat && ip.addr.lng){
+                            if(ip.addr.lat != '*' && ip.addr.lat !='' && ip.addr.lng != '*' && ip.addr.lng != ''){
+                                lat = ip.addr.lat;
+                                lng = ip.addr.lng;
+                                viewZoom = 12;
 
-                            var marker = L.marker([lat, lng]).addTo(makersForBasicProfile)
-                                .bindPopup(ip.addr.country+ip.addr.province+ip.addr.city+ip.addr.district)
-                                .openPopup();
+                                var marker = L.marker([lat, lng]).addTo(makersForBasicProfile)
+                                    .bindPopup(ip.addr.country+ip.addr.province+ip.addr.city+ip.addr.district)
+                                    .openPopup();
 
-                            var circle = L.circle([lat, lng], 1000, {
-                                color: 'red',
-                                fillColor: '#f03',
-                                fillOpacity: 0.3
-                            }).addTo(makersForBasicProfile);
+                                var circle = L.circle([lat, lng], 1000, {
+                                    color: 'red',
+                                    fillColor: '#f03',
+                                    fillOpacity: 0.3
+                                }).addTo(makersForBasicProfile);
 
-                            marker.circle=circle;
+                                marker.circle=circle;
+                            }
                         }
+                    } else {
+                        alert(ip.msg);
                     }
                     map.setView([lat, lng], viewZoom);
                 })
